@@ -17,3 +17,5 @@ time %>% select(c("Age","Bedtime"))
 time
 p <- ggplot(time,aes(x="gender",y="Age")) + geom_bar(stat="identity")
 p
+
+print("testing")
