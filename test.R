@@ -5,8 +5,8 @@ library(fs)
 # Below is to find where the file is located no matter what OS
 # Used https://www.rdocumentation.org/packages/fs/versions/1.6.3/topics/dir_ls
 # as reference
-l <- fs::dir_ls(recurse=TRUE, glob="**/Sleep_Efficiency*csv")
-sleepefficency <- read.csv(l)
+sleep_efficiency_data <- fs::dir_ls(recurse=TRUE, glob="**/Sleep_Efficiency*csv")
+sleepefficency <- read.csv(sleep_efficiency_data)
 
 sleepcol <- colnames(sleepefficency)
 sleepcol
