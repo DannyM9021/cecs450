@@ -8,14 +8,16 @@ library(fs)
 sleep_efficiency_data <- fs::dir_ls(recurse=TRUE, glob="**/Sleep_Efficiency*csv")
 sleepefficency <- read.csv(sleep_efficiency_data)
 
-sleepcol <- colnames(sleepefficency)
-sleepcol
-time <- data.frame(sleepefficency)
-time %>% select(c("Age","Bedtime"))
+# Defining a data frame from read from the csv data file
+sleep_efficiency_data_frame <- data.frame(sleepefficency)
+sleep_columns <- colnames(sleepefficency)
+sleep_columns
 
-  
+# Creating a visualization for bedtime vs age
+time <- sleep_efficiency_data_frame %>% select(c("Age","Bedtime"))
 time
-p <- ggplot(time,aes(x="gender",y="Age")) + geom_bar(stat="identity")
-p
-
-print("testing")
+time_graph <- ggplot(time,aes(x="gender",y="Age")) + geom_bar(stat="identity")
+time_graph
+time_graph2 <- ggplot(time,aes(Bedtime)) +
+  geom_line(aes(y = Age, colour = "Age",group=1))
+time_graph2
