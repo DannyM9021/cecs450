@@ -13,6 +13,13 @@ sleep_efficiency_data_frame <- data.frame(sleepefficency)
 sleep_columns <- colnames(sleepefficency)
 sleep_columns
 
+# Bar Graph of Age Count
+age_count <- sleep_efficiency_data_frame %>% select(c("Age"))
+barplot(table(age_count), main = "Age Count", xlab = "Age", ylab = "Count", 
+        border = "aquamarine", col = "aquamarine") #can change color later
+
+
+
 # Creating a visualization for bedtime vs age
 time <- sleep_efficiency_data_frame %>% select(c("Age","Bedtime"))
 time
