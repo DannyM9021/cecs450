@@ -55,5 +55,19 @@ pie(rem_count, main = "REM Sleep Percentage")
 
 
 # Deep Sleep Percentage 
+deep_sleep <- sleep_efficiency_data_frame %>% select(c("Deep.sleep.percentage"))
+deep_count <- table(deep_sleep)
+#gen_label <- c("Female", "Male") #F: 224 M: 228
+percent <- round(deep_count/ sum(deep_count)*100)
+#gen_label <- paste(gen_label, percent)
+#rem_label < paste(gen_label,"%", sep="")
+pie(deep_count, main = "Deep Sleep Percentage") 
 
 # Light Sleep Percentage 
+light_sleep <- sleep_efficiency_data_frame %>% select(c("Light.sleep.percentage"))
+light_count <- table(rem_sleep)
+#gen_label <- c("Female", "Male") #F: 224 M: 228
+percent <- round(light_count/ sum(light_count)*100)
+#gen_label <- paste(gen_label, percent)
+#rem_label < paste(gen_label,"%", sep="")
+pie(light_count, main = "Light Sleep Percentage") 
