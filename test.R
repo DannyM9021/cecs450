@@ -10,8 +10,13 @@ library("RColorBrewer")
 # Below is to find where the file is located no matter what OS
 # Used https://www.rdocumentation.org/packages/fs/versions/1.6.3/topics/dir_ls
 # as reference
-sleep_efficiency_data <- fs::dir_ls(recurse=TRUE, glob="**/Sleep_Efficiency*csv")
-sleepefficency <- read.csv(sleep_efficiency_data)
+#sleep_efficiency_data <- fs::dir_ls(recurse=TRUE, glob="**/Sleep_Efficiency*csv")
+#sleepefficency <- read.csv(sleep_efficiency_data)
+
+path <- getwd()
+list.files(path, pattern = "Sleep_Efficiency.csv", full.names = TRUE, recursive = TRUE)
+sleepefficency <- read.csv(list.files(path, pattern = "Sleep_Efficiency.csv", full.names = TRUE, recursive = TRUE))
+
 
 # Defining a data frame from read from the csv data file
 sleep_efficiency_data_frame <- data.frame(sleepefficency)
