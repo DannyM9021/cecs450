@@ -1,6 +1,11 @@
 library(dplyr)
 library(ggplot2)
 library(fs)
+# library for 3D pie chart
+library(plotrix)
+# library for color sets
+# source: http://www.sthda.com/english/wiki/colors-in-r 
+library("RColorBrewer")
 
 # Below is to find where the file is located no matter what OS
 # Used https://www.rdocumentation.org/packages/fs/versions/1.6.3/topics/dir_ls
@@ -61,7 +66,7 @@ deep_count <- table(deep_sleep)
 percent <- round(deep_count/ sum(deep_count)*100)
 #gen_label <- paste(gen_label, percent)
 #rem_label < paste(gen_label,"%", sep="")
-pie(deep_count, main = "Deep Sleep Percentage") 
+pie(deep_count, col= brewer.pal(n = 12, name="Set3"), main = "Deep Sleep Percentage") 
 
 # Light Sleep Percentage 
 light_sleep <- sleep_efficiency_data_frame %>% select(c("Light.sleep.percentage"))
@@ -70,4 +75,4 @@ light_count <- table(rem_sleep)
 percent <- round(light_count/ sum(light_count)*100)
 #gen_label <- paste(gen_label, percent)
 #rem_label < paste(gen_label,"%", sep="")
-pie(light_count, main = "Light Sleep Percentage") 
+pie(light_count, col= brewer.pal(n = 12, name="Set3"), main = "Light Sleep Percentage") 
