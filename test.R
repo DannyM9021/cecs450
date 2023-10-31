@@ -81,3 +81,4 @@ percent <- round(light_count/ sum(light_count)*100)
 #gen_label <- paste(gen_label, percent)
 #rem_label < paste(gen_label,"%", sep="")
 pie(light_count, col= brewer.pal(n = 12, name="Set3"), main = "Light Sleep Percentage") 
+
