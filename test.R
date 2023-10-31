@@ -41,4 +41,19 @@ time_graph <- ggplot(time,aes(x="gender",y="Age")) + geom_bar(stat="identity")
 time_graph
 time_graph2 <- ggplot(time,aes(Bedtime)) +
   geom_line(aes(y = Age, colour = "Age",group=1))
-time_graph2
+time_graph2 
+
+
+# REM Sleep Percentage Pie Chart
+rem_sleep <- sleep_efficiency_data_frame %>% select(c("REM.sleep.percentage"))
+rem_count <- table(rem_sleep)
+#gen_label <- c("Female", "Male") #F: 224 M: 228
+percent <- round(rem_count/ sum(rem_count)*100)
+#gen_label <- paste(gen_label, percent)
+#rem_label < paste(gen_label,"%", sep="")
+pie(rem_count, main = "REM Sleep Percentage") 
+
+
+# Deep Sleep Percentage 
+
+# Light Sleep Percentage 
