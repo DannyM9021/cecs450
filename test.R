@@ -16,7 +16,7 @@ sleep_columns
 # Bar Graph of Age Count
 age_count <- sleep_efficiency_data_frame %>% select(c("Age"))
 barplot(table(age_count), main = "Age Count", xlab = "Age", ylab = "Count", 
-        border = "aquamarine", col = "aquamarine") #can change color later
+        border = "aquamarine2", col = "aquamarine2") #can change color later
 
 # Pie Graph of Gender 
 gender <- sleep_efficiency_data_frame %>% select(c("Gender"))
@@ -26,7 +26,13 @@ percent <- round(gender_count/ sum(gender_count)*100)
 gen_label <- paste(gen_label, percent)
 gen_label < paste(gen_label,"%", sep="")
 pie(gender_count, labels = gen_label, main = "Female vs. Male") 
-#can change color by adding col = "color value" later
+#can change color by adding col = "color value" later 
+
+#or can be visualized as a bar graph 
+gender_count <- sleep_efficiency_data_frame %>% select(c("Gender"))
+barplot(table(gender_count), main = "Gender Count", xlab = "Gender", ylab = "Count", 
+        border = "lavender", col = "lavender") #can change color later
+
 
 # Creating a visualization for bedtime vs age
 time <- sleep_efficiency_data_frame %>% select(c("Age","Bedtime"))
