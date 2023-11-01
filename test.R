@@ -50,12 +50,12 @@ time_graph2
 # REM Sleep Percentage Pie Chart (still need to fix values)
 rem_sleep <- sleep_efficiency_data_frame %>% select(c("REM.sleep.percentage"))
 rem_count <- table(rem_sleep)
-#gen_label <- c("Female", "Male") #F: 224 M: 228
+rem_count #just checking
+#rem_label <- c("REM.sleep.percentage")
 percent <- round(rem_count/ sum(rem_count)*100)
-#gen_label <- paste(gen_label, percent)
-#rem_label < paste(gen_label,"%", sep="")
+rem_label <- paste(rem_label, percent)
+rem_label < paste(rem_label,"%", sep="")
 pie(rem_count, main = "REM Sleep Percentage") 
-
 
 # Deep Sleep Percentage (still need to fix values) 
 deep_sleep <- sleep_efficiency_data_frame %>% select(c("Deep.sleep.percentage"))
@@ -66,7 +66,7 @@ percent <- round(deep_count/ sum(deep_count)*100)
 #rem_label < paste(gen_label,"%", sep="")
 pie(deep_count, col= brewer.pal(n = 12, name="Set3"), main = "Deep Sleep Percentage") 
 
-# Light Sleep Percentage (still need to fix vlaues)
+# Light Sleep Percentage (still need to fix values)
 light_sleep <- sleep_efficiency_data_frame %>% select(c("Light.sleep.percentage"))
 light_count <- table(rem_sleep)
 #gen_label <- c("Female", "Male") #F: 224 M: 228
