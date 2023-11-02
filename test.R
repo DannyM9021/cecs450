@@ -51,7 +51,7 @@ time_graph2
 rem_sleep <- sleep_efficiency_data_frame %>% select(c("REM.sleep.percentage"))
 rem_count <- table(rem_sleep)
 rem_count #just checking
-#rem_label <- c("REM.sleep.percentage")
+rem_label <- c("REM.sleep.percentage")
 percent <- round(rem_count/ sum(rem_count)*100)
 rem_label <- paste(rem_label, percent)
 rem_label < paste(rem_label,"%", sep="")
