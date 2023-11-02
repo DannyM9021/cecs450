@@ -79,16 +79,22 @@ pie(light_count, col= brewer.pal(n = 12, name="Set3"), main = "Light Sleep Perce
 
 #trying to find the correlation between caffeine consumption and sleep duration
 caffeine <- sleep_efficiency_data_frame %>% select(c("Age","Caffeine.consumption","Sleep.duration"))
-caffeine <- na.omit(caffeine)
-caffeine %>% group_by(Age) %>%summarise_at(vars(Caffeine.consumption,Sleep.duration), list(name = mean))
-# Value used to transform the data
-coeff <- 20
+caffeine <- na.omit(caffeine) #omit NA rows
+#Calculate average for each age
+caffeine %>% group_by(Age) %>%summarise_at(vars(Caffeine.consumption,Sleep.duration), list(name = mean)) 
+#caffeine["age_group"] = cut(caffeine$Age, c(0, 17, 29, 39, 49, 59, Inf), c("0-17", "18-29", "30-39", "40-49", "50-59", ">60"), include.lowest=TRUE)
+coeff <- 20 # Value used to transform the data
 ggplot(caffeine, aes(x=Age)) +
-  geom_line( aes(y=Sleep.duration),color="blue") + 
-  geom_line( aes(y=Caffeine.consumption / coeff),color="chocolate4") + # Divide by 10 to get the same range than the temperature
+  geom_line( aes(y=Sleep.duration-5),color="blue") + 
+  geom_line( aes(y=Caffeine.consumption/coeff),color="chocolate4") + # Divide by 10 to get the same range than the temperature
   scale_y_continuous(
     # Features of the first axis
     name = "Sleep.duration",
     # Add a second axis and specify its features
-    sec.axis = sec_axis(~.*coeff, name="Caffeine.consumption")
-  )
+    sec.axis = sec_axis(~./coeff, name="Caffeine.consumption")
+  ) + 
+  theme(
+    axis.title.y = element_text(color = "blue", size=13),
+    axis.title.y.right = element_text(color = "chocolate4", size=13)
+  ) 
+\
