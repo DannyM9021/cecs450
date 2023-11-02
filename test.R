@@ -72,6 +72,15 @@ plot(x, y, main = "Does Age Effect REM Sleep?",
      pch = 19, frame = FALSE)
 abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
 
+#another version 
+rem <- sleep_efficiency_data_frame %>% select(c("Age","REM.sleep.percentage"))
+rem
+#rem_graph <- ggplot(time,aes(x="Age",y="REM Sleep (%)")) + geom_bar(stat="identity")
+#rem_graph
+rem_graph <- ggplot(rem,aes(x= Age)) + 
+  geom_line(aes(y = REM.sleep.percentage))
+rem_graph
+
 
 # Deep Sleep Percentage (still need to fix values) 
 #deep_sleep <- sleep_efficiency_data_frame %>% select(c("Deep.sleep.percentage"))
@@ -140,4 +149,5 @@ ggplot(caffeine, aes(x=Age)) +
     axis.title.y = element_text(color = "blue", size=13),
     axis.title.y.right = element_text(color = "chocolate4", size=13)
   ) 
-\
+
+
