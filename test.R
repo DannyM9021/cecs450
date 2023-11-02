@@ -134,20 +134,20 @@ caffeine <- sleep_efficiency_data_frame %>% select(c("Age","Caffeine.consumption
 caffeine <- na.omit(caffeine) #omit NA rows
 #Calculate average for each age
 caffeine %>% group_by(Age) %>%summarise_at(vars(Caffeine.consumption,Sleep.duration), list(name = mean)) 
-#caffeine["age_group"] = cut(caffeine$Age, c(0, 17, 29, 39, 49, 59, Inf), c("0-17", "18-29", "30-39", "40-49", "50-59", ">60"), include.lowest=TRUE)
-coeff <- 20 # Value used to transform the data
+caffeine["age_group"] = cut(caffeine$Age, c(0, 10, 15, 20, 25, 30,35, 40, 45, 50, 55, 60, 65, Inf), c("<10", "11-15", "16-20","21-25", "26-30", "31-35","36-40","41-45", "46-50", "51-55","56-60","61-65",  ">66"), include.lowest=TRUE)
+coeff <- 40 # Value used to transform the data
 ggplot(caffeine, aes(x=Age)) +
-  geom_line( aes(y=Sleep.duration-5),color="blue") + 
-  geom_line( aes(y=Caffeine.consumption/coeff),color="chocolate4") + # Divide by 10 to get the same range than the temperature
+  geom_line( aes(y=Caffeine.consumption),color="chocolate4") + #range(0:200)
+  geom_line( aes(y=Sleep.duration*coeff-5*coeff),color="blue") + #range(5-10) -> range(0-200)
   scale_y_continuous(
     # Features of the first axis
-    name = "Sleep.duration",
+    name = "Caffeine.consumption",
     # Add a second axis and specify its features
-    sec.axis = sec_axis(~./coeff, name="Caffeine.consumption")
+    sec.axis = sec_axis(~./coeff-5/coeff, name="Sleep.duration")
   ) + 
   theme(
-    axis.title.y = element_text(color = "blue", size=13),
-    axis.title.y.right = element_text(color = "chocolate4", size=13)
+    axis.title.y = element_text(color = "chocolate4", size=13),
+    axis.title.y.right = element_text(color = "blue", size=13)
   ) 
 
 
