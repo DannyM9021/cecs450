@@ -50,32 +50,75 @@ time_graph2
 
 
 # REM Sleep Percentage Pie Chart (still need to fix values)
-rem_sleep <- sleep_efficiency_data_frame %>% select(c("REM.sleep.percentage"))
-rem_count <- table(rem_sleep)
-rem_count #just checking
-rem_label <- c("REM.sleep.percentage")
-percent <- round(rem_count/ sum(rem_count)*100)
-rem_label <- paste(rem_label, percent)
-rem_label < paste(rem_label,"%", sep="")
-pie(rem_count, main = "REM Sleep Percentage") 
+#rem_sleep <- sleep_efficiency_data_frame %>% select(c("REM.sleep.percentage"))
+#rem_count <- table(rem_sleep)
+#rem_count #just checking
+#rem_label <- c("REM.sleep.percentage")
+#percent <- round(rem_count/ sum(rem_count)*100)
+#rem_label <- paste(rem_label, percent)
+#rem_label < paste(rem_label,"%", sep="")
+#pie(rem_count, main = "REM Sleep Percentage") 
+
+# Scatter Plot Between Age and REM Sleep Percentage
+x <- sleep_efficiency_data_frame$REM.sleep.percentage 
+y <- sleep_efficiency_data_frame$Age
+
+plot(x, y, main = "Does Age Effect REM Sleep?",
+     xlab = "age", ylab = "REM Sleep (%)",
+     pch = 19, frame = FALSE)
+# Add regression line
+plot(x, y, main = "Does Age Effect REM Sleep?",
+     xlab = "age", ylab = "REM Sleep (%)",
+     pch = 19, frame = FALSE)
+abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
+
 
 # Deep Sleep Percentage (still need to fix values) 
-deep_sleep <- sleep_efficiency_data_frame %>% select(c("Deep.sleep.percentage"))
-deep_count <- table(deep_sleep)
+#deep_sleep <- sleep_efficiency_data_frame %>% select(c("Deep.sleep.percentage"))
+#deep_count <- table(deep_sleep)
 #gen_label <- c("Female", "Male") #F: 224 M: 228
-percent <- round(deep_count/ sum(deep_count)*100)
+#percent <- round(deep_count/ sum(deep_count)*100)
 #gen_label <- paste(gen_label, percent)
 #rem_label < paste(gen_label,"%", sep="")
-pie(deep_count, col= brewer.pal(n = 12, name="Set3"), main = "Deep Sleep Percentage") 
+#pie(deep_count, col= brewer.pal(n = 12, name="Set3"), main = "Deep Sleep Percentage") 
+
+# Scatter Plot Between Age and Deep Sleep Percentage
+x <- sleep_efficiency_data_frame$Deep.sleep.percentage 
+y <- sleep_efficiency_data_frame$Age
+
+plot(x, y, main = "Does Age Effect Deep Sleep?",
+     xlab = "age", ylab = "Deep Sleep (%)",
+     pch = 19, frame = FALSE)
+# Add regression line
+plot(x, y, main = "Does Age Effect Deep Sleep?",
+     xlab = "age", ylab = "Deep Sleep (%)",
+     pch = 19, frame = FALSE)
+abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
+
 
 # Light Sleep Percentage (still need to fix values)
-light_sleep <- sleep_efficiency_data_frame %>% select(c("Light.sleep.percentage"))
-light_count <- table(rem_sleep)
+#light_sleep <- sleep_efficiency_data_frame %>% select(c("Light.sleep.percentage"))
+#light_count <- table(rem_sleep)
 #gen_label <- c("Female", "Male") #F: 224 M: 228
-percent <- round(light_count/ sum(light_count)*100)
+#percent <- round(light_count/ sum(light_count)*100)
 #gen_label <- paste(gen_label, percent)
 #rem_label < paste(gen_label,"%", sep="")
-pie(light_count, col= brewer.pal(n = 12, name="Set3"), main = "Light Sleep Percentage") 
+#pie(light_count, col= brewer.pal(n = 12, name="Set3"), main = "Light Sleep Percentage") 
+
+# Scatter Plot Between Age and REM Sleep Percentage
+x <- sleep_efficiency_data_frame$Light.sleep.percentage 
+y <- sleep_efficiency_data_frame$Age
+
+plot(x, y, main = "Does Age Effect Light Sleep?",
+     xlab = "age", ylab = "Light Sleep (%)",
+     pch = 19, frame = FALSE)
+# Add regression line
+plot(x, y, main = "Does Age Effect Light Sleep?",
+     xlab = "age", ylab = "Light Sleep (%)",
+     pch = 19, frame = FALSE)
+abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
+
+
 
 #trying to find the correlation between caffeine consumption and sleep duration
 caffeine <- sleep_efficiency_data_frame %>% select(c("Age","Caffeine.consumption","Sleep.duration"))
