@@ -7,14 +7,16 @@ library(plotrix)
 library("RColorBrewer")
 
 path <- getwd()
-list.files(path, pattern = "Sleep_Efficiency.csv", full.names = TRUE, recursive = TRUE)
 sleepefficency <- read.csv(list.files(path, pattern = "Sleep_Efficiency.csv", full.names = TRUE, recursive = TRUE))
-
+lifestyle <- read.csv(list.files(path, pattern = "Sleep_health_and_lifestyle_dataset.csv", full.names = TRUE, recursive = TRUE))
 
 # Defining a data frame from read from the csv data file
 sleep_efficiency_data_frame <- data.frame(sleepefficency)
 sleep_columns <- colnames(sleepefficency)
 sleep_columns
+
+lifestyle_data_frame <- data.frame(lifestyle)
+lifestyle_columns <- colnames(lifestyle)
 
 # Bar Graph of Age Count
 age_count <- sleep_efficiency_data_frame %>% select(c("Age"))
@@ -75,3 +77,18 @@ percent <- round(light_count/ sum(light_count)*100)
 #rem_label < paste(gen_label,"%", sep="")
 pie(light_count, col= brewer.pal(n = 12, name="Set3"), main = "Light Sleep Percentage") 
 
+#trying to find the correlation between caffeine consumption and sleep duration
+caffeine <- sleep_efficiency_data_frame %>% select(c("Age","Caffeine.consumption","Sleep.duration"))
+caffeine <- na.omit(caffeine)
+caffeine %>% group_by(Age) %>%summarise_at(vars(Caffeine.consumption,Sleep.duration), list(name = mean))
+# Value used to transform the data
+coeff <- 20
+ggplot(caffeine, aes(x=Age)) +
+  geom_line( aes(y=Sleep.duration),color="blue") + 
+  geom_line( aes(y=Caffeine.consumption / coeff),color="chocolate4") + # Divide by 10 to get the same range than the temperature
+  scale_y_continuous(
+    # Features of the first axis
+    name = "Sleep.duration",
+    # Add a second axis and specify its features
+    sec.axis = sec_axis(~.*coeff, name="Caffeine.consumption")
+  )
