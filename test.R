@@ -151,3 +151,21 @@ ggplot(caffeine, aes(x=Age)) +
   ) 
 
 
+#Pie Chart of Occupation 
+job <- lifestyle %>% select(c("Occupation"))
+job_count <- table(job)
+job_count
+#job_label <- c("Doctor", "Engineer", "Accountant", "Teacher", 
+             #  "Software Engineer", "Scientist", "Salesperson", 
+              # "Sales Representative", "Nurse", "Manager", "Lawyer")
+percent <- round(job_count/ sum(job_count)*100)
+job_label <- paste(job_label, percent)
+job_label < paste(job_label,"%", sep="")
+pie(job_count, col= brewer.pal(n = 12, name="Set3"),main = "Occupation Count") 
+
+#Bar Graph of Occupation 
+#job_count <- lifestyle %>% select(c("Occupation"))
+#barplot(table(job_count), main = "Occupation Count", xlab = "Occupations", ylab = "Count", 
+ #       border = "grey", col = "grey") #can change color later
+
+
