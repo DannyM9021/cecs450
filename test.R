@@ -153,6 +153,24 @@ ggplot(caffeine, aes(x=Age)) +
     axis.title.y.right = element_text(color = "blue", size=13)
   ) 
 
+
+# Visualization of Smoking Status 
+smoking <- sleep_efficiency_data_frame %>% select(c("Smoking.status"))
+barplot(table(smoking), main = "Smoking Status", xlab = "Status (Yes/No)", ylab = "Count", 
+        border = "lightblue", col = "lightblue") #can change color later
+
+# Visualization of the effects of smoking on sleep efficiency 
+smoke_n_sleep <- sleep_efficiency_data_frame %>% select(c("Smoking.status","Sleep.efficiency"))
+smoke_n_sleep
+#rem_graph <- ggplot(time,aes(x="Age",y="REM Sleep (%)")) + geom_bar(stat="identity")
+#rem_graph
+ss_graph <- ggplot(rem,aes(x= Smoking.status)) + 
+  geom_line(aes(y = Sleep.efficiency))
+ss_graph
+
+
+
+
 # -------------------------------Life Style Data set----------------------------
 # Pie Chart of Occupation 
 job <- lifestyle %>% select(c("Occupation"))
