@@ -132,26 +132,31 @@ abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
 
 
 
-# trying to find the correlation between caffeine consumption and sleep duration
-caffeine <- sleep_efficiency_data_frame %>% select(c("Age","Caffeine.consumption","Sleep.duration"))
+#Caffeine.consumption by age 
+caffeine <- sleep_efficiency_data_frame %>% select(c("Caffeine.consumption","Sleep.efficiency","Age"))
 caffeine <- na.omit(caffeine) #omit NA rows
-# Calculate average for each age
-caffeine %>% group_by(Age) %>%summarise_at(vars(Caffeine.consumption,Sleep.duration), list(name = mean)) 
-caffeine["age_group"] = cut(caffeine$Age, c(0, 10, 15, 20, 25, 30,35, 40, 45, 50, 55, 60, 65, Inf), c("<10", "11-15", "16-20","21-25", "26-30", "31-35","36-40","41-45", "46-50", "51-55","56-60","61-65",  ">66"), include.lowest=TRUE)
-coeff <- 40 # Value used to transform the data
-ggplot(caffeine, aes(x=Age)) +
-  geom_line( aes(y=Caffeine.consumption),color="chocolate4") + #range(0:200)
-  geom_line( aes(y=Sleep.duration*coeff-5*coeff),color="blue") + #range(5-10) -> range(0-200)
-  scale_y_continuous(
-    # Features of the first axis
-    name = "Caffeine.consumption",
-    # Add a second axis and specify its features
-    sec.axis = sec_axis(~./coeff-5/coeff, name="Sleep.duration")
-  ) + 
-  theme(
-    axis.title.y = element_text(color = "chocolate4", size=13),
-    axis.title.y.right = element_text(color = "blue", size=13)
-  ) 
+caffeine_count <- xyTable(caffeine$Age,caffeine$Caffeine.consumption)
+names(caffeine_count) <- c('Age','Caffeine.consumption','Count')
+ggplot(caffeine,aes(x=Age,y=Caffeine.consumption))+geom_point()
+plot(caffeine_count$Age , caffeine_count$Caffeine.consumption  , cex=caffeine_count$Count*0.5 , pch=16 , col=rgb(0,0,1,0.5) , xlab= "Age" , ylab="Caffeine consumption" , xlim=c(0,70) , ylim=c(0,200) )
+
+# Scatter plot with caffeine consumption and sleep duration
+ggplot(caffeine, aes(x = Caffeine.consumption, y = Sleep.efficiency)) +
+  geom_boxplot(aes(group = Caffeine.consumption),fill="gray") +
+  labs(x = "Caffeine Consumption", y = "Sleep Efficiency") +
+  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
+  theme_minimal()
+
+#the correlation between alcohol consumption and sleep efficiency
+alcohol <- sleep_efficiency_data_frame %>% select(c("Alcohol.consumption","Sleep.efficiency"))
+alcohol <- na.omit(alcohol) #omit NA rows
+#alcohol["age_group"] = cut(alcohol$Age, c(0, 10, 15, 20, 25, 30,35, 40, 45, 50, 55, 60, 65, Inf), c("<10", "11-15", "16-20","21-25", "26-30", "31-35","36-40","41-45", "46-50", "51-55","56-60","61-65",  ">66"), include.lowest=TRUE)
+# Scatter plot with color-coded points by age group
+ggplot(alcohol, aes(x = Alcohol.consumption, y = Sleep.efficiency)) +
+  geom_boxplot(aes(group = Alcohol.consumption),fill="gray") +
+  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
+  labs(x = "Alcohol Consumption", y = "Sleep Efficiency") +
+  theme_minimal()
 
 
 # Visualization of Smoking Status 
