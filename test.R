@@ -6,6 +6,7 @@ library(plotrix)
 # source: http://www.sthda.com/english/wiki/colors-in-r 
 library("RColorBrewer")
 
+# Finds data sets on the user's computer (data sets are in the repository)
 path <- getwd()
 sleepefficency <- read.csv(list.files(path, pattern = "Sleep_Efficiency.csv", full.names = TRUE, recursive = TRUE))
 lifestyle <- read.csv(list.files(path, pattern = "Sleep_health_and_lifestyle_dataset.csv", full.names = TRUE, recursive = TRUE))
@@ -15,9 +16,11 @@ sleep_efficiency_data_frame <- data.frame(sleepefficency)
 sleep_columns <- colnames(sleepefficency)
 sleep_columns
 
+# Defining data frames using the data sets to create graphs for visualization
 lifestyle_data_frame <- data.frame(lifestyle)
 lifestyle_columns <- colnames(lifestyle)
 
+#------------------------- Sleep Efficiency Data set----------------------------
 # Bar Graph of Age Count
 age_count <- sleep_efficiency_data_frame %>% select(c("Age"))
 barplot(table(age_count), main = "Age Count", xlab = "Age", ylab = "Count", 
@@ -31,9 +34,9 @@ percent <- round(gender_count/ sum(gender_count)*100)
 gen_label <- paste(gen_label, percent)
 gen_label < paste(gen_label,"%", sep="")
 pie(gender_count, labels = gen_label, main = "Female vs. Male") 
-#can change color by adding col = "color value" later 
+# can change color by adding col = "color value" later 
 
-#or can be visualized as a bar graph 
+# or can be visualized as a bar graph 
 gender_count <- sleep_efficiency_data_frame %>% select(c("Gender"))
 barplot(table(gender_count), main = "Gender Count", xlab = "Gender", ylab = "Count", 
         border = "lavender", col = "lavender") #can change color later
@@ -72,7 +75,7 @@ plot(x, y, main = "Does Age Effect REM Sleep?",
      pch = 19, frame = FALSE)
 abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
 
-#another version 
+# another version 
 rem <- sleep_efficiency_data_frame %>% select(c("Age","REM.sleep.percentage"))
 rem
 #rem_graph <- ggplot(time,aes(x="Age",y="REM Sleep (%)")) + geom_bar(stat="identity")
@@ -129,10 +132,10 @@ abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
 
 
 
-#trying to find the correlation between caffeine consumption and sleep duration
+# trying to find the correlation between caffeine consumption and sleep duration
 caffeine <- sleep_efficiency_data_frame %>% select(c("Age","Caffeine.consumption","Sleep.duration"))
 caffeine <- na.omit(caffeine) #omit NA rows
-#Calculate average for each age
+# Calculate average for each age
 caffeine %>% group_by(Age) %>%summarise_at(vars(Caffeine.consumption,Sleep.duration), list(name = mean)) 
 caffeine["age_group"] = cut(caffeine$Age, c(0, 10, 15, 20, 25, 30,35, 40, 45, 50, 55, 60, 65, Inf), c("<10", "11-15", "16-20","21-25", "26-30", "31-35","36-40","41-45", "46-50", "51-55","56-60","61-65",  ">66"), include.lowest=TRUE)
 coeff <- 40 # Value used to transform the data
@@ -150,8 +153,8 @@ ggplot(caffeine, aes(x=Age)) +
     axis.title.y.right = element_text(color = "blue", size=13)
   ) 
 
-
-#Pie Chart of Occupation 
+# -------------------------------Life Style Data set----------------------------
+# Pie Chart of Occupation 
 job <- lifestyle %>% select(c("Occupation"))
 job_count <- table(job)
 job_count
@@ -163,9 +166,7 @@ job_label <- paste(job_label, percent)
 job_label < paste(job_label,"%", sep="")
 pie(job_count, col= brewer.pal(n = 12, name="Set3"),main = "Occupation Count") 
 
-#Bar Graph of Occupation 
+# Bar Graph of Occupation 
 #job_count <- lifestyle %>% select(c("Occupation"))
 #barplot(table(job_count), main = "Occupation Count", xlab = "Occupations", ylab = "Count", 
  #       border = "grey", col = "grey") #can change color later
-
-
