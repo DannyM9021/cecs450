@@ -162,11 +162,20 @@ job_count
              #  "Software Engineer", "Scientist", "Salesperson", 
               # "Sales Representative", "Nurse", "Manager", "Lawyer")
 percent <- round(job_count/ sum(job_count)*100)
-job_label <- paste(job_label, percent)
-job_label < paste(job_label,"%", sep="")
+#job_label <- paste(job_label, percent)
+#job_label <- paste(job_label,"%", sep="")
 pie(job_count, col= brewer.pal(n = 12, name="Set3"),main = "Occupation Count") 
 
 # Bar Graph of Occupation 
 #job_count <- lifestyle %>% select(c("Occupation"))
 #barplot(table(job_count), main = "Occupation Count", xlab = "Occupations", ylab = "Count", 
  #       border = "grey", col = "grey") #can change color later
+
+# Scatter plot of physical activity compared to stress level
+physical_activity_vs_stress <- lifestyle %>% select(c("Physical.Activity.Level","Stress.Level"))
+ggplot(physical_activity_vs_stress, aes(x=Physical.Activity.Level, y=Stress.Level)) + 
+  geom_point() + 
+  labs(title = "Physical Activity Level vs Stress Level") +
+  xlab("Physical Activity Level") +
+  ylab("Stress Level") +
+  theme(plot.title = element_text(hjust = 0.5))
