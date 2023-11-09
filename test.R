@@ -169,9 +169,15 @@ smoke_n_sleep <- sleep_efficiency_data_frame %>% select(c("Smoking.status","Slee
 smoke_n_sleep
 #rem_graph <- ggplot(time,aes(x="Age",y="REM Sleep (%)")) + geom_bar(stat="identity")
 #rem_graph
-ss_graph <- ggplot(rem,aes(x= Smoking.status)) + 
-  geom_line(aes(y = Sleep.efficiency))
-ss_graph
+#ss_graph <- ggplot(rem,aes(x= Smoking.status)) + 
+ # geom_line(aes(y = Sleep.efficiency))
+#ss_graph
+
+ggplot(smoke_n_sleep, aes(x = Smoking.status, y = Sleep.efficiency)) +
+  geom_boxplot(aes(group = Smoking.status),fill="gray") +
+  labs(x = "Smoking Status", y = "Sleep Efficiency") +
+  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
+  theme_minimal()
 
 
 
