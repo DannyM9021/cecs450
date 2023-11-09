@@ -218,3 +218,25 @@ percent <- round(disorder_count/ sum(disorder_count)*100)
 #job_label <- paste(job_label,"%", sep="")
 pie(disorder_count, col= brewer.pal(n = 12, name="Set3"),main = "Sleep Disorder Count")
 
+# Bar Graph of Sleep Disorder
+disorder_count <- lifestyle %>% select(c("Sleep.Disorder"))
+barplot(table(disorder_count), main = "Sleep Disorder Count", xlab = "Sleep Disorder", ylab = "Count", 
+       border = "grey", col = "grey") #can change color later
+
+# Graph to find correlation between sleep disorder and sleep duration
+sleep <- lifestyle %>% select(c("Sleep.Disorder","Sleep.Duration"))
+ggplot(sleep, aes(x = Sleep.Disorder, y = Sleep.Duration)) +
+  geom_boxplot(aes(group = Sleep.Disorder),fill="gray") +
+  labs(x = "Sleep Disorder", y = "Sleep Duration") +
+  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
+  theme_minimal()
+
+# Graph to find correlation between sleep disorder and quality of sleep
+sleep <- lifestyle %>% select(c("Sleep.Disorder","Quality.of.Sleep"))
+ggplot(sleep, aes(x = Sleep.Disorder, y = Quality.of.Sleep)) +
+  geom_boxplot(aes(group = Sleep.Disorder),fill="gray") +
+  labs(x = "Sleep Disorder", y = "Quality of Sleep") +
+  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
+  theme_minimal()
+
+
