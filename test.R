@@ -208,3 +208,13 @@ ggplot(physical_activity_vs_stress, aes(x=Physical.Activity.Level, y=Stress.Leve
   xlab("Physical Activity Level") +
   ylab("Stress Level") +
   theme(plot.title = element_text(hjust = 0.5))
+
+# Graph for Sleep Disorder 
+disorder <- lifestyle %>% select(c("Sleep.Disorder"))
+disorder_count <- table(disorder)
+disorder_count
+percent <- round(disorder_count/ sum(disorder_count)*100)
+#job_label <- paste(job_label, percent)
+#job_label <- paste(job_label,"%", sep="")
+pie(disorder_count, col= brewer.pal(n = 12, name="Set3"),main = "Sleep Disorder Count")
+
