@@ -5,6 +5,8 @@ library(plotrix)
 # library for color sets
 # source: http://www.sthda.com/english/wiki/colors-in-r 
 library("RColorBrewer")
+library(ggridges)
+library(forcats)
 
 # Finds data sets on the user's computer (data sets are in the repository)
 path <- getwd()
@@ -199,6 +201,50 @@ pie(job_count, col= brewer.pal(n = 12, name="Set3"),main = "Occupation Count")
 #job_count <- lifestyle %>% select(c("Occupation"))
 #barplot(table(job_count), main = "Occupation Count", xlab = "Occupations", ylab = "Count", 
  #       border = "grey", col = "grey") #can change color later
+
+
+annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", gp=gpar(fontsize=8, fontface="italic"))
+#Comparing Sleep.Duration with differnt occupation
+job_compare_sd <- lifestyle %>% select(c("Occupation","Sleep.Duration"))
+#omit manager and sales Representative because theres not enough data
+job_compare_sd <- job_compare_sd %>% filter(Occupation!="Manager"&Occupation!="Sales Representative")
+#used fct_reorder to reorder the rows by median in the graph
+job_compare_sd %>% mutate(class = fct_reorder(Occupation, Sleep.Duration, .fun='median')) %>%
+  ggplot(aes(x = Sleep.Duration, y = reorder(Occupation, Sleep.Duration), fill = Occupation)) +
+  geom_density_ridges(alpha=0.8) +
+  #geom_density_ridges(alpha=0.6, stat="binline", bins=6) +
+  theme_ridges() +
+  theme(
+    legend.position="none",
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8)
+  )+
+  coord_cartesian(clip = "off")+ #turn off cliping so annotation can be outside of graph
+  annotation_custom(annotation,xmin=1,ymin=-2.2, ymax=1) + #add annotation
+  xlab("Sleep.Duration") +
+  ylab("Occupation")
+
+
+annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", gp=gpar(fontsize=8, fontface="italic"))
+#Comparing quailty of sleep with differnt occupation
+job_compare_qs <- lifestyle %>% select(c("Occupation","Quality.of.Sleep"))
+#omit manager and sales Representative because theres not enough data
+job_compare_qs <- job_compare_qs %>% filter(Occupation!="Manager"&Occupation!="Sales Representative")
+#used fct_reorder to reorder the rows by median in the graph
+job_compare_qs %>% mutate(class = fct_reorder(Occupation, Quality.of.Sleep, .fun='median')) %>%
+  ggplot(aes(x = Quality.of.Sleep, y = reorder(Occupation, Quality.of.Sleep), fill = Occupation)) +
+  geom_density_ridges(alpha=0.8) +
+  #geom_density_ridges(alpha=0.6, stat="binline", bins=6) +
+  theme_ridges() +
+  theme(
+    legend.position="none",
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8)
+  )+  
+  coord_cartesian(clip = "off")+ #turn off cliping so annotation can be outside of graph
+  annotation_custom(annotation,xmin=-7,ymin=-2.5, ymax=1) + #add annotation
+  xlab("Quality.of.Sleep") +
+  ylab("Occupation")
 
 # Scatter plot of physical activity compared to stress level
 physical_activity_vs_stress <- lifestyle %>% select(c("Physical.Activity.Level","Stress.Level"))
