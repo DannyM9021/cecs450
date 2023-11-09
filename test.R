@@ -246,6 +246,27 @@ job_compare_qs %>% mutate(class = fct_reorder(Occupation, Quality.of.Sleep, .fun
   xlab("Quality.of.Sleep") +
   ylab("Occupation")
 
+annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", gp=gpar(fontsize=8, fontface="italic"))
+#Comparing quailty of sleep with differnt occupation
+job_compare_stress <- lifestyle %>% select(c("Occupation","Stress.Level"))
+#omit manager and sales Representative because theres not enough data
+job_compare_stress <- job_compare_stress %>% filter(Occupation!="Manager"&Occupation!="Sales Representative")
+#used fct_reorder to reorder the rows by median in the graph
+job_compare_stress %>% mutate(class = fct_reorder(Occupation, Stress.Level, .fun='median')) %>%
+  ggplot(aes(x = Stress.Level, y = reorder(Occupation, Stress.Level), fill = Occupation)) +
+  geom_density_ridges(alpha=0.8) +
+  #geom_density_ridges(alpha=0.6, stat="binline", bins=6) +
+  theme_ridges() +
+  theme(
+    legend.position="none",
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8),
+  )+  
+  coord_cartesian(clip = "off")+ #turn off cliping so annotation can be outside of graph
+  annotation_custom(annotation,xmin=-7,ymin=-2.5, ymax=1) + #add annotation
+  xlab("Stress Level") +
+  ylab("Occupation")
+
 # Scatter plot of physical activity compared to stress level
 physical_activity_vs_stress <- lifestyle %>% select(c("Physical.Activity.Level","Stress.Level"))
 ggplot(physical_activity_vs_stress, aes(x=Physical.Activity.Level, y=Stress.Level)) + 
