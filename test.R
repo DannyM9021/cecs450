@@ -46,12 +46,12 @@ barplot(table(gender_count), main = "Gender Count", xlab = "Gender", ylab = "Cou
 
 # Creating a visualization for bedtime vs age
 time <- sleep_efficiency_data_frame %>% select(c("Age","Bedtime"))
+time$Bedtime <- as.Date(time$Bedtime)
 time
-time_graph <- ggplot(time,aes(x="gender",y="Age")) + geom_bar(stat="identity")
-time_graph
-time_graph2 <- ggplot(time,aes(Bedtime)) +
-  geom_line(aes(y = Age, colour = "Age",group=1))
-time_graph2 
+#time_graph2 <- ggplot(time,aes(Bedtime) +
+#  geom_point(aes(y = Age, colour = "Age",group=1)) +
+#  scale_x_date(date_labels = "%m-%d"))
+#time_graph2 
 
 
 # REM Sleep Percentage Pie Chart (still need to fix values)
