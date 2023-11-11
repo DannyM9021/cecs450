@@ -31,8 +31,8 @@ gender <- sleep_efficiency_data_frame %>% select(c("Gender"))
 gender_count <- table(gender)
 gen_label <- c("Female", "Male") #F: 224 M: 228
 percent <- round(gender_count/ sum(gender_count)*100)
-gen_label <- paste(gen_label, percent)
-gen_label < paste(gen_label,"%", sep="")
+gen_label <- paste(gen_label, percent, "%")
+#gen_label < paste(gen_label,"%", sep="")
 pie(gender_count, labels = gen_label, main = "Female vs. Male") 
 # can change color by adding col = "color value" later 
 
@@ -187,13 +187,12 @@ ggplot(smoke_n_sleep, aes(x = Smoking.status, y = Sleep.efficiency)) +
 job <- lifestyle %>% select(c("Occupation"))
 job_count <- table(job)
 job_count
-#job_label <- c("Doctor", "Engineer", "Accountant", "Teacher", 
-             #  "Software Engineer", "Scientist", "Salesperson", 
-              # "Sales Representative", "Nurse", "Manager", "Lawyer")
 percent <- round(job_count/ sum(job_count)*100)
-#job_label <- paste(job_label, percent)
+job_label <- paste(job_label, percent, "%")
 #job_label <- paste(job_label,"%", sep="")
-pie(job_count, col= brewer.pal(n = 12, name="Set3"),main = "Occupation Count") 
+pie(job_count, col= brewer.pal(n = 12, name="Set3"), main = "Occupation Count") 
+
+
 
 # Bar Graph of Occupation 
 #job_count <- lifestyle %>% select(c("Occupation"))
