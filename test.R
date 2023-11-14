@@ -7,6 +7,7 @@ library(plotrix)
 library("RColorBrewer")
 library(ggridges)
 library(forcats)
+library(grid)
 
 # Finds data sets on the user's computer (data sets are in the repository)
 path <- getwd()
