@@ -142,11 +142,11 @@ caffeine_count <- xyTable(caffeine$Age,caffeine$Caffeine.consumption)
 names(caffeine_count) <- c('Age','Caffeine.consumption','Count')
 ggplot(caffeine,aes(x=Age,y=Caffeine.consumption))+geom_point()
 plot(caffeine_count$Age , caffeine_count$Caffeine.consumption  , cex=caffeine_count$Count*0.5 , pch=16 , col=rgb(0,0,1,0.5) , xlab= "Age" , ylab="Caffeine consumption" , xlim=c(0,70) , ylim=c(0,200) )
-legend('topleft',inset=0.05,"Count",lty=1,col='blue',lwd=4)
+legend('topleft',inset=0.05,"Count",lty=0,col='blue',lwd=2,pch=16)
 
-# Scatter plot with caffeine consumption and sleep duration
+# box plot with caffeine consumption and sleep duration
 ggplot(caffeine, aes(x = Caffeine.consumption, y = Sleep.efficiency)) +
-  geom_boxplot(aes(group = Caffeine.consumption),fill="gray") +
+  geom_boxplot(aes(group = Caffeine.consumption),fill="darkgoldenrod") +
   labs(x = "Caffeine Consumption", y = "Sleep Efficiency") +
   stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
   theme_minimal()
@@ -166,7 +166,7 @@ alcohol <- na.omit(alcohol) #omit NA rows
 #alcohol["age_group"] = cut(alcohol$Age, c(0, 10, 15, 20, 25, 30,35, 40, 45, 50, 55, 60, 65, Inf), c("<10", "11-15", "16-20","21-25", "26-30", "31-35","36-40","41-45", "46-50", "51-55","56-60","61-65",  ">66"), include.lowest=TRUE)
 # Scatter plot with color-coded points by age group
 ggplot(alcohol, aes(x = Alcohol.consumption, y = Sleep.efficiency)) +
-  geom_boxplot(aes(group = Alcohol.consumption),fill="gray") +
+  geom_boxplot(aes(group = Alcohol.consumption),fill="darkgoldenrod") +
   stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
   labs(x = "Alcohol Consumption", y = "Sleep Efficiency") +
   theme_minimal()
@@ -286,7 +286,7 @@ ggplot(physical_activity_vs_stress, aes(x=Physical.Activity.Level, y=Stress.Leve
   ylab("Stress Level") +
   theme(plot.title = element_text(hjust = 0.5))
 
-# Box plot of Heart.Rate compared to quality of sleep
+# Bubble plot of Heart.Rate compared to quality of sleep
 Heart.RatevsQuality.of.Sleep <- lifestyle %>% select(c("Quality.of.Sleep","Heart.Rate"))
 Heart.RatevsQuality.of.Sleep <- rename(count(Heart.RatevsQuality.of.Sleep, Quality.of.Sleep, Heart.Rate), freq = n)
 ggplot(Heart.RatevsQuality.of.Sleep, aes(x=Heart.Rate, y=Quality.of.Sleep, size=freq )) + 
