@@ -33,7 +33,7 @@ barplot(table(age_count), main = "Age Count", xlab = "Age", ylab = "Count",
 gender <- sleep_efficiency_data_frame %>% select(c("Gender"))
 gender_count <- table(gender)
 gen_label <- c("Female", "Male") #F: 224 M: 228
-percent <- round(gender_count/ sum(gender_count)*100)
+percent <- round(gender_count/ sum(gender_count)*100, 1)
 gen_label <- paste(gen_label, percent, "%")
 #gen_label < paste(gen_label,"%", sep="")
 pie(gender_count, labels = gen_label, main = "Female vs. Male") 
@@ -54,16 +54,6 @@ time
 #  scale_x_date(date_labels = "%m-%d"))
 #time_graph2 
 
-
-# REM Sleep Percentage Pie Chart (still need to fix values)
-#rem_sleep <- sleep_efficiency_data_frame %>% select(c("REM.sleep.percentage"))
-#rem_count <- table(rem_sleep)
-#rem_count #just checking
-#rem_label <- c("REM.sleep.percentage")
-#percent <- round(rem_count/ sum(rem_count)*100)
-#rem_label <- paste(rem_label, percent)
-#rem_label < paste(rem_label,"%", sep="")
-#pie(rem_count, main = "REM Sleep Percentage") 
 
 # Scatter Plot Between Age and REM Sleep Percentage
 x <- sleep_efficiency_data_frame$REM.sleep.percentage 
@@ -88,15 +78,6 @@ rem_graph <- ggplot(rem,aes(x= Age)) +
 rem_graph
 
 
-# Deep Sleep Percentage (still need to fix values) 
-#deep_sleep <- sleep_efficiency_data_frame %>% select(c("Deep.sleep.percentage"))
-#deep_count <- table(deep_sleep)
-#gen_label <- c("Female", "Male") #F: 224 M: 228
-#percent <- round(deep_count/ sum(deep_count)*100)
-#gen_label <- paste(gen_label, percent)
-#rem_label < paste(gen_label,"%", sep="")
-#pie(deep_count, col= brewer.pal(n = 12, name="Set3"), main = "Deep Sleep Percentage") 
-
 # Scatter Plot Between Age and Deep Sleep Percentage
 x <- sleep_efficiency_data_frame$Deep.sleep.percentage 
 y <- sleep_efficiency_data_frame$Age
@@ -110,15 +91,6 @@ plot(x, y, main = "Does Age Effect Deep Sleep?",
      pch = 19, frame = FALSE)
 abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
 
-
-# Light Sleep Percentage (still need to fix values)
-#light_sleep <- sleep_efficiency_data_frame %>% select(c("Light.sleep.percentage"))
-#light_count <- table(rem_sleep)
-#gen_label <- c("Female", "Male") #F: 224 M: 228
-#percent <- round(light_count/ sum(light_count)*100)
-#gen_label <- paste(gen_label, percent)
-#rem_label < paste(gen_label,"%", sep="")
-#pie(light_count, col= brewer.pal(n = 12, name="Set3"), main = "Light Sleep Percentage") 
 
 # Scatter Plot Between Age and REM Sleep Percentage
 x <- sleep_efficiency_data_frame$Light.sleep.percentage 
@@ -199,18 +171,16 @@ ggplot(smoke_n_sleep, aes(x = Smoking.status, y = Sleep.efficiency)) +
 # Pie Chart of Occupation 
 job <- lifestyle %>% select(c("Occupation"))
 job_count <- table(job)
-job_count
-percent <- round(job_count/ sum(job_count)*100)
-job_label <- paste(job_label, percent, "%")
-#job_label <- paste(job_label,"%", sep="")
-pie(job_count, col= brewer.pal(n = 12, name="Set3"), main = "Occupation Count") 
-
-
-
-# Bar Graph of Occupation 
-#job_count <- lifestyle %>% select(c("Occupation"))
-#barplot(table(job_count), main = "Occupation Count", xlab = "Occupations", ylab = "Count", 
- #       border = "grey", col = "grey") #can change color later
+#job_count # just to check values
+percent <- round(job_count/ sum(job_count)*100, 1)
+job_label <- paste(percent, "%")
+# Adjust margins
+par(mar=c(2,0,2,2))
+pie(job_count, labels = job_label, col= brewer.pal(n = 12, name="Set3"), main = "Occupation Count", radius = .6, clockwise = TRUE) 
+# create legend 
+legend(x= 1, y= 1, c("Account", "Doctor", "Engineer", "Lawyer", "Manager",
+                    "Nurse", "Sales Rep.", "Salesperson", "Scientist", "Software Engr.",
+                   "Engineer"), fill = brewer.pal(n = 12, name="Set3"))
 
 
 annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", gp=gpar(fontsize=8, fontface="italic"))
@@ -298,19 +268,18 @@ ggplot(Heart.RatevsQuality.of.Sleep, aes(x=Heart.Rate, y=Quality.of.Sleep, size=
   scale_size(range = c(1, 25), name="Frequency")
   
 
-# Graph for Sleep Disorder 
+# Pie Graph for Sleep Disorder 
 disorder <- lifestyle %>% select(c("Sleep.Disorder"))
 disorder_count <- table(disorder)
-disorder_count
-percent <- round(disorder_count/ sum(disorder_count)*100)
-#job_label <- paste(job_label, percent)
-#job_label <- paste(job_label,"%", sep="")
-pie(disorder_count, col= brewer.pal(n = 12, name="Set3"),main = "Sleep Disorder Count")
+#disorder_count # to check values
+disorder_label<- c("None", "Insomnia", "Sleep Apnea")
+percent <- round(disorder_count/ sum(disorder_count)*100, 1)
+disorder_label <- paste(disorder_label, percent, "%")
 
-# Bar Graph of Sleep Disorder
-disorder_count <- lifestyle %>% select(c("Sleep.Disorder"))
-barplot(table(disorder_count), main = "Sleep Disorder Count", xlab = "Sleep Disorder", ylab = "Count", 
-       border = "grey", col = "grey") #can change color later
+# Adjust margins
+par(mar=c(2,2,2,2))
+pie(disorder_count, labels = disorder_label, col= brewer.pal(n = 12, name="Set3"), main = "Sleep Disorder Count", radius = 1, clockwise = TRUE) 
+
 
 # Graph to find correlation between sleep disorder and sleep duration
 sleep <- lifestyle %>% select(c("Sleep.Disorder","Sleep.Duration"))
