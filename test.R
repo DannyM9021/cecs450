@@ -8,6 +8,9 @@ library("RColorBrewer")
 library(ggridges)
 library(forcats)
 library(grid)
+# library to help calculate with the correlation coefficient between to numeric value?
+# have functions for creating and customizing ggplot2
+library(ggpubr)
 
 # Finds data sets on the user's computer (data sets are in the repository)
 path <- getwd()
@@ -40,6 +43,7 @@ pie(gender_count, labels = gen_label, main = "Female vs. Male")
 # can change color by adding col = "color value" later 
 
 # or can be visualized as a bar graph 
+# F: 224 M: 228
 gender_count <- sleep_efficiency_data_frame %>% select(c("Gender"))
 barplot(table(gender_count), main = "Gender Count", xlab = "Gender", ylab = "Count", 
         border = "lavender", col = "lavender") #can change color later
@@ -56,55 +60,75 @@ time
 
 
 # Scatter Plot Between Age and REM Sleep Percentage
-x <- sleep_efficiency_data_frame$REM.sleep.percentage 
-y <- sleep_efficiency_data_frame$Age
+x <- sleep_efficiency_data_frame$Age 
+y <- sleep_efficiency_data_frame$REM.sleep.percentage
 
 plot(x, y, main = "Does Age Effect REM Sleep?",
      xlab = "age", ylab = "REM Sleep (%)",
-     pch = 19, frame = FALSE)
+     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(10, 35))
 # Add regression line
 plot(x, y, main = "Does Age Effect REM Sleep?",
      xlab = "age", ylab = "REM Sleep (%)",
-     pch = 19, frame = FALSE)
+     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(10, 35))
 abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
 
-# another version 
-rem <- sleep_efficiency_data_frame %>% select(c("Age","REM.sleep.percentage"))
-rem
-#rem_graph <- ggplot(time,aes(x="Age",y="REM Sleep (%)")) + geom_bar(stat="identity")
-#rem_graph
-rem_graph <- ggplot(rem,aes(x= Age)) + 
-  geom_line(aes(y = REM.sleep.percentage))
-rem_graph
+# another scatter plot with calculated correlation coefficient 
+#read file
+sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percentage"))
+#plot the data as points and calculate 
+#correlation coefficient with pearson correlation formula
+ggscatter(sleep_data, x = "Age", y = "REM.sleep.percentage", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Age", ylab = "REM Sleep (%)", xlim= c(7,70), ylim= c(10, 35))
 
 
 # Scatter Plot Between Age and Deep Sleep Percentage
-x <- sleep_efficiency_data_frame$Deep.sleep.percentage 
-y <- sleep_efficiency_data_frame$Age
+x <- sleep_efficiency_data_frame$Age 
+y <- sleep_efficiency_data_frame$Deep.sleep.percentage
 
 plot(x, y, main = "Does Age Effect Deep Sleep?",
      xlab = "age", ylab = "Deep Sleep (%)",
-     pch = 19, frame = FALSE)
+     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(15, 80))
 # Add regression line
 plot(x, y, main = "Does Age Effect Deep Sleep?",
      xlab = "age", ylab = "Deep Sleep (%)",
-     pch = 19, frame = FALSE)
+     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(15, 80))
 abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
 
+# another scatter plot with calculated correlation coefficient 
+#read file
+sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percentage"))
+#plot the data as points and calculate 
+#correlation coefficient with pearson correlation formula
+ggscatter(sleep_data, x = "Age", y = "Deep.sleep.percentage", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Age", ylab = "Deep Sleep (%)", xlim= c(7,70), ylim= c(15, 80))
 
-# Scatter Plot Between Age and REM Sleep Percentage
-x <- sleep_efficiency_data_frame$Light.sleep.percentage 
-y <- sleep_efficiency_data_frame$Age
+
+# Scatter Plot Between Age and Light Sleep Percentage
+x <- sleep_efficiency_data_frame$Age
+y <- sleep_efficiency_data_frame$Light.sleep.percentage
 
 plot(x, y, main = "Does Age Effect Light Sleep?",
      xlab = "age", ylab = "Light Sleep (%)",
-     pch = 19, frame = FALSE)
+     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(5, 70))
 # Add regression line
 plot(x, y, main = "Does Age Effect Light Sleep?",
      xlab = "age", ylab = "Light Sleep (%)",
-     pch = 19, frame = FALSE)
+     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(5, 70))
 abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
 
+# another scatter plot with calculated correlation coefficient 
+#read file
+sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percentage"))
+#plot the data as points and calculate 
+#correlation coefficient with pearson correlation formula
+ggscatter(sleep_data, x = "Age", y = "Light.sleep.percentage", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Age", ylab = "Light Sleep (%)", xlim= c(7,70), ylim= c(5, 70))
 
 
 #Caffeine.consumption by age 
