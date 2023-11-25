@@ -63,11 +63,11 @@ time
 x <- sleep_efficiency_data_frame$Age 
 y <- sleep_efficiency_data_frame$REM.sleep.percentage
 
-plot(x, y, main = "Does Age Effect REM Sleep?",
+plot(x, y, main = "Does Age Affect REM Sleep?",
      xlab = "age", ylab = "REM Sleep (%)",
      pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(10, 35))
 # Add regression line
-plot(x, y, main = "Does Age Effect REM Sleep?",
+plot(x, y, main = "Does Age Affect REM Sleep?",
      xlab = "age", ylab = "REM Sleep (%)",
      pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(10, 35))
 abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
@@ -87,11 +87,11 @@ ggscatter(sleep_data, x = "Age", y = "REM.sleep.percentage",
 x <- sleep_efficiency_data_frame$Age 
 y <- sleep_efficiency_data_frame$Deep.sleep.percentage
 
-plot(x, y, main = "Does Age Effect Deep Sleep?",
+plot(x, y, main = "Does Age Affect Deep Sleep?",
      xlab = "age", ylab = "Deep Sleep (%)",
      pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(15, 80))
 # Add regression line
-plot(x, y, main = "Does Age Effect Deep Sleep?",
+plot(x, y, main = "Does Age Affect Deep Sleep?",
      xlab = "age", ylab = "Deep Sleep (%)",
      pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(15, 80))
 abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
@@ -111,11 +111,11 @@ ggscatter(sleep_data, x = "Age", y = "Deep.sleep.percentage",
 x <- sleep_efficiency_data_frame$Age
 y <- sleep_efficiency_data_frame$Light.sleep.percentage
 
-plot(x, y, main = "Does Age Effect Light Sleep?",
+plot(x, y, main = "Does Age Affect Light Sleep?",
      xlab = "age", ylab = "Light Sleep (%)",
      pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(5, 70))
 # Add regression line
-plot(x, y, main = "Does Age Effect Light Sleep?",
+plot(x, y, main = "Does Age Affect Light Sleep?",
      xlab = "age", ylab = "Light Sleep (%)",
      pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(5, 70))
 abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
