@@ -321,4 +321,18 @@ ggplot(sleep, aes(x = Sleep.Disorder, y = Quality.of.Sleep)) +
   stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
   theme_minimal()
 
+# Graph to find correlation between BMI and sleep quality
+sleep <- lifestyle %>% select(c("BMI.Category","Quality.of.Sleep"))
+ggplot(sleep, aes(x=BMI.Category, y = Quality.of.Sleep)) +
+  geom_boxplot(aes(group = BMI.Category, fill = BMI.Category)) +
+  labs(x = "BMI Category", y = "Quality of Sleep") +
+  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill ="red") +
+  theme_minimal()
 
+# Graph to find correlation between BMI and sleep duration
+sleep <- lifestyle %>% select(c("BMI.Category","Sleep.Duration"))
+ggplot(sleep, aes(x=BMI.Category, y = Sleep.Duration)) +
+  geom_boxplot(aes(group = BMI.Category, fill = BMI.Category)) +
+  labs(x = "BMI Category", y = "Quality of Sleep") +
+  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill ="red") +
+  theme_minimal()
