@@ -5,6 +5,9 @@ Project Contributors: Holly Lee, Ivy Ly, Daniel Moreno
 - [Project Goal](#project-goal)
 - [Technology Used](#technology-used)
 - [Datasets](#datasets)
+- [Definitions](#definitions)
+- [Findings](#findings)
+- [Conclusion](#conclusion)
 
 ## Project Goal
 For our semester project, we decided to take a look into the world of sleep! We are trying to find correlations between how different factors contribute to the quality of sleep people experience.
