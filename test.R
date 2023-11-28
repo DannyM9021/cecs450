@@ -308,7 +308,7 @@ pie(disorder_count, labels = disorder_label, col= brewer.pal(n = 12, name="Set3"
 # Graph to find correlation between sleep disorder and sleep duration
 sleep <- lifestyle %>% select(c("Sleep.Disorder","Sleep.Duration"))
 ggplot(sleep, aes(x = Sleep.Disorder, y = Sleep.Duration)) +
-  geom_boxplot(aes(group = Sleep.Disorder),fill="gray") +
+  geom_boxplot(aes(group = Sleep.Disorder, fill= Sleep.Disorder)) +
   labs(x = "Sleep Disorder", y = "Sleep Duration") +
   stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
   theme_minimal()
@@ -316,7 +316,7 @@ ggplot(sleep, aes(x = Sleep.Disorder, y = Sleep.Duration)) +
 # Graph to find correlation between sleep disorder and quality of sleep
 sleep <- lifestyle %>% select(c("Sleep.Disorder","Quality.of.Sleep"))
 ggplot(sleep, aes(x = Sleep.Disorder, y = Quality.of.Sleep)) +
-  geom_boxplot(aes(group = Sleep.Disorder),fill="gray") +
+  geom_boxplot(aes(group = Sleep.Disorder,fill= Sleep.Disorder)) +
   labs(x = "Sleep Disorder", y = "Quality of Sleep") +
   stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
   theme_minimal()
