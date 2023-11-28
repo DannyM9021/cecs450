@@ -140,12 +140,13 @@ ggplot(caffeine,aes(x=Age,y=Caffeine.consumption))+geom_point()
 plot(caffeine_count$Age , caffeine_count$Caffeine.consumption  , cex=caffeine_count$Count*0.5 , pch=16 , col=rgb(0,0,1,0.5) , xlab= "Age" , ylab="Caffeine consumption" , xlim=c(0,70) , ylim=c(0,200) )
 legend('topleft',inset=0.05,"Count",lty=0,col='blue',lwd=2,pch=16)
 
-# box plot with caffeine consumption and sleep duration
+# box plot with caffeine consumption and sleep efficiency
 ggplot(caffeine, aes(x = Caffeine.consumption, y = Sleep.efficiency)) +
   geom_boxplot(aes(group = Caffeine.consumption),fill="darkgoldenrod") +
   labs(x = "Caffeine Consumption", y = "Sleep Efficiency") +
   stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
-  theme_minimal()
+  theme_minimal() + 
+  labs(title = "Caffeine Consumption vs Sleep Efficiency")
 
 #Alcohol consumption by age 
 Alcohol <- sleep_efficiency_data_frame %>% select(c("Alcohol.consumption","Sleep.efficiency","Age"))
@@ -165,7 +166,8 @@ ggplot(alcohol, aes(x = Alcohol.consumption, y = Sleep.efficiency)) +
   geom_boxplot(aes(group = Alcohol.consumption),fill="darkgoldenrod") +
   stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
   labs(x = "Alcohol Consumption", y = "Sleep Efficiency") +
-  theme_minimal()
+  theme_minimal() + 
+  labs(title = "Alcohol Consumption vs Sleep Efficiency")
 
 
 # Visualization of Smoking Status 
@@ -208,7 +210,7 @@ legend(x= 1, y= 1, c("Account", "Doctor", "Engineer", "Lawyer", "Manager",
 
 
 annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", gp=gpar(fontsize=8, fontface="italic"))
-#Comparing Sleep.Duration with differnt occupation
+#Comparing Sleep.Duration with different occupation
 job_compare_sd <- lifestyle %>% select(c("Occupation","Sleep.Duration"))
 #omit manager and sales Representative because theres not enough data
 job_compare_sd <- job_compare_sd %>% filter(Occupation!="Manager"&Occupation!="Sales Representative")
@@ -230,7 +232,7 @@ job_compare_sd %>% mutate(class = fct_reorder(Occupation, Sleep.Duration, .fun='
 
 
 annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", gp=gpar(fontsize=8, fontface="italic"))
-#Comparing quailty of sleep with differnt occupation
+#Comparing quailty of sleep with different occupation
 job_compare_qs <- lifestyle %>% select(c("Occupation","Quality.of.Sleep"))
 #omit manager and sales Representative because theres not enough data
 job_compare_qs <- job_compare_qs %>% filter(Occupation!="Manager"&Occupation!="Sales Representative")
