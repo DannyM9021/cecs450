@@ -67,9 +67,9 @@ plot(x, y, main = "Does Age Affect REM Sleep?",
      xlab = "age", ylab = "REM Sleep (%)",
      pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(10, 35))
 # Add regression line
-plot(x, y, main = "Does Age Affect REM Sleep?",
-     xlab = "age", ylab = "REM Sleep (%)",
-     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(10, 35))
+#plot(x, y, main = "Does Age Affect REM Sleep?",
+#     xlab = "age", ylab = "REM Sleep (%)",
+#     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(10, 35))
 abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
 
 # another scatter plot with calculated correlation coefficient 
@@ -91,10 +91,10 @@ plot(x, y, main = "Does Age Affect Deep Sleep?",
      xlab = "age", ylab = "Deep Sleep (%)",
      pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(15, 80))
 # Add regression line
-plot(x, y, main = "Does Age Affect Deep Sleep?",
-     xlab = "age", ylab = "Deep Sleep (%)",
-     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(15, 80))
-abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
+#plot(x, y, main = "Does Age Affect Deep Sleep?",
+#     xlab = "age", ylab = "Deep Sleep (%)",
+#     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(15, 80))
+#abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
 
 # another scatter plot with calculated correlation coefficient 
 #read file
@@ -115,10 +115,10 @@ plot(x, y, main = "Does Age Affect Light Sleep?",
      xlab = "age", ylab = "Light Sleep (%)",
      pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(5, 70))
 # Add regression line
-plot(x, y, main = "Does Age Affect Light Sleep?",
-     xlab = "age", ylab = "Light Sleep (%)",
-     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(5, 70))
-abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
+#plot(x, y, main = "Does Age Affect Light Sleep?",
+#     xlab = "age", ylab = "Light Sleep (%)",
+#     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(5, 70))
+#abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
 
 # another scatter plot with calculated correlation coefficient 
 #read file
