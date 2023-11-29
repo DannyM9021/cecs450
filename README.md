@@ -68,6 +68,27 @@ Therefore, given the limitations of the data, it is not possible to say definiti
 ### Alcohol Consumption
 
 
+### Smoking Status 
+In graph [], shows a bar graph indicating the number people who smoke and don't smoke. As shown, the majority don't smoke with 298 people (66%), while around 154 people (34%) do smoke based on the data. 
+
+In graph [], represents 2 box and whisker plot to understand whether a person's smoking status affects their sleep efficiency. The smoking status variable indicates whether a person engages in this activity or not, while sleep efficiency is a measure of the proportion of time spent in bed that is actually spent asleep. We assume that people that don't smoke will have a higher sleep efficiency than those do smoke.
+
+For the 'No' box and whisker plot:
+- minimum sleep efficiency value: 0.53
+- maximum sleep efficiency value: 0.99
+- lower quartile: 0.73
+- upper quartile: 0.91
+- median: 0.84 
+
+For the 'Yes' box and whisker plot:
+- minimum sleep efficiency value: 0.5
+- maximum sleep efficiency value: 0.97
+- lower quartile: 0.55
+- upper quartile: 0.88
+- median: 0.78
+
+Individuals who don't smoke had higher sleep efficiency in comparison to those who do smoke, whick supports our claim. A limitation to this data is that we don't know how sleep efficiency is being measured.
+
 
 ## Conclusion
 
