@@ -131,14 +131,17 @@ ggscatter(sleep_data, x = "Age", y = "Light.sleep.percentage",
           xlab = "Age", ylab = "Light Sleep (%)", xlim= c(7,70), ylim= c(5, 70))
 
 
-#Caffeine.consumption by age 
+# Bubble plot of #Caffeine.consumption by age 
 caffeine <- sleep_efficiency_data_frame %>% select(c("Caffeine.consumption","Sleep.efficiency","Age"))
 caffeine <- na.omit(caffeine) #omit NA rows
-caffeine_count <- xyTable(caffeine$Age,caffeine$Caffeine.consumption)
-names(caffeine_count) <- c('Age','Caffeine.consumption','Count')
-ggplot(caffeine,aes(x=Age,y=Caffeine.consumption))+geom_point()
-plot(caffeine_count$Age , caffeine_count$Caffeine.consumption  , cex=caffeine_count$Count*0.5 , pch=16 , col=rgb(0,0,1,0.5) , xlab= "Age" , ylab="Caffeine consumption" , xlim=c(0,70) , ylim=c(0,200) )
-legend('topleft',inset=0.05,"Count",lty=0,col='blue',lwd=2,pch=16)
+caffeine <- rename(count(caffeine, Caffeine.consumption, Age), freq = n)
+ggplot(caffeine, aes(x=Age, y=Caffeine.consumption, size=freq )) + 
+  geom_point(color = "blue",alpha=0.5) + 
+  labs(title = "Caffeine Consumption by Age") +
+  xlab("Age") +
+  ylab("Caffeine.consumption") +
+  theme_minimal() +
+  scale_size(range = c(1, 10), name="Frequency")
 
 # box plot with caffeine consumption and sleep efficiency
 ggplot(caffeine, aes(x = Caffeine.consumption, y = Sleep.efficiency)) +
@@ -148,19 +151,21 @@ ggplot(caffeine, aes(x = Caffeine.consumption, y = Sleep.efficiency)) +
   theme_minimal() + 
   labs(title = "Caffeine Consumption vs Sleep Efficiency")
 
-#Alcohol consumption by age 
+# Bubble plot of Alcohol Consumption by Age
 Alcohol <- sleep_efficiency_data_frame %>% select(c("Alcohol.consumption","Sleep.efficiency","Age"))
 Alcohol <- na.omit(Alcohol) #omit NA rows
-Alcohol_count <- xyTable(Alcohol$Age,Alcohol$Alcohol.consumption)
-names(Alcohol_count) <- c('Age','Alcohol.consumption','Count')
-ggplot(Alcohol,aes(x=Age,y=Alcohol.consumption))+geom_point()
-plot(Alcohol_count$Age , Alcohol_count$Alcohol.consumption  , cex=Alcohol_count$Count*0.5 , pch=16 , col=rgb(0,0,1,0.5) , xlab= "Age" , ylab="Alcohol Consumption" , xlim=c(0,70) , ylim=c(0,6) )
-legend('topleft',inset=0.05,"Count",lty=1,col='blue',lwd=4)
+Alcohol <- rename(count(Alcohol, Alcohol.consumption, Age), freq = n)
+ggplot(Alcohol, aes(x=Age, y=Alcohol.consumption, size=freq )) + 
+  geom_point(color = "blue",alpha=0.5) + 
+  labs(title = "Alcohol Consumption by Age") +
+  xlab("Age") +
+  ylab("Alcohol.consumption") +
+  theme_minimal() +
+  scale_size(range = c(1, 10), name="Frequency")
 
 #the correlation between alcohol consumption and sleep efficiency
 alcohol <- sleep_efficiency_data_frame %>% select(c("Alcohol.consumption","Sleep.efficiency"))
 alcohol <- na.omit(alcohol) #omit NA rows
-#alcohol["age_group"] = cut(alcohol$Age, c(0, 10, 15, 20, 25, 30,35, 40, 45, 50, 55, 60, 65, Inf), c("<10", "11-15", "16-20","21-25", "26-30", "31-35","36-40","41-45", "46-50", "51-55","56-60","61-65",  ">66"), include.lowest=TRUE)
 # Scatter plot with color-coded points by age group
 ggplot(alcohol, aes(x = Alcohol.consumption, y = Sleep.efficiency)) +
   geom_boxplot(aes(group = Alcohol.consumption),fill="darkgoldenrod") +
@@ -228,8 +233,8 @@ job_compare_sd %>% mutate(class = fct_reorder(Occupation, Sleep.Duration, .fun='
   coord_cartesian(clip = "off")+ #turn off cliping so annotation can be outside of graph
   annotation_custom(annotation,xmin=1,ymin=-2.2, ymax=1) + #add annotation
   xlab("Sleep.Duration") +
-  ylab("Occupation")
-
+  ylab("Occupation") + 
+  labs(title = "Sleep Duration with Differnt Cccupation")
 
 annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", gp=gpar(fontsize=8, fontface="italic"))
 #Comparing quailty of sleep with different occupation
@@ -250,7 +255,8 @@ job_compare_qs %>% mutate(class = fct_reorder(Occupation, Quality.of.Sleep, .fun
   coord_cartesian(clip = "off")+ #turn off cliping so annotation can be outside of graph
   annotation_custom(annotation,xmin=-7,ymin=-2.5, ymax=1) + #add annotation
   xlab("Quality.of.Sleep") +
-  ylab("Occupation")
+  ylab("Occupation")+ 
+  labs(title = "Quality of Sleep with Differnt Cccupation")
 
 annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", gp=gpar(fontsize=8, fontface="italic"))
 #Comparing quailty of sleep with differnt occupation
@@ -286,7 +292,7 @@ ggplot(physical_activity_vs_stress, aes(x=Physical.Activity.Level, y=Stress.Leve
 Heart.RatevsQuality.of.Sleep <- lifestyle %>% select(c("Quality.of.Sleep","Heart.Rate"))
 Heart.RatevsQuality.of.Sleep <- rename(count(Heart.RatevsQuality.of.Sleep, Quality.of.Sleep, Heart.Rate), freq = n)
 ggplot(Heart.RatevsQuality.of.Sleep, aes(x=Heart.Rate, y=Quality.of.Sleep, size=freq )) + 
-  geom_point(color = "blue",alpha=0.5) + 
+  geom_point(color = "brown2",alpha=0.5) + 
   labs(title = "Heart.Rate vs Quality of Sleep") +
   xlab("Heart.Rate") +
   ylab("Quality.of.Sleepl") +
