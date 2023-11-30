@@ -29,8 +29,16 @@ lifestyle_columns <- colnames(lifestyle)
 #------------------------- Sleep Efficiency Data set----------------------------
 # Bar Graph of Age Count
 age_count <- sleep_efficiency_data_frame %>% select(c("Age"))
-barplot(table(age_count), main = "Age Count", xlab = "Age", ylab = "Count", 
-        border = "aquamarine2", col = "aquamarine2") #can change color later
+sleep_eff_age_graph <- barplot(table(age_count), main = "Age Count", xlab = "Age", ylab = "Count", 
+        border = "aquamarine4", col = "lightgreen",ylim = c(0, 25), legend.text = "Age",
+        args.legend=list(cex=1,x="topright"),
+        space = 0.1)
+
+abline(h=0)
+text(x = sleep_eff_age_graph,
+     y = table(age_count),
+     labels = as.data.frame(table(age_count))[[2]],
+     pos = 3)
 
 # Pie Graph of Gender-----------------------------------------------------------
 gender <- sleep_efficiency_data_frame %>% select(c("Gender"))
@@ -45,8 +53,15 @@ pie(gender_count, labels = gen_label, main = "Female vs. Male")
 # or can be visualized as a bar graph-------------------------------------------
 # F: 224 M: 228
 gender_count <- sleep_efficiency_data_frame %>% select(c("Gender"))
-barplot(table(gender_count), main = "Gender Count", xlab = "Gender", ylab = "Count", 
-        border = "lavender", col = "lavender") #can change color later
+sleep_eff_gender_graph <- barplot(table(gender_count), main = "Gender Count", xlab = "Gender", ylab = "Count", 
+        border = c("red", "blue"), col = c("lightpink2", "lightblue"), ylim = c(0,254),
+        legend.text = c("Female","Male"), args.legend=list(cex=1,x="topright"), space = 0.1 )
+
+abline(h=0)
+text(x = sleep_eff_gender_graph,
+     y = table(gender_count),
+     labels = as.data.frame(table(gender_count))[[2]],
+     pos = 3)
 
 
 # Creating a visualization for bedtime vs age-----------------------------------
@@ -199,7 +214,7 @@ lifestyle_gender_graph <- barplot(table(lifestyle_gender_count),
         border = c("red", "blue"),
         col = c("lightpink2","lightblue"),
         ylim = c(0,250),
-        legend.text = c("Male","Female"),
+        legend.text = c("Male","Female"), #maybe fix switch legend label to c("Female", "Male")
         args.legend=list(cex=1,x="topright"),
         space = 0.1)
 abline(h=0)
