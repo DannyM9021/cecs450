@@ -187,9 +187,17 @@ ggplot(alcohol, aes(x = Alcohol.consumption, y = Sleep.efficiency)) +
 
 
 # Visualization of Smoking Status-----------------------------------------------
-smoking <- sleep_efficiency_data_frame %>% select(c("Smoking.status"))
-barplot(table(smoking), main = "Smoking Status", xlab = "Status (Yes/No)", ylab = "Count", 
-        border = "lightblue", col = "lightblue") #can change color later
+smoking_count <- sleep_efficiency_data_frame %>% select(c("Smoking.status"))
+smoking_graph <- barplot(table(smoking_count), main = "Smoking Status", xlab = "Status", ylab = "Count", 
+                         border = c("blue", "red"), col = c("lightblue", "lightpink2"), ylim = c(0,320),
+                         legend.text = c("No","Yes"), args.legend=list(cex=1,x= "topright"), space = 0.1 ) 
+
+abline(h=0)
+text(x = smoking_graph,
+     y = table(smoking_count),
+     labels = as.data.frame(table(smoking_count))[[2]],
+     pos = 3)
+
 
 # Visualization of the effects of smoking on sleep efficiency-------------------
 smoke_n_sleep <- sleep_efficiency_data_frame %>% select(c("Smoking.status","Sleep.efficiency"))
