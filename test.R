@@ -41,13 +41,12 @@ text(x = sleep_eff_age_graph,
      pos = 3)
 
 # Pie Graph of Gender-----------------------------------------------------------
-gender <- sleep_efficiency_data_frame %>% select(c("Gender"))
-gender_count <- table(gender)
-gen_label <- c("Female", "Male") #F: 224 M: 228
-percent <- round(gender_count/ sum(gender_count)*100, 1)
-gen_label <- paste(gen_label, percent, "%")
-#gen_label < paste(gen_label,"%", sep="")
-pie(gender_count, labels = gen_label, main = "Female vs. Male") 
+#gender <- sleep_efficiency_data_frame %>% select(c("Gender"))
+#gender_count <- table(gender)
+#gen_label <- c("Female", "Male") #F: 224 M: 228
+#percent <- round(gender_count/ sum(gender_count)*100, 1)
+#gen_label <- paste(gen_label, percent, "%")
+#pie(gender_count, labels = gen_label, main = "Female vs. Male") 
 # can change color by adding col = "color value" later 
 
 # or can be visualized as a bar graph-------------------------------------------
@@ -55,7 +54,7 @@ pie(gender_count, labels = gen_label, main = "Female vs. Male")
 gender_count <- sleep_efficiency_data_frame %>% select(c("Gender"))
 sleep_eff_gender_graph <- barplot(table(gender_count), main = "Gender Count", xlab = "Gender", ylab = "Count", 
         border = c("red", "blue"), col = c("lightpink2", "lightblue"), ylim = c(0,254),
-        legend.text = c("Female","Male"), args.legend=list(cex=1,x="topright"), space = 0.1 )
+        legend.text = c("Female","Male"), args.legend=list(cex=1,x= 2.3, y= 300), space = 0.1 )
 
 abline(h=0)
 text(x = sleep_eff_gender_graph,
