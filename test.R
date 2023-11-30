@@ -209,6 +209,23 @@ text(x = lifestyle_gender_graph,
      pos = 3)
 
 # Graph to show age count-------------------------------------------------------
+lifestyle_age_count <- lifestyle %>% select(c("Age"))
+lifestyle_age_graph <- barplot(table(lifestyle_age_count),
+                                  main = "Age Count",
+                                  xlab = "Age",
+                                  ylab = "Count",
+                                  border = "blue",
+                                  col = "lightblue1",
+                                  ylim = c(0,40),
+                                  legend.text = "Age",
+                                  args.legend=list(cex=1,x="topright"),
+                                  space = 0.1)
+abline(h=0)
+text(x = lifestyle_age_graph,
+     y = table(lifestyle_age_count),
+     labels = as.data.frame(table(lifestyle_age_count))[[2]],
+     pos = 3)
+
 # Graph to show age vs gender for this new data set-----------------------------
 # Pie Chart of Occupation-------------------------------------------------------
 job <- lifestyle %>% select(c("Occupation"))
