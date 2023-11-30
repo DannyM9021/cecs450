@@ -397,7 +397,10 @@ ggplot(sleep, aes(x=BMI.Category, y = Quality.of.Sleep, fill = interaction(BMI.C
   scale_fill_manual(values=c("green","yellow","orange","red"))+
   labs(x = "BMI Category", y = "Quality of Sleep") +
   stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="blue", fill ="black") +
-  theme_minimal()
+  theme_minimal() +
+  ggtitle("Quality of Sleep based on BMI Index Category") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  guides(fill=guide_legend(title="BMI Index Categories"))
 
 # Graph to find correlation between BMI and sleep duration----------------------
 sleep <- lifestyle %>% select(c("BMI.Category","Sleep.Duration"))
@@ -408,4 +411,7 @@ ggplot(sleep, aes(x=BMI.Category, y = Sleep.Duration, fill = interaction(BMI.Cat
   scale_fill_manual(values=c("green","yellow","orange","red"))+
   labs(x = "BMI Category", y = "Sleep Duration") +
   stat_summary(fun.y=mean, geom="point", shape=20, size=4, col="blue", fill ="black") +
-  theme_minimal()
+  theme_minimal() +
+  ggtitle("Sleep Duration based on BMI Index Category") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  guides(fill=guide_legend(title="BMI Index Categories"))
