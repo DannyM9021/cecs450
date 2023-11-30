@@ -79,7 +79,7 @@ plot(x, y, main = "Does Age Affect REM Sleep?",
 #plot(x, y, main = "Does Age Affect REM Sleep?",
 #     xlab = "age", ylab = "REM Sleep (%)",
 #     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(10, 35))
-abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
+#abline(lm(y ~ x, data = sleep_efficiency_data_frame), col = "blue")
 
 # another scatter plot with calculated correlation coefficient------------------
 #read file
