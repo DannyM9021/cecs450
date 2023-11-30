@@ -189,8 +189,8 @@ ggplot(alcohol, aes(x = Alcohol.consumption, y = Sleep.efficiency)) +
 # Visualization of Smoking Status-----------------------------------------------
 smoking_count <- sleep_efficiency_data_frame %>% select(c("Smoking.status"))
 smoking_graph <- barplot(table(smoking_count), main = "Smoking Status", xlab = "Status", ylab = "Count", 
-                         border = c("blue", "red"), col = c("lightblue", "lightpink2"), ylim = c(0,320),
-                         legend.text = c("No","Yes"), args.legend=list(cex=1,x= "topright"), space = 0.1 ) 
+                         border = c("blue", "red"), col = c("lightblue", "lightpink2"), ylim = c(0,350),
+                         legend.text = c("No","Yes"), args.legend=list(cex=1, x= 2.3, y= 320), space = 0.1 ) 
 
 abline(h=0)
 text(x = smoking_graph,
