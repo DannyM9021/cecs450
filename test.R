@@ -86,7 +86,7 @@ plot(x, y, main = "Does Age Affect REM Sleep?",
 sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percentage"))
 # plot the data as points and calculate 
 # correlation coefficient with pearson correlation formula
-ggscatter(sleep_data, x = "Age", y = "REM.sleep.percentage", main = "Does Age Affect REM Sleep?", 
+ggscatter(sleep_data, x = "Age", y = "REM.sleep.percentage", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
           xlab = "Age", ylab = "REM Sleep (%)", xlim= c(7,70), ylim= c(10, 35))
@@ -110,7 +110,7 @@ plot(x, y, main = "Does Age Affect Deep Sleep?",
 sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percentage"))
 #plot the data as points and calculate 
 #correlation coefficient with pearson correlation formula
-ggscatter(sleep_data, x = "Age", y = "Deep.sleep.percentage", main = "Does Age Affect Deep Sleep?", 
+ggscatter(sleep_data, x = "Age", y = "Deep.sleep.percentage", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
           xlab = "Age", ylab = "Deep Sleep (%)", xlim= c(7,70), ylim= c(15, 80))
@@ -134,7 +134,7 @@ plot(x, y, main = "Does Age Affect Light Sleep?",
 sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percentage"))
 # plot the data as points and calculate 
 # correlation coefficient with pearson correlation formula
-ggscatter(sleep_data, x = "Age", y = "Light.sleep.percentage",main = "Does Age Affect Light Sleep?", 
+ggscatter(sleep_data, x = "Age", y = "Light.sleep.percentage", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
           xlab = "Age", ylab = "Light Sleep (%)", xlim= c(7,70), ylim= c(5, 70))
@@ -189,8 +189,8 @@ ggplot(alcohol, aes(x = Alcohol.consumption, y = Sleep.efficiency)) +
 # Visualization of Smoking Status-----------------------------------------------
 smoking_count <- sleep_efficiency_data_frame %>% select(c("Smoking.status"))
 smoking_graph <- barplot(table(smoking_count), main = "Smoking Status", xlab = "Status", ylab = "Count", 
-                         border = c("blue", "red"), col = c("lightblue", "lightpink2"), ylim = c(0,350),
-                         legend.text = c("No","Yes"), args.legend=list(cex=1, x= 2.3, y= 320), space = 0.1 ) 
+                         border = c("blue", "red"), col = c("lightblue", "lightpink2"), ylim = c(0,320),
+                         legend.text = c("No","Yes"), args.legend=list(cex=1,x= "topright"), space = 0.1 ) 
 
 abline(h=0)
 text(x = smoking_graph,
@@ -398,9 +398,11 @@ ggplot(sleep, aes(x=BMI.Category, y = Quality.of.Sleep)) +
 
 # Graph to find correlation between BMI and sleep duration----------------------
 sleep <- lifestyle %>% select(c("BMI.Category","Sleep.Duration"))
-ggplot(sleep, aes(x=BMI.Category, y = Sleep.Duration)) +
-  geom_boxplot(aes(group = BMI.Category)) +
-  scale_fill_manual(values=c("blue","green","red","cyan"))+
+sleep$BMI.Category <- factor(sleep$BMI.Category , 
+                             levels=c("Normal", "Normal Weight", "Overweight", "Obese"))
+ggplot(sleep, aes(x=BMI.Category, y = Sleep.Duration, fill = interaction(BMI.Category))) +
+  geom_boxplot() +
+  scale_fill_manual(values=c("green","yellow","orange","red"))+
   labs(x = "BMI Category", y = "Quality of Sleep") +
   stat_summary(fun.y=mean, geom="point", shape=20, size=4, col="red", fill ="red") +
   theme_minimal()
