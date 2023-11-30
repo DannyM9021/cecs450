@@ -30,7 +30,7 @@ lifestyle_columns <- colnames(lifestyle)
 # Bar Graph of Age Count
 age_count <- sleep_efficiency_data_frame %>% select(c("Age"))
 sleep_eff_age_graph <- barplot(table(age_count), main = "Age Count", xlab = "Age", ylab = "Count", 
-        border = "aquamarine4", col = "lightgreen",ylim = c(0, 25), legend.text = "Age",
+        border = "blue", col = "lightblue1",ylim = c(0, 25), legend.text = "Age",
         args.legend=list(cex=1,x="topright"),
         space = 0.1)
 
