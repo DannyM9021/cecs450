@@ -86,7 +86,7 @@ plot(x, y, main = "Does Age Affect REM Sleep?",
 sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percentage"))
 # plot the data as points and calculate 
 # correlation coefficient with pearson correlation formula
-ggscatter(sleep_data, x = "Age", y = "REM.sleep.percentage", 
+ggscatter(sleep_data, x = "Age", y = "REM.sleep.percentage", main = "Does Age Affect REM Sleep?", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
           xlab = "Age", ylab = "REM Sleep (%)", xlim= c(7,70), ylim= c(10, 35))
@@ -110,7 +110,7 @@ plot(x, y, main = "Does Age Affect Deep Sleep?",
 sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percentage"))
 #plot the data as points and calculate 
 #correlation coefficient with pearson correlation formula
-ggscatter(sleep_data, x = "Age", y = "Deep.sleep.percentage", 
+ggscatter(sleep_data, x = "Age", y = "Deep.sleep.percentage", main = "Does Age Affect Deep Sleep?", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
           xlab = "Age", ylab = "Deep Sleep (%)", xlim= c(7,70), ylim= c(15, 80))
@@ -134,7 +134,7 @@ plot(x, y, main = "Does Age Affect Light Sleep?",
 sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percentage"))
 # plot the data as points and calculate 
 # correlation coefficient with pearson correlation formula
-ggscatter(sleep_data, x = "Age", y = "Light.sleep.percentage", 
+ggscatter(sleep_data, x = "Age", y = "Light.sleep.percentage",main = "Does Age Affect Light Sleep?", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
           xlab = "Age", ylab = "Light Sleep (%)", xlim= c(7,70), ylim= c(5, 70))
