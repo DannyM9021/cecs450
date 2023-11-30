@@ -141,7 +141,7 @@ ggscatter(sleep_data, x = "Age", y = "Light.sleep.percentage",
 
 
 # Bubble plot of # Caffeine.consumption by age---------------------------------------------------
-caffeine <- sleep_efficiency_data_frame %>% select(c("Caffeine.consumption","Sleep.efficiency","Age"))
+caffeine <- sleep_efficiency_data_frame %>% select(c("Caffeine.consumption","Age"))
 caffeine <- na.omit(caffeine) #omit NA rows
 caffeine <- rename(count(caffeine, Caffeine.consumption, Age), freq = n)
 ggplot(caffeine, aes(x=Age, y=Caffeine.consumption, size=freq )) + 
@@ -153,6 +153,8 @@ ggplot(caffeine, aes(x=Age, y=Caffeine.consumption, size=freq )) +
   scale_size(range = c(1, 10), name="Frequency")
 
 # box plot with caffeine consumption and sleep efficiency-----------------------
+caffeine <- sleep_efficiency_data_frame %>% select(c("Caffeine.consumption","Sleep.efficiency"))
+caffeine <- na.omit(caffeine) #omit NA rows
 ggplot(caffeine, aes(x = Caffeine.consumption, y = Sleep.efficiency)) +
   geom_boxplot(aes(group = Caffeine.consumption),fill="darkgoldenrod") +
   labs(x = "Caffeine Consumption", y = "Sleep Efficiency") +
