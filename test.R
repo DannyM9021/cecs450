@@ -191,6 +191,23 @@ ggplot(smoke_n_sleep, aes(x = Smoking.status, y = Sleep.efficiency)) +
 # -------------------------------Life Style Data set----------------------------
 
 # Graph to show gender count----------------------------------------------------
+lifestyle_gender_count <- lifestyle %>% select(c("Gender"))
+lifestyle_gender_graph <- barplot(table(lifestyle_gender_count),
+        main = "Gender Count",
+        xlab = "Gender",
+        ylab = "Count",
+        border = c("red", "blue"),
+        col = c("lightpink2","lightblue"),
+        ylim = c(0,250),
+        legend.text = c("Male","Female"),
+        args.legend=list(cex=1,x="topright"),
+        space = 0.1)
+abline(h=0)
+text(x = lifestyle_gender_graph,
+     y = table(lifestyle_gender_count),
+     labels = as.data.frame(table(lifestyle_gender_count))[[2]],
+     pos = 3)
+
 # Graph to show age count-------------------------------------------------------
 # Graph to show age vs gender for this new data set-----------------------------
 # Pie Chart of Occupation-------------------------------------------------------
