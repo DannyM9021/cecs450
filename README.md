@@ -27,9 +27,40 @@ We used the following datasets that can be found on Kaggle:
 - [Sleep Health and Lifestyle](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset)
 
 ## Definitions
+- REM sleep- a kind of sleep that occurs at intervals characterized by rapid eye movements, more dreaming, bodily movement, and faster pulse and breathing. 
 
+- NREM (Non- REM) sleep- 
 
 ## Findings
+
+### The Affect of Age on Sleep Cycle
+Understanding the sleep cycle helps explain how certain sleep disorders can impact a person's sleep and health. In a typical night, a person goes through 4- 6 sleep cycles (not all the same length, avg. 90 minutes each). The first cycle is often the shortest, ranging from 70- 100 minutes, while later cycles tend to fall between 90- 120 minutes. Sleep cycles can vary from person to person and from night to night based on a wide range of factors. There are 4 sleep stages: 3 Non-REM (NREM) sleep and REM sleep.
+
+**Does Age Affect REM Sleep?**
+
+In graph [], display a scatter plot relationship between a person's age and REM sleep measured in percentage. We are trying to test whether or not age affects the duration a person would spend in REM sleep. As we can see, the age varies from 9- 69 years old, and the majority spend between 15- 30% in REM sleep.
+
+In graph [] includes the calculated correlation coefficient using the pearson correlation formula. Based on correlation coefficient calculation standards, the null hypothesis would be age doesn't effect REM sleep, while the alternative hypothesis would be age does effect REM sleep. From the calculation, the value of R is 0.042 which indicates it a weak, positive linear relationship between age and REM sleep percentage.The p- value is 0.37 meaning that we accept the null hypothesis. In other words, we accept the fact that age has no effect on REM sleep. 
+
+On average, an adult would spend 25% in total in REM sleep. According to the graph, the average is ~22.6% in REM sleep.
+
+**Does Age Affect Deep Sleep?**
+
+In graph [], display a scatter plot relationship between a person's age and Deep sleep measured in percentage. We are trying to test whether or not age affects the duration a person would spend in Deep sleep. As we can see, the age varies from 9- 69 years old. Majority of the people would ~50- 78% in this stage, minority would ~20- 40%, and no one ~40-50%.
+
+In graph [] includes the calculated correlation coefficient using the pearson correlation formula. Based on correlation coefficient calculation standards, the null hypothesis would be that age doesn't effect Deep sleep, while the alternative hypothesis would be that age does effect Deep sleep. From the calculation, the value of R is 0.022 which indicates it a weak, positive linear relationship between age and Deep sleep percentage.The p- value is 0.64 meaning that we accept the null hypothesis. In other words, we accept the fact that age has no effect on Deep sleep. 
+On average, an adult would spend between 15-25% in total in Deep sleep. However, according to the graph, the average deep sleep is ~52.8%, which differs from the information stated above.
+
+**Does Age Affect Light Sleep?**
+
+In graph [], display a scatter plot relationship between a person's age and Light sleep measured in percentage. We are trying to test whether or not age affects the duration a person would spend in Light sleep. As we can see, the age varies from 9- 69 years old. Majority of the people would ~10- 27% in this stage, minority would ~40- 60%, and rarely no one ~30- 40% (one outlier).
+
+In graph [] includes the calculated correlation coefficient using the pearson correlation formula. Based on correlation coefficient calculation standards, the null hypothesis would be that age doesn't effect Light sleep, while the alternative hypothesis would be that age does effect Light sleep. The value of R is -0.032 which indicates it a weak, negative linear relationship between age and Light sleep percentage.The p- value is 0.5 meaning that we accept the null hypothesis. In other words, we accept the fact that age has no effect on Light sleep. 
+
+On average, an adult would spend ~50% in total in Light sleep. However, according the graph, the average light sleep is ~24.6%, which differs from the information stated above.
+
+As mentioned earlier, there are a variety of factors that can influence a person's sleep cycle, so difficult to draw a reliable conclusion whether or not age affect on sleep efficiency given the limitation of the data.
+
 
 ###  Caffeine Consumption
 **Does Caffeine Affect Sleep?**
@@ -39,10 +70,33 @@ Although caffeine consumption is believed to worsen sleep quality, our dataset s
 Therefore, given the limitations of the data, it is not possible to say definitively whether caffeine consumption has a positive or negative impact on sleep efficiency. 
 
 ### Alcohol Consumption
-**Does Alcohol Affect Sleep?**
-
 
 The graph [] shows that the sleep efficiency decreases as alcohol increases. The median sleep efficiency is 0.86 for people who consume 0 drinks per day, but it decreases to 0.82 for people who consume 1 drink. The median decreases to 0.65 to 0.76 for people who consume more than 2 drinks. This suggests that drinking alcohol, even in moderate amounts, can disrupt sleep.
+
+### Smoking Status 
+In graph [], shows a bar graph indicating the number people who smoke and don't smoke. As shown, the majority don't smoke with 298 people (66%), while around 154 people (34%) do smoke based on the data. 
+
+In graph [], represents 2 box and whisker plot to understand whether a person's smoking status affects their sleep efficiency. The smoking status variable indicates whether a person engages in this activity or not, while sleep efficiency is a measure of the proportion of time spent in bed that is actually spent asleep. We assume that people that don't smoke will have a higher sleep efficiency than those do smoke.
+
+For the 'No' box and whisker plot:
+- minimum sleep efficiency value: 0.53
+- maximum sleep efficiency value: 0.99
+- lower quartile: 0.73
+- upper quartile: 0.91
+- median: 0.84 
+
+For the 'Yes' box and whisker plot:
+- minimum sleep efficiency value: 0.5
+- maximum sleep efficiency value: 0.97
+- lower quartile: 0.55
+- upper quartile: 0.88
+- median: 0.78
+
+Individuals who don't smoke had higher sleep efficiency in comparison to those who do smoke, which supports our claim. A limitation to this data is that we don't know how sleep efficiency is being measured.
+
+## Sleep Disorder
+
+
 
 
 ## Conclusion
