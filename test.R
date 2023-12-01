@@ -29,16 +29,14 @@ lifestyle_columns <- colnames(lifestyle)
 #------------------------- Sleep Efficiency Data set----------------------------
 # Bar Graph of Age Count
 age_count <- sleep_efficiency_data_frame %>% select(c("Age"))
-sleep_eff_age_graph <- barplot(table(age_count), main = "Age Count", xlab = "Age", ylab = "Count", 
-        border = "blue", col = "lightblue1",ylim = c(0, 25), legend.text = "Age",
-        args.legend=list(cex=1,x="topright"),
-        space = 0.1)
-
+sleep_eff_age_graph <- barplot(table(age_count), main = "Age Count", xlab = "Age", 
+        ylab = "Count", border = "blue", col = "lightblue1",ylim = c(0, 25), 
+        legend.text = "Age", args.legend=list(cex=1,x="topright"), space = 1)
 abline(h=0)
 text(x = sleep_eff_age_graph,
      y = table(age_count),
      labels = as.data.frame(table(age_count))[[2]],
-     pos = 3)
+     pos = 3, cex = 0.75)
 
 # Pie Graph of Gender-----------------------------------------------------------
 #gender <- sleep_efficiency_data_frame %>% select(c("Gender"))
