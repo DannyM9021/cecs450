@@ -31,8 +31,8 @@ lifestyle_columns <- colnames(lifestyle)
 age_count <- sleep_efficiency_data_frame %>% select(c("Age"))
 sleep_eff_age_graph <- barplot(table(age_count), main = "Age Count", xlab = "Age", 
         ylab = "Count", border = "blue", col = "lightblue1",ylim = c(0, 25), 
-        legend.text = "Age", args.legend=list(cex=1,x="topright"), space = 1)
-abline(h=0)
+        legend.text = "Age", args.legend=list(cex = 1,x="topright"), space = 1)
+abline(h = 0)
 text(x = sleep_eff_age_graph,
      y = table(age_count),
      labels = as.data.frame(table(age_count))[[2]],
@@ -50,11 +50,13 @@ text(x = sleep_eff_age_graph,
 # or can be visualized as a bar graph-------------------------------------------
 # F: 224 M: 228
 gender_count <- sleep_efficiency_data_frame %>% select(c("Gender"))
-sleep_eff_gender_graph <- barplot(table(gender_count), main = "Gender Count", xlab = "Gender", ylab = "Count", 
-        border = c("red", "blue"), col = c("lightpink2", "lightblue"), ylim = c(0,254),
-        legend.text = c("Female","Male"), args.legend=list(cex=1,x= 2.3, y= 300), space = 0.1 )
+sleep_eff_gender_graph <- barplot(table(gender_count), main = "Gender Count", 
+        xlab = "Gender", ylab = "Count", border = c("red", "blue"), 
+        col = c("lightpink2", "lightblue"), ylim = c(0,254),
+        legend.text = c("Female","Male"), 
+        args.legend = list(cex = 1,x = 2.3, y = 300), space = 0.1 )
 
-abline(h=0)
+abline(h = 0)
 text(x = sleep_eff_gender_graph,
      y = table(gender_count),
      labels = as.data.frame(table(gender_count))[[2]],
