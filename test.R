@@ -73,8 +73,8 @@ x <- sleep_efficiency_data_frame$Age
 y <- sleep_efficiency_data_frame$REM.sleep.percentage
 
 plot(x, y, main = "Does Age Affect REM Sleep?",
-     xlab = "age", ylab = "REM Sleep (%)",
-     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(10, 35))
+     xlab = "Age", ylab = "REM Sleep (%)",
+     pch = 19, frame = FALSE, xlim = c(7,70), ylim = c(10, 35))
 # Add regression line
 #plot(x, y, main = "Does Age Affect REM Sleep?",
 #     xlab = "age", ylab = "REM Sleep (%)",
