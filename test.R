@@ -31,7 +31,7 @@ lifestyle_columns <- colnames(lifestyle)
 age_count <- sleep_efficiency_data_frame %>% select(c("Age"))
 sleep_eff_age_graph <- barplot(table(age_count), main = "Age Count", xlab = "Age", 
         ylab = "Count", border = "blue", col = "lightblue1",ylim = c(0, 25), 
-        legend.text = "Age", args.legend=list(cex = 1,x="topright"), space = 1)
+        legend.text = "Age", args.legend = list(cex = 1,x="topright"), space = 1)
 abline(h = 0)
 text(x = sleep_eff_age_graph,
      y = table(age_count),
@@ -87,9 +87,11 @@ sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percen
 # plot the data as points and calculate 
 # correlation coefficient with pearson correlation formula
 ggscatter(sleep_data, x = "Age", y = "REM.sleep.percentage", 
+          title = "Does Age Affect REM Sleep?", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
-          xlab = "Age", ylab = "REM Sleep (%)", xlim = c(7,70), ylim = c(10, 35))
+          xlab = "Age", ylab = "REM Sleep (%)", xlim = c(7,70), ylim = c(10, 35)) +
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 # Scatter Plot Between Age and Deep Sleep Percentage----------------------------
@@ -97,7 +99,7 @@ x <- sleep_efficiency_data_frame$Age
 y <- sleep_efficiency_data_frame$Deep.sleep.percentage
 
 plot(x, y, main = "Does Age Affect Deep Sleep?",
-     xlab = "age", ylab = "Deep Sleep (%)",
+     xlab = "Age", ylab = "Deep Sleep (%)",
      pch = 19, frame = FALSE, xlim = c(7,70), ylim = c(15, 80))
 # Add regression line
 #plot(x, y, main = "Does Age Affect Deep Sleep?",
@@ -121,7 +123,7 @@ x <- sleep_efficiency_data_frame$Age
 y <- sleep_efficiency_data_frame$Light.sleep.percentage
 
 plot(x, y, main = "Does Age Affect Light Sleep?",
-     xlab = "age", ylab = "Light Sleep (%)",
+     xlab = "Age", ylab = "Light Sleep (%)",
      pch = 19, frame = FALSE, xlim = c(7,70), ylim = c(5, 70))
 # Add regression line
 #plot(x, y, main = "Does Age Affect Light Sleep?",
