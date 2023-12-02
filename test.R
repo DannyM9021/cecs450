@@ -89,7 +89,7 @@ sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percen
 ggscatter(sleep_data, x = "Age", y = "REM.sleep.percentage", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
-          xlab = "Age", ylab = "REM Sleep (%)", xlim= c(7,70), ylim= c(10, 35))
+          xlab = "Age", ylab = "REM Sleep (%)", xlim = c(7,70), ylim = c(10, 35))
 
 
 # Scatter Plot Between Age and Deep Sleep Percentage----------------------------
@@ -98,7 +98,7 @@ y <- sleep_efficiency_data_frame$Deep.sleep.percentage
 
 plot(x, y, main = "Does Age Affect Deep Sleep?",
      xlab = "age", ylab = "Deep Sleep (%)",
-     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(15, 80))
+     pch = 19, frame = FALSE, xlim = c(7,70), ylim = c(15, 80))
 # Add regression line
 #plot(x, y, main = "Does Age Affect Deep Sleep?",
 #     xlab = "age", ylab = "Deep Sleep (%)",
@@ -113,7 +113,7 @@ sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percen
 ggscatter(sleep_data, x = "Age", y = "Deep.sleep.percentage", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
-          xlab = "Age", ylab = "Deep Sleep (%)", xlim= c(7,70), ylim= c(15, 80))
+          xlab = "Age", ylab = "Deep Sleep (%)", xlim = c(7,70), ylim = c(15, 80))
 
 
 # Scatter Plot Between Age and Light Sleep Percentage---------------------------
@@ -122,7 +122,7 @@ y <- sleep_efficiency_data_frame$Light.sleep.percentage
 
 plot(x, y, main = "Does Age Affect Light Sleep?",
      xlab = "age", ylab = "Light Sleep (%)",
-     pch = 19, frame = FALSE, xlim= c(7,70), ylim= c(5, 70))
+     pch = 19, frame = FALSE, xlim = c(7,70), ylim = c(5, 70))
 # Add regression line
 #plot(x, y, main = "Does Age Affect Light Sleep?",
 #     xlab = "age", ylab = "Light Sleep (%)",
@@ -137,28 +137,29 @@ sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percen
 ggscatter(sleep_data, x = "Age", y = "Light.sleep.percentage", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
-          xlab = "Age", ylab = "Light Sleep (%)", xlim= c(7,70), ylim= c(5, 70))
+          xlab = "Age", ylab = "Light Sleep (%)", xlim = c(7,70), ylim = c(5, 70))
 
 
 # Bubble plot of # Caffeine.consumption by age---------------------------------------------------
 caffeine <- sleep_efficiency_data_frame %>% select(c("Caffeine.consumption","Age"))
 caffeine <- na.omit(caffeine) #omit NA rows
 caffeine <- rename(count(caffeine, Caffeine.consumption, Age), freq = n)
-ggplot(caffeine, aes(x=Age, y=Caffeine.consumption, size=freq )) + 
-  geom_point(color = "blue",alpha=0.5) + 
+ggplot(caffeine, aes(x = Age, y = Caffeine.consumption, size = freq )) + 
+  geom_point(color = "blue", alpha = 0.5) + 
   labs(title = "Caffeine Consumption by Age") +
   xlab("Age") +
   ylab("Caffeine.consumption") +
   theme_minimal() +
-  scale_size(range = c(1, 10), name="Frequency")
+  scale_size(range = c(1, 10), name = "Frequency")
 
 # box plot with caffeine consumption and sleep efficiency-----------------------
 caffeine <- sleep_efficiency_data_frame %>% select(c("Caffeine.consumption","Sleep.efficiency"))
 caffeine <- na.omit(caffeine) #omit NA rows
 ggplot(caffeine, aes(x = Caffeine.consumption, y = Sleep.efficiency)) +
-  geom_boxplot(aes(group = Caffeine.consumption),fill="darkgoldenrod") +
+  geom_boxplot(aes(group = Caffeine.consumption), fill="darkgoldenrod") +
   labs(x = "Caffeine Consumption", y = "Sleep Efficiency") +
-  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
+  stat_summary(fun.y = mean, geom ="point", shape =20, size = 4, color = "red", 
+               fill = "red") +
   theme_minimal() + 
   labs(title = "Caffeine Consumption vs Sleep Efficiency")
 
@@ -166,13 +167,13 @@ ggplot(caffeine, aes(x = Caffeine.consumption, y = Sleep.efficiency)) +
 Alcohol <- sleep_efficiency_data_frame %>% select(c("Alcohol.consumption","Sleep.efficiency","Age"))
 Alcohol <- na.omit(Alcohol) #omit NA rows
 Alcohol <- rename(count(Alcohol, Alcohol.consumption, Age), freq = n)
-ggplot(Alcohol, aes(x=Age, y=Alcohol.consumption, size=freq )) + 
-  geom_point(color = "blue",alpha=0.5) + 
+ggplot(Alcohol, aes(x = Age, y = Alcohol.consumption, size = freq )) + 
+  geom_point(color = "blue",alpha = 0.5) + 
   labs(title = "Alcohol Consumption by Age") +
   xlab("Age") +
   ylab("Alcohol.consumption") +
   theme_minimal() +
-  scale_size(range = c(1, 10), name="Frequency")
+  scale_size(range = c(1, 10), name = "Frequency")
 
 # the correlation between alcohol consumption and sleep efficiency--------------
 alcohol <- sleep_efficiency_data_frame %>% select(c("Alcohol.consumption","Sleep.efficiency"))
@@ -180,7 +181,8 @@ alcohol <- na.omit(alcohol) #omit NA rows
 # Scatter plot with color-coded points by age group
 ggplot(alcohol, aes(x = Alcohol.consumption, y = Sleep.efficiency)) +
   geom_boxplot(aes(group = Alcohol.consumption),fill="darkgoldenrod") +
-  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
+  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red", 
+               fill = "red") +
   labs(x = "Alcohol Consumption", y = "Sleep Efficiency") +
   theme_minimal() + 
   labs(title = "Alcohol Consumption vs Sleep Efficiency")
@@ -188,9 +190,11 @@ ggplot(alcohol, aes(x = Alcohol.consumption, y = Sleep.efficiency)) +
 
 # Visualization of Smoking Status-----------------------------------------------
 smoking_count <- sleep_efficiency_data_frame %>% select(c("Smoking.status"))
-smoking_graph <- barplot(table(smoking_count), main = "Smoking Status", xlab = "Status", ylab = "Count", 
-                         border = c("blue", "red"), col = c("lightblue", "lightpink2"), ylim = c(0,320),
-                         legend.text = c("No","Yes"), args.legend=list(cex=1,x= "topright"), space = 0.1 ) 
+smoking_graph <- barplot(table(smoking_count), main = "Smoking Status", xlab = "Status", 
+                         ylab = "Count", border = c("blue", "red"), 
+                         col = c("lightblue", "lightpink2"), ylim = c(0,320),
+                         legend.text = c("No","Yes"), args.legend=list(cex = 1,
+                         x = "topright"), space = 0.1 ) 
 
 abline(h=0)
 text(x = smoking_graph,
@@ -211,7 +215,8 @@ smoke_n_sleep
 ggplot(smoke_n_sleep, aes(x = Smoking.status, y = Sleep.efficiency)) +
   geom_boxplot(aes(group = Smoking.status),fill="gray") +
   labs(x = "Smoking Status", y = "Sleep Efficiency") +
-  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
+  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red", 
+               fill="red") +
   theme_minimal()
 
 
@@ -229,9 +234,9 @@ lifestyle_gender_graph <- barplot(table(lifestyle_gender_count),
         col = c("lightpink2","lightblue"),
         ylim = c(0,250),
         legend.text = c("Male","Female"), #maybe fix switch legend label to c("Female", "Male")
-        args.legend=list(cex=1,x="topright"),
+        args.legend = list(cex = 1,x = "topright"),
         space = 0.1)
-abline(h=0)
+abline(h = 0)
 text(x = lifestyle_gender_graph,
      y = table(lifestyle_gender_count),
      labels = as.data.frame(table(lifestyle_gender_count))[[2]],
@@ -249,7 +254,7 @@ lifestyle_age_graph <- barplot(table(lifestyle_age_count),
                                   legend.text = "Age",
                                   args.legend=list(cex=1,x="topright"),
                                   space = 0.1)
-abline(h=0)
+abline(h = 0)
 text(x = lifestyle_age_graph,
      y = table(lifestyle_age_count),
      labels = as.data.frame(table(lifestyle_age_count))[[2]],
@@ -260,35 +265,37 @@ text(x = lifestyle_age_graph,
 job <- lifestyle %>% select(c("Occupation"))
 job_count <- table(job)
 # job_count # just to check values
-percent <- round(job_count/ sum(job_count)*100, 1)
+percent <- round(job_count/sum(job_count)*100, 1)
 job_label <- paste(percent, "%")
 # Adjust margins
 par(mar=c(2,0,2,2))
-pie(job_count, labels = job_label, col= brewer.pal(n = 12, name="Set3"), main = "Occupation Count", radius = .6, clockwise = TRUE) 
+pie(job_count, labels = job_label, col= brewer.pal(n = 12, name="Set3"), 
+    main = "Occupation Count", radius = .6, clockwise = TRUE) 
 # create legend 
 legend(x= 1, y= 1, c("Account", "Doctor", "Engineer", "Lawyer", "Manager",
                     "Nurse", "Sales Rep.", "Salesperson", "Scientist", "Software Engr.",
-                   "Engineer"), fill = brewer.pal(n = 12, name="Set3"))
+                   "Engineer"), fill = brewer.pal(n = 12, name = "Set3"))
 
 
-annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", gp=gpar(fontsize=8, fontface="italic"))
+annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", 
+                       gp = gpar(fontsize = 8, fontface = "italic"))
 # Comparing Sleep.Duration with different occupation
 job_compare_sd <- lifestyle %>% select(c("Occupation","Sleep.Duration"))
 # omit manager and sales Representative because theres not enough data
-job_compare_sd <- job_compare_sd %>% filter(Occupation!="Manager"&Occupation!="Sales Representative")
+job_compare_sd <- job_compare_sd %>% filter(Occupation != "Manager" & Occupation != "Sales Representative")
 # used fct_reorder to reorder the rows by median in the graph
-job_compare_sd %>% mutate(class = fct_reorder(Occupation, Sleep.Duration, .fun='median')) %>%
+job_compare_sd %>% mutate(class = fct_reorder(Occupation, Sleep.Duration, .fun = 'median')) %>%
   ggplot(aes(x = Sleep.Duration, y = reorder(Occupation, Sleep.Duration), fill = Occupation)) +
-  geom_density_ridges(alpha=0.8) +
+  geom_density_ridges(alpha = 0.8) +
   #geom_density_ridges(alpha=0.6, stat="binline", bins=6) +
   theme_ridges() +
   theme(
-    legend.position="none",
+    legend.position = "none",
     panel.spacing = unit(0.1, "lines"),
     strip.text.x = element_text(size = 8)
   )+
   coord_cartesian(clip = "off")+ #turn off cliping so annotation can be outside of graph
-  annotation_custom(annotation,xmin=1,ymin=-2.2, ymax=1) + #add annotation
+  annotation_custom(annotation, xmin = 1, ymin = -2.2, ymax = 1) + #add annotation
   xlab("Sleep.Duration") +
   ylab("Occupation") + 
   labs(title = "Sleep Duration with Differnt Cccupation")
@@ -298,49 +305,50 @@ annotation <- textGrob("*Manager and Sales Representative have been \nremoved du
 # Comparing quailty of sleep with different occupation--------------------------
 job_compare_qs <- lifestyle %>% select(c("Occupation","Quality.of.Sleep"))
 # omit manager and sales Representative because theres not enough data
-job_compare_qs <- job_compare_qs %>% filter(Occupation!="Manager"&Occupation!="Sales Representative")
+job_compare_qs <- job_compare_qs %>% filter(Occupation != "Manager" & Occupation != "Sales Representative")
 # used fct_reorder to reorder the rows by median in the graph
-job_compare_qs %>% mutate(class = fct_reorder(Occupation, Quality.of.Sleep, .fun='median')) %>%
+job_compare_qs %>% mutate(class = fct_reorder(Occupation, Quality.of.Sleep, .fun = 'median')) %>%
   ggplot(aes(x = Quality.of.Sleep, y = reorder(Occupation, Quality.of.Sleep), fill = Occupation)) +
-  geom_density_ridges(alpha=0.8) +
+  geom_density_ridges(alpha = 0.8) +
   #geom_density_ridges(alpha=0.6, stat="binline", bins=6) +
   theme_ridges() +
   theme(
-    legend.position="none",
+    legend.position ="none",
     panel.spacing = unit(0.1, "lines"),
     strip.text.x = element_text(size = 8)
   )+  
-  coord_cartesian(clip = "off")+ #turn off cliping so annotation can be outside of graph
-  annotation_custom(annotation,xmin=-7,ymin=-2.5, ymax=1) + #add annotation
+  coord_cartesian(clip = "off") + #turn off cliping so annotation can be outside of graph
+  annotation_custom(annotation,xmin = -7,ymin = -2.5, ymax = 1) + #add annotation
   xlab("Quality.of.Sleep") +
   ylab("Occupation")+ 
   labs(title = "Quality of Sleep with Differnt Cccupation")
 
-annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", gp=gpar(fontsize=8, fontface="italic"))
+annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", 
+                       gp=gpar(fontsize=8, fontface="italic"))
 
 # Comparing quailty of sleep with differnt occupation---------------------------
 job_compare_stress <- lifestyle %>% select(c("Occupation","Stress.Level"))
 # omit manager and sales Representative because theres not enough data
-job_compare_stress <- job_compare_stress %>% filter(Occupation!="Manager"&Occupation!="Sales Representative")
+job_compare_stress <- job_compare_stress %>% filter(Occupation != "Manager" & Occupation != "Sales Representative")
 # used fct_reorder to reorder the rows by median in the graph
-job_compare_stress %>% mutate(class = fct_reorder(Occupation, Stress.Level, .fun='median')) %>%
+job_compare_stress %>% mutate(class = fct_reorder(Occupation, Stress.Level, .fun = 'median')) %>%
   ggplot(aes(x = Stress.Level, y = reorder(Occupation, Stress.Level), fill = Occupation)) +
-  geom_density_ridges(alpha=0.8) +
+  geom_density_ridges(alpha = 0.8) +
   #geom_density_ridges(alpha=0.6, stat="binline", bins=6) +
   theme_ridges() +
   theme(
-    legend.position="none",
+    legend.position = "none",
     panel.spacing = unit(0.1, "lines"),
     strip.text.x = element_text(size = 8),
   )+  
   coord_cartesian(clip = "off")+ #turn off cliping so annotation can be outside of graph
-  annotation_custom(annotation,xmin=-7,ymin=-2.5, ymax=1) + #add annotation
+  annotation_custom(annotation, xmin = -7,ymin = -2.5, ymax = 1) + #add annotation
   xlab("Stress Level") +
   ylab("Occupation")
 
 # Scatter plot of physical activity compared to stress level--------------------
 physical_activity_vs_stress <- lifestyle %>% select(c("Physical.Activity.Level","Stress.Level"))
-ggplot(physical_activity_vs_stress, aes(x=Physical.Activity.Level, y=Stress.Level)) + 
+ggplot(physical_activity_vs_stress, aes(x = Physical.Activity.Level, y = Stress.Level)) + 
   geom_point() + 
   labs(title = "Physical Activity Level vs Stress Level") +
   xlab("Physical Activity Level") +
@@ -350,13 +358,13 @@ ggplot(physical_activity_vs_stress, aes(x=Physical.Activity.Level, y=Stress.Leve
 # Bubble plot of Heart.Rate compared to quality of sleep------------------------
 Heart.RatevsQuality.of.Sleep <- lifestyle %>% select(c("Quality.of.Sleep","Heart.Rate"))
 Heart.RatevsQuality.of.Sleep <- rename(count(Heart.RatevsQuality.of.Sleep, Quality.of.Sleep, Heart.Rate), freq = n)
-ggplot(Heart.RatevsQuality.of.Sleep, aes(x=Heart.Rate, y=Quality.of.Sleep, size=freq )) + 
-  geom_point(color = "brown2",alpha=0.5) + 
+ggplot(Heart.RatevsQuality.of.Sleep, aes(x = Heart.Rate, y = Quality.of.Sleep, size = freq )) + 
+  geom_point(color = "brown2",alpha = 0.5) + 
   labs(title = "Heart.Rate vs Quality of Sleep") +
   xlab("Heart.Rate") +
   ylab("Quality.of.Sleepl") +
   theme_minimal() +
-  scale_size(range = c(1, 25), name="Frequency")
+  scale_size(range = c(1, 25), name = "Frequency")
   
 
 # Pie Graph for Sleep Disorder--------------------------------------------------
@@ -364,54 +372,59 @@ disorder <- lifestyle %>% select(c("Sleep.Disorder"))
 disorder_count <- table(disorder)
 # disorder_count # to check values
 disorder_label<- c("None", "Insomnia", "Sleep Apnea")
-percent <- round(disorder_count/ sum(disorder_count)*100, 1)
+percent <- round(disorder_count/sum(disorder_count)*100, 1)
 disorder_label <- paste(disorder_label, percent, "%")
 
 # Adjust margins
-par(mar=c(2,2,2,2))
-pie(disorder_count, labels = disorder_label, col= brewer.pal(n = 12, name="Set3"), main = "Sleep Disorder Count", radius = 1, clockwise = TRUE) 
+par(mar = c(2,2,2,2))
+pie(disorder_count, labels = disorder_label, col= brewer.pal(n = 12, name="Set3"), 
+    main = "Sleep Disorder Count", radius = 1, clockwise = TRUE) 
 
 
 # Graph to find correlation between sleep disorder and sleep duration-----------
 sleep <- lifestyle %>% select(c("Sleep.Disorder","Sleep.Duration"))
 ggplot(sleep, aes(x = Sleep.Disorder, y = Sleep.Duration)) +
-  geom_boxplot(aes(group = Sleep.Disorder, fill= Sleep.Disorder)) +
+  geom_boxplot(aes(group = Sleep.Disorder, fill = Sleep.Disorder)) +
   labs(x = "Sleep Disorder", y = "Sleep Duration") +
-  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
+  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red", 
+               fill = "red") +
   theme_minimal()
 
 # Graph to find correlation between sleep disorder and quality of sleep---------
 sleep <- lifestyle %>% select(c("Sleep.Disorder","Quality.of.Sleep"))
 ggplot(sleep, aes(x = Sleep.Disorder, y = Quality.of.Sleep)) +
-  geom_boxplot(aes(group = Sleep.Disorder,fill= Sleep.Disorder)) +
+  geom_boxplot(aes(group = Sleep.Disorder,fill = Sleep.Disorder)) +
   labs(x = "Sleep Disorder", y = "Quality of Sleep") +
-  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
+  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red", 
+               fill = "red") +
   theme_minimal()
 
 # Graph to find correlation between BMI and sleep quality-----------------------
 sleep <- lifestyle %>% select(c("BMI.Category","Quality.of.Sleep"))
-sleep$BMI.Category <- factor(sleep$BMI.Category , 
-                             levels=c("Normal", "Normal Weight", "Overweight", "Obese"))
-ggplot(sleep, aes(x=BMI.Category, y = Quality.of.Sleep, fill = interaction(BMI.Category))) +
+sleep$BMI.Category <- factor(sleep$BMI.Category, 
+                      levels=c("Normal", "Normal Weight", "Overweight", "Obese"))
+ggplot(sleep, aes(x = BMI.Category, y = Quality.of.Sleep, fill = interaction(BMI.Category))) +
   geom_boxplot() +
-  scale_fill_manual(values=c("green","yellow","orange","red"))+
+  scale_fill_manual(values = c("green","yellow","orange","red"))+
   labs(x = "BMI Category", y = "Quality of Sleep") +
-  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="blue", fill ="black") +
+  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "blue", 
+               fill = "black") +
   theme_minimal() +
   ggtitle("Quality of Sleep based on BMI Index Category") +
   theme(plot.title = element_text(hjust = 0.5)) +
-  guides(fill=guide_legend(title="BMI Index Categories"))
+  guides(fill = guide_legend(title="BMI Index Categories"))
 
 # Graph to find correlation between BMI and sleep duration----------------------
 sleep <- lifestyle %>% select(c("BMI.Category","Sleep.Duration"))
 sleep$BMI.Category <- factor(sleep$BMI.Category , 
-                             levels=c("Normal", "Normal Weight", "Overweight", "Obese"))
-ggplot(sleep, aes(x=BMI.Category, y = Sleep.Duration, fill = interaction(BMI.Category))) +
+                      levels = c("Normal", "Normal Weight", "Overweight", "Obese"))
+ggplot(sleep, aes(x = BMI.Category, y = Sleep.Duration, fill = interaction(BMI.Category))) +
   geom_boxplot() +
-  scale_fill_manual(values=c("green","yellow","orange","red"))+
+  scale_fill_manual(values = c("green","yellow","orange","red"))+
   labs(x = "BMI Category", y = "Sleep Duration") +
-  stat_summary(fun.y=mean, geom="point", shape=20, size=4, col="blue", fill ="black") +
+  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, col = "blue", 
+               fill = "black") +
   theme_minimal() +
   ggtitle("Sleep Duration based on BMI Index Category") +
   theme(plot.title = element_text(hjust = 0.5)) +
-  guides(fill=guide_legend(title="BMI Index Categories"))
+  guides(fill = guide_legend(title="BMI Index Categories"))
