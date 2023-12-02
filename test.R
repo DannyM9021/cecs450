@@ -246,7 +246,7 @@ lifestyle_gender_graph <- barplot(table(lifestyle_gender_count),
         ylab = "Count",
         border = c("red", "blue"),
         col = c("lightpink2","lightblue"),
-        ylim = c(0,250),
+        ylim = c(0,280),
         legend.text = c("Male","Female"), #maybe fix switch legend label to c("Female", "Male")
         args.legend = list(cex = 1,x = "topright"),
         space = 0.1)
@@ -284,7 +284,7 @@ job_label <- paste(percent, "%")
 # Adjust margins
 par(mar=c(2,0,2,2))
 pie(job_count, labels = job_label, col= brewer.pal(n = 12, name="Set3"), 
-    main = "Occupation Count", radius = .6, clockwise = TRUE) 
+    main = "Occupation Count", radius = .6, clockwise = TRUE, cex = 0.8) 
 # create legend 
 legend(x= 1, y= 1, c("Account", "Doctor", "Engineer", "Lawyer", "Manager",
                     "Nurse", "Sales Rep.", "Salesperson", "Scientist", "Software Engr.",
@@ -421,7 +421,7 @@ ggplot(sleep, aes(x = BMI.Category, y = Quality.of.Sleep, fill = interaction(BMI
   geom_boxplot() +
   scale_fill_manual(values = c("green","yellow","orange","red"))+
   labs(x = "BMI Category", y = "Quality of Sleep") +
-  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "blue", 
+  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red4", 
                fill = "black") +
   theme_minimal() +
   ggtitle("Quality of Sleep based on BMI Index Category") +
@@ -436,7 +436,7 @@ ggplot(sleep, aes(x = BMI.Category, y = Sleep.Duration, fill = interaction(BMI.C
   geom_boxplot() +
   scale_fill_manual(values = c("green","yellow","orange","red")) +
   labs(x = "BMI Category", y = "Sleep Duration") +
-  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, col = "blue", 
+  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, col = "red4", 
                fill = "black") +
   theme_minimal() +
   ggtitle("Sleep Duration based on BMI Index Category") +
