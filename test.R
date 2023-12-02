@@ -202,7 +202,7 @@ ggplot(alcohol, aes(x = Alcohol.consumption, y = Sleep.efficiency)) +
 smoking_count <- sleep_efficiency_data_frame %>% select(c("Smoking.status"))
 smoking_graph <- barplot(table(smoking_count), main = "Smoking Status", xlab = "Status", 
                          ylab = "Count", border = c("green4", "red4"), 
-                         col = c("green", "red"), ylim = c(0,350),
+                         col = c("lightgreen", "lightpink"), ylim = c(0,350),
                          legend.text = c("No","Yes"), args.legend=list(cex = 1,
                          x = "topright"), space = 0.1 ) 
 
@@ -225,10 +225,10 @@ smoke_n_sleep
 ggplot(smoke_n_sleep, aes(x = Smoking.status, y = Sleep.efficiency, 
                           fill = interaction(Smoking.status))) +
   geom_boxplot() +
-  scale_fill_manual(values = c("lightgray","lightgray")) +
+  scale_fill_manual(values = c("lightgreen","lightpink")) +
   labs(x = "Smoking Status", y = "Sleep Efficiency") +
-  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red", 
-               fill="red") +
+  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red4", 
+               fill="black") +
   labs(title = "Does Smoking Accept Sleep?") +
   theme_minimal() +
   guides(fill=guide_legend(title="Smoking Status")) +
