@@ -115,7 +115,9 @@ sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percen
 ggscatter(sleep_data, x = "Age", y = "Deep.sleep.percentage", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
-          xlab = "Age", ylab = "Deep Sleep (%)", xlim = c(7,70), ylim = c(15, 80))
+          title = "Does Age Affect Deep Sleep?",
+          xlab = "Age", ylab = "Deep Sleep (%)", xlim = c(7,70), ylim = c(15, 80)) +
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 # Scatter Plot Between Age and Light Sleep Percentage---------------------------
@@ -139,7 +141,9 @@ sleep_data <- sleep_efficiency_data_frame #%>% select(c("Age", "REM.sleep.percen
 ggscatter(sleep_data, x = "Age", y = "Light.sleep.percentage", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
-          xlab = "Age", ylab = "Light Sleep (%)", xlim = c(7,70), ylim = c(5, 70))
+          title = "Does Age Affect Light Sleep?",
+          xlab = "Age", ylab = "Light Sleep (%)", xlim = c(7,70), ylim = c(5, 70)) +
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 # Bubble plot of # Caffeine.consumption by age---------------------------------------------------
@@ -152,7 +156,8 @@ ggplot(caffeine, aes(x = Age, y = Caffeine.consumption, size = freq )) +
   xlab("Age") +
   ylab("Caffeine.consumption") +
   theme_minimal() +
-  scale_size(range = c(1, 10), name = "Frequency")
+  scale_size(range = c(1, 10), name = "Frequency") +
+  theme(plot.title = element_text(hjust = 0.5))
 
 # box plot with caffeine consumption and sleep efficiency-----------------------
 caffeine <- sleep_efficiency_data_frame %>% select(c("Caffeine.consumption","Sleep.efficiency"))
@@ -163,7 +168,8 @@ ggplot(caffeine, aes(x = Caffeine.consumption, y = Sleep.efficiency)) +
   stat_summary(fun.y = mean, geom ="point", shape =20, size = 4, color = "red", 
                fill = "red") +
   theme_minimal() + 
-  labs(title = "Caffeine Consumption vs Sleep Efficiency")
+  labs(title = "Caffeine Consumption vs Sleep Efficiency") +
+  theme(plot.title = element_text(hjust = 0.5))
 
 # Alcohol consumption by age----------------------------------------------------
 Alcohol <- sleep_efficiency_data_frame %>% select(c("Alcohol.consumption","Sleep.efficiency","Age"))
@@ -175,7 +181,8 @@ ggplot(Alcohol, aes(x = Age, y = Alcohol.consumption, size = freq )) +
   xlab("Age") +
   ylab("Alcohol.consumption") +
   theme_minimal() +
-  scale_size(range = c(1, 10), name = "Frequency")
+  scale_size(range = c(1, 10), name = "Frequency") +
+  theme(plot.title = element_text(hjust = 0.5))
 
 # the correlation between alcohol consumption and sleep efficiency--------------
 alcohol <- sleep_efficiency_data_frame %>% select(c("Alcohol.consumption","Sleep.efficiency"))
@@ -187,14 +194,15 @@ ggplot(alcohol, aes(x = Alcohol.consumption, y = Sleep.efficiency)) +
                fill = "red") +
   labs(x = "Alcohol Consumption", y = "Sleep Efficiency") +
   theme_minimal() + 
-  labs(title = "Alcohol Consumption vs Sleep Efficiency")
+  labs(title = "Alcohol Consumption vs Sleep Efficiency") +
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 # Visualization of Smoking Status-----------------------------------------------
 smoking_count <- sleep_efficiency_data_frame %>% select(c("Smoking.status"))
 smoking_graph <- barplot(table(smoking_count), main = "Smoking Status", xlab = "Status", 
-                         ylab = "Count", border = c("blue", "red"), 
-                         col = c("lightblue", "lightpink2"), ylim = c(0,320),
+                         ylab = "Count", border = c("green4", "red4"), 
+                         col = c("green", "red"), ylim = c(0,350),
                          legend.text = c("No","Yes"), args.legend=list(cex = 1,
                          x = "topright"), space = 0.1 ) 
 
@@ -214,13 +222,17 @@ smoke_n_sleep
  # geom_line(aes(y = Sleep.efficiency))
 #ss_graph
 
-ggplot(smoke_n_sleep, aes(x = Smoking.status, y = Sleep.efficiency)) +
-  geom_boxplot(aes(group = Smoking.status),fill="gray") +
+ggplot(smoke_n_sleep, aes(x = Smoking.status, y = Sleep.efficiency, 
+                          fill = interaction(Smoking.status))) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("lightgray","lightgray")) +
   labs(x = "Smoking Status", y = "Sleep Efficiency") +
   stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red", 
                fill="red") +
-  theme_minimal()
-
+  labs(title = "Does Smoking Accept Sleep?") +
+  theme_minimal() +
+  guides(fill=guide_legend(title="Smoking Status")) +
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 
@@ -422,7 +434,7 @@ sleep$BMI.Category <- factor(sleep$BMI.Category ,
                       levels = c("Normal", "Normal Weight", "Overweight", "Obese"))
 ggplot(sleep, aes(x = BMI.Category, y = Sleep.Duration, fill = interaction(BMI.Category))) +
   geom_boxplot() +
-  scale_fill_manual(values = c("green","yellow","orange","red"))+
+  scale_fill_manual(values = c("green","yellow","orange","red")) +
   labs(x = "BMI Category", y = "Sleep Duration") +
   stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, col = "blue", 
                fill = "black") +
