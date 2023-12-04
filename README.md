@@ -113,7 +113,7 @@ For the 'No' box and whisker plot, the minimum sleep efficiency value is 0.53, a
 ## Sleep Disorder
 In the pie chart below, it displays the percentage value of the sleep disorders found in the dataset. The majority of the people (58.6%) from the dataset appears to insomnia. Insomnia is a sleep disorder characterize by difficulty falling asleep, staying asleep, or both. Around 20.9% have sleep apnea, a condition that in which a person's breathing stops and restarts many times during sleep. There are around 20.6% who don't have a sleep disorder. 
 
-![sleep disorder count](images/sleep_disorder_count.jpg)
+![sleep disorder count](images/sleep_disorder_countnew.jpg)
 
 The box and whisker plot below, represents how each sleep disorder affects a person's sleep duration measured in hours.
 

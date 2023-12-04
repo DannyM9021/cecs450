@@ -391,8 +391,10 @@ disorder_label <- paste(disorder_label, percent, "%")
 
 # Adjust margins
 par(mar = c(2,2,2,2))
-pie(disorder_count, labels = disorder_label, col= brewer.pal(n = 12, name="Set3"), 
-    main = "Sleep Disorder Count", radius = 1, clockwise = TRUE) 
+pie(disorder_count, labels = disorder_label, col = c("lightgreen", "lightpink", "lightblue"),
+    main = "Sleep Disorder Count", radius = 1, clockwise= TRUE) 
+
+#old color brewer.pal(n = 12, name="Set3")
 
 
 # Graph to find correlation between sleep disorder and sleep duration-----------
