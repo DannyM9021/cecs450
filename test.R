@@ -400,9 +400,9 @@ pie(disorder_count, labels = disorder_label, col = c("lightpink", "lightgreen", 
 #just to check if the values were correct
 
 #dis <- lifestyle %>% select(c("Sleep.Disorder"))
-#graph <- barplot(table(dis), main = "Dis Count", xlab = "Age", 
-                             #  ylab = "Count", border = "blue", col = "lightblue1",ylim = c(0, 250), 
-                             #  legend.text = "Dis", args.legend = list(cex = 1,x="topright"), space = 1)
+#graph <- barplot(table(dis), main = "Dis Count", xlab = "Dis", 
+#                               ylab = "Count", border = "blue", col = "lightblue1",ylim = c(0, 250), 
+#                               legend.text = "Dis", args.legend = list(cex = 1,x="topright"), space = 1)
 #abline(h = 0)
 #text(x = graph,
 #     y = table(dis),
