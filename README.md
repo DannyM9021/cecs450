@@ -28,13 +28,16 @@ We used the following datasets that can be found on Kaggle:
 
 ## Definitions
 - Non- rapid eye movement (NREM) sleep- divided in stages varying in brain wave patterns, eye movements, and muscle tone.
-- Rapid eye movement (REM) sleep- a kind of sleep that occurs at intervals characterized by rapid eye movements, more dreaming, bodily movement, and faster pulse and breathing. 
 
-- NREM (Non- REM) sleep- 
+- Rapid eye movement (REM) sleep- a kind of sleep that occurs at intervals characterized by rapid eye movements, more dreaming, bodily movement, and faster pulse and breathing. 
 
 - Caffeine consumption - the amount of caffeine consumed in the 24 hours prior to bedtime (in mg)
 
 - Alcohol consumption - the amount of alcohol consumed in the 24 hours prior to bedtime (in oz). A standard drink in the United States contain 0.6 oz of pure alcohol. Which means a regular beer (12oz)  usually contain about 5% alcohol and a 5 ounces of table wine, typically contains about 12% alcohol.
+
+- Insomnia - a sleep disorder characterize by difficulty falling asleep, staying asleep, or both. 
+
+- Sleep Apnea - a condition that in which a person's breathing stops and restarts many times during sleep.
 
 ## Findings
 
@@ -105,26 +108,18 @@ The graph below represents 2 box and whisker plot to understand whether a person
 
 ![smoking box plot](images/smoking_box_plot.jpg)
 
-For the 'No' box and whisker plot:
-- minimum sleep efficiency value: 0.53
-- maximum sleep efficiency value: 0.99
-- lower quartile: 0.73
-- upper quartile: 0.91
-- median: 0.84 
-
-For the 'Yes' box and whisker plot:
-- minimum sleep efficiency value: 0.5
-- maximum sleep efficiency value: 0.97
-- lower quartile: 0.55
-- upper quartile: 0.88
-- median: 0.78
-
-Individuals who don't smoke had higher sleep efficiency in comparison to those who do smoke, which supports our claim. A limitation to this data is that we don't know how sleep efficiency is being measured.
+For the 'No' box and whisker plot, the minimum sleep efficiency value is 0.53, and the maximum sleep efficiency value is 0.99. The lower quartile is 0.73, while the upper quartile is 0.91. The median sleep efficiency is 0.84 for people who don't smoke. For the 'Yes' box and whisker plot, the minimum sleep efficiency value is 0.5, and the maximum sleep efficiency value is 0.97. The lower quartile is 0.55, while the upper quartile is 0.88. The median sleep efficiency is 0.78 for people who do smoke. Individuals who don't smoke had higher sleep efficiency in comparison to those who do smoke, which supports our claim. A limitation to this data is that we don't know how sleep efficiency is being measured.
 
 ## Sleep Disorder
+In the pie chart below, it displays the percentage value of the sleep disorders found in the dataset. The majority of the people (58.6%) from the dataset appears to insomnia. Insomnia is a sleep disorder characterize by difficulty falling asleep, staying asleep, or both. Around 20.9% have sleep apnea, a condition that in which a person's breathing stops and restarts many times during sleep. There are around 20.6% who don't have a sleep disorder. 
 
+![sleep disorder count](images/sleep_disorder_count.jpg)
 
+The box and whisker plot below, represents how each sleep disorder affects a person's sleep duration measured in hours.
 
+![sleep disorder and sleep duration ](images/sleep_disorder_and_sleep_duration.jpg)
+
+For the 'Insomnia' box and whisker plot, the minimum sleep duration value is 6.3 hours, and the maximum sleep duration value is 6.75 hours. The lower quartile is 6.4 hours, while the upper quartile is 6.6 hours. The median sleep duration is 6.5 hours for people who have insomnia. Some outliers were present on the graph. For the 'None' box and whisker plot, the minimum sleep duration value is 6.1 hours, and the maximum sleep duration value is 8.5 hours. The lower quartile is 7.1 hours, while the upper quartile is 7.7 hours. The median sleep duration is 7.4 hours for people who don't have a sleep disorder. There was an outlier present below the minimum sleep duration value. For the 'Sleep Apnea' box and whisker plot, the minimum sleep duration value is 5.3 hours, and the maximum sleep duration value is 8.2 hours. The lower quartile is 6.1 hours, while the upper quartile is 8.1 hours. The median sleep duration is 6.7 hours for people who have sleep apnea. This suggest that sleep disorders can affect a person's sleep duration.
 
 ## Conclusion
 
