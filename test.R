@@ -385,16 +385,29 @@ ggplot(Heart.RatevsQuality.of.Sleep, aes(x = Heart.Rate, y = Quality.of.Sleep, s
 disorder <- lifestyle %>% select(c("Sleep.Disorder"))
 disorder_count <- table(disorder)
 # disorder_count # to check values
-disorder_label<- c("None", "Insomnia", "Sleep Apnea")
+disorder_label<- c("Insomnia","None", "Sleep Apnea")
 percent <- round(disorder_count/sum(disorder_count)*100, 1)
 disorder_label <- paste(disorder_label, percent, "%")
 
 # Adjust margins
 par(mar = c(2,2,2,2))
-pie(disorder_count, labels = disorder_label, col = c("lightgreen", "lightpink", "lightblue"),
+pie(disorder_count, labels = disorder_label, col = c("lightpink", "lightgreen", "lightblue"),
     main = "Sleep Disorder Count", radius = 1, clockwise= TRUE) 
 
 #old color brewer.pal(n = 12, name="Set3")
+
+
+#just to check if the values were correct
+
+#dis <- lifestyle %>% select(c("Sleep.Disorder"))
+#graph <- barplot(table(dis), main = "Dis Count", xlab = "Age", 
+                             #  ylab = "Count", border = "blue", col = "lightblue1",ylim = c(0, 250), 
+                             #  legend.text = "Dis", args.legend = list(cex = 1,x="topright"), space = 1)
+#abline(h = 0)
+#text(x = graph,
+#     y = table(dis),
+#     labels = as.data.frame(table(dis))[[2]],
+#     pos = 3, cex = 0.75)
 
 
 # Graph to find correlation between sleep disorder and sleep duration-----------
