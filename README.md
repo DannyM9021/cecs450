@@ -35,7 +35,7 @@ We used the following datasets that can be found on Kaggle:
 
 - Alcohol consumption - the amount of alcohol consumed in the 24 hours prior to bedtime (in oz). A standard drink in the United States contain 0.6 oz of pure alcohol. Which means a regular beer (12oz)  usually contain about 5% alcohol and a 5 ounces of table wine, typically contains about 12% alcohol.
 
-- Insomnia - a sleep disorder characterize by difficulty falling asleep, staying asleep, or both. 
+- Insomnia - a sleep disorder characterized by difficulty falling asleep, staying asleep, or both. 
 
 - Sleep Apnea - a condition that in which a person's breathing stops and restarts many times during sleep.
 
@@ -54,7 +54,7 @@ In the graph below, it displays a scatter plot relationship between a person's a
 
 ![age vs. light sleep](images/age_vs_light_sleep.jpg)
 
-The graph below includes the calculated correlation coefficient using the pearson correlation formula. Based on correlation coefficient calculation standards, the null hypothesis would be that age doesn't effect Light sleep, while the alternative hypothesis would be that age does effect Light sleep. The value of R is -0.032 which indicates it a weak, negative linear relationship between age and Light sleep percentage.The p- value is 0.5 meaning that we accept the null hypothesis. In other words, we accept the fact that age has no effect on Light sleep. 
+The graph below uses the pearson correlation coefficient formula to measure the linear correlation between age and light sleep percentage. Based on correlation coefficient calculation standards, the null hypothesis would be that age doesn't effect Light sleep, while the alternative hypothesis would be that age does effect Light sleep. The value of R is -0.032 which indicates it a weak, negative linear relationship between age and Light sleep percentage.The p- value is 0.5 meaning that we accept the null hypothesis. In other words, we accept the fact that age has no effect on Light sleep. 
 
 ![age vs. light sleep 2](images/age_vs_light_sleep2.jpg)
 
@@ -65,7 +65,7 @@ In graph below, displays a scatter plot relationship between a person's age and 
 
 ![age vs. deep sleep](images/age_vs_deep_sleep.jpg)
 
-The graph below includes the calculated correlation coefficient using the pearson correlation formula. Based on correlation coefficient calculation standards, the null hypothesis would be that age doesn't effect Deep sleep, while the alternative hypothesis would be that age does effect Deep sleep. From the calculation, the value of R is 0.022 which indicates it a weak, positive linear relationship between age and Deep sleep percentage.The p- value is 0.64 meaning that we accept the null hypothesis. In other words, we accept the fact that age has no effect on Deep sleep. 
+The graph below uses the pearson correlation coefficient formula to measure the linear correlation between age and deep sleep percentage. Based on correlation coefficient calculation standards, the null hypothesis would be that age doesn't effect Deep sleep, while the alternative hypothesis would be that age does effect Deep sleep. From the calculation, the value of R is 0.022 which indicates it a weak, positive linear relationship between age and Deep sleep percentage.The p- value is 0.64 meaning that we accept the null hypothesis. In other words, we accept the fact that age has no effect on Deep sleep. 
 
 ![age vs. deep sleep 2](images/age_vs_deep_sleep2.jpg)
 
@@ -76,7 +76,7 @@ The graph below, displays a scatter plot relationship between a person's age and
 
 ![age vs. rem sleep](images/age_vs_rem_sleep.jpg)
 
-The graph below includes the calculated correlation coefficient using the pearson correlation formula. Based on correlation coefficient calculation standards, the null hypothesis would be age doesn't effect REM sleep, while the alternative hypothesis would be age does effect REM sleep. From the calculation, the value of R is 0.042 which indicates it a weak, positive linear relationship between age and REM sleep percentage.The p- value is 0.37 meaning that we accept the null hypothesis. In other words, we accept the fact that age has no effect on REM sleep. 
+The graph below uses the pearson correlation coefficient formula to measure the linear correlation between age and rem sleep percentage. Based on correlation coefficient calculation standards, the null hypothesis would be age doesn't effect REM sleep, while the alternative hypothesis would be age does effect REM sleep. From the calculation, the value of R is 0.042 which indicates it a weak, positive linear relationship between age and REM sleep percentage.The p- value is 0.37 meaning that we accept the null hypothesis. In other words, we accept the fact that age has no effect on REM sleep. 
 ![age vs. rem sleep 2](images/age_vs_rem_sleep2.jpg)
 
 On average, an adult would spend 25% in total in REM sleep. According to the graph, the average is ~22.6% in REM sleep.
@@ -126,3 +126,5 @@ For the 'Insomnia' box and whisker plot, the minimum sleep duration value is 6.3
 
 ## References
 [Alcohol's Effects on Health](https://www.niaaa.nih.gov/alcohols-effects-health/overview-alcohol-consumption/what-standard-drink#:~:text=In%20the%20United%20States%2C%20one,which%20is%20about%2040%25%20alcohol)
+
+[Sleep Cycle](https://www.sleepfoundation.org/stages-of-sleep)
