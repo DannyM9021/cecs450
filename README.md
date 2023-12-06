@@ -86,18 +86,20 @@ As mentioned earlier, there are a variety of factors that can influence a person
 
 ###  Caffeine Consumption
 **Does Caffeine Affect Sleep?**
-In graph [1], we can see that although the majority of respondent does not drink coffee or any caffeine at all. People at age 25 - 40 drank 25mg to 75mg 24 hours prior to bed time. Lets see if caffeine consumption affect sleep efficiency.
+In the graph below, we can see that although the majority of respondent does not drink coffee or any caffeine at all. People at age 25 - 40 drank 25mg to 75mg 24 hours prior to bed time. Lets see if caffeine consumption affect sleep efficiency.
 ![Caffeine Consumption by Age](images/Caffeine_vs_Age.png)
 
-Although caffeine consumption is believed to worsen sleep quality, our dataset shows differently. In graph [], the median of sleep efficiency decreased slightly from 0.82 to 0.80 at 0mg to 50mg caffeine consumption. At 75 to 200mg caffeine consumption, the median of sleep efficiency goes up to 0.8 - 0.9. However, as shown in graph [1], the data for caffeine consumption above 100 mg is relatively small, so it's difficult to draw firm conclusions about the relationship between caffeine consumption and sleep efficiency at these higher levels.
+Although caffeine consumption is believed to worsen sleep quality, our dataset shows differently. The graph below shows that the median of sleep efficiency decreased slightly from 0.82 to 0.80 at 0mg to 50mg caffeine consumption. At 75 to 200mg caffeine consumption, the median of sleep efficiency goes up to 0.8 - 0.9. However, as shown in the graph, the data for caffeine consumption above 100 mg is relatively small, so it's difficult to draw firm conclusions about the relationship between caffeine consumption and sleep efficiency at these higher levels.
 Therefore, given the limitations of the data, it is not possible to say definitively whether caffeine consumption has a positive or negative impact on sleep efficiency. 
 ![Caffeine Consumption vs Sleep Efficiency](images/Caffeine_vs_Sleep.png)
 
 ### Alcohol Consumption
 
-In graph [], it shows that alcohol consumption is more spread out than caffeine consumption. This means that there is a greater range of alcohol consumption within each age group, Additionally, the graph shows that there is a significant number of people in the 20-40 age group who drink 1 oz of alcohol in the 24 hours prior to bedtime, and a significant number of people in the 40-60 age group who consume 3oz of pure alcohol.
+The graph below shows that alcohol consumption is more spread out than caffeine consumption. This means that there is a greater range of alcohol consumption within each age group, Additionally, the graph shows that there is a significant number of people in the 20-40 age group who drink 1 oz of alcohol in the 24 hours prior to bedtime, and a significant number of people in the 40-60 age group who consume 3oz of pure alcohol.
+![Alcohol Consumption by Age](images/Alcohol_vs_Age.png)
 
-The graph [] shows that the sleep efficiency decreases as alcohol increases. The median sleep efficiency is 0.86 for people who consume 0 drinks per day, but it decreases to 0.82 for people who consume 1oz. The median decreases to 0.65 to 0.76 for people who consume more than 2oz. This suggests that drinking alcohol, even in moderate amounts, can disrupt sleep efficiency.
+The graph below shows that the sleep efficiency decreases as alcohol increases. The median sleep efficiency is 0.86 for people who does not consume any alcohol, but it decreases to 0.82 for people who consume 1 oz. The median decreases to 0.65 to 0.76 for people who consume more than 2 oz. This suggests that drinking alcohol, even in moderate amounts, can disrupt sleep efficiency.
+![Alcohol Consumption vs Sleep Efficiency](images/Alcohol_vs_Sleep.png)
 
 ### Smoking Status 
 The graph below shows a bar graph indicating the number people who smoke and don't smoke. As shown, the majority don't smoke with 298 people (66%), while around 154 people (34%) do smoke based on the data. 
