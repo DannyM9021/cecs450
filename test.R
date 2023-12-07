@@ -299,7 +299,7 @@ job_compare_stress <- lifestyle %>% select(c("Occupation","Stress.Level"))
 job_compare_stress <- job_compare_stress %>% filter(Occupation != "Manager" & Occupation != "Sales Representative")
 # used fct_reorder to reorder the rows by median in the graph
 job_compare_stress %>% mutate(class = fct_reorder(Occupation, Stress.Level, .fun = 'median')) %>%
-  ggplot(aes(x = Stress.Level, y = reorder(Occupation, Stress.Level), fill = Occupation)) +
+  ggplot(aes(x = Stress.Level, y = fct_reorder(Occupation, Stress.Level,  .fun = 'median',.desc = TRUE), fill = Occupation)) +
   geom_density_ridges(alpha = 0.8) +
   #geom_density_ridges(alpha=0.6, stat="binline", bins=6) +
   theme_ridges() +
@@ -309,7 +309,7 @@ job_compare_stress %>% mutate(class = fct_reorder(Occupation, Stress.Level, .fun
     strip.text.x = element_text(size = 8),
   )+  
   coord_cartesian(clip = "off")+ #turn off cliping so annotation can be outside of graph
-  annotation_custom(annotation, xmin = -7,ymin = -2.5, ymax = 1) + #add annotation
+  annotation_custom(annotation, xmin = -10,ymin = -2.6, ymax = 1) + #add annotation
   xlab("Stress Level") +
   ylab("Occupation") + 
   labs(title = "Stress Level vs Differnt Occupation")
