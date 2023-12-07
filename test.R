@@ -202,7 +202,7 @@ ggplot(alcohol, aes(x = Alcohol.consumption, y = Sleep.efficiency)) +
 smoking_count <- sleep_efficiency_data_frame %>% select(c("Smoking.status"))
 smoking_graph <- barplot(table(smoking_count), main = "Smoking Status", xlab = "Status", 
                          ylab = "Count", border = c("green4", "red4"), 
-                         col = c("green", "red"), ylim = c(0,350),
+                         col = c("lightgreen", "lightpink"), ylim = c(0,350),
                          legend.text = c("No","Yes"), args.legend=list(cex = 1,
                          x = "topright"), space = 0.1 ) 
 
@@ -225,10 +225,10 @@ smoke_n_sleep
 ggplot(smoke_n_sleep, aes(x = Smoking.status, y = Sleep.efficiency, 
                           fill = interaction(Smoking.status))) +
   geom_boxplot() +
-  scale_fill_manual(values = c("lightgray","lightgray")) +
+  scale_fill_manual(values = c("lightgreen","lightpink")) +
   labs(x = "Smoking Status", y = "Sleep Efficiency") +
-  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red", 
-               fill="red") +
+  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red4", 
+               fill="black") +
   labs(title = "Does Smoking Accept Sleep?") +
   theme_minimal() +
   guides(fill=guide_legend(title="Smoking Status")) +
@@ -293,26 +293,26 @@ legend(x= 1, y= 1, c("Account", "Doctor", "Engineer", "Lawyer", "Manager",
 
 annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", 
                        gp = gpar(fontsize = 8, fontface = "italic"))
-# Comparing Sleep.Duration with different occupation
-job_compare_sd <- lifestyle %>% select(c("Occupation","Sleep.Duration"))
+# Comparing stress level with differnt occupation---------------------------
+job_compare_stress <- lifestyle %>% select(c("Occupation","Stress.Level"))
 # omit manager and sales Representative because theres not enough data
-job_compare_sd <- job_compare_sd %>% filter(Occupation != "Manager" & Occupation != "Sales Representative")
+job_compare_stress <- job_compare_stress %>% filter(Occupation != "Manager" & Occupation != "Sales Representative")
 # used fct_reorder to reorder the rows by median in the graph
-job_compare_sd %>% mutate(class = fct_reorder(Occupation, Sleep.Duration, .fun = 'median')) %>%
-  ggplot(aes(x = Sleep.Duration, y = reorder(Occupation, Sleep.Duration), fill = Occupation)) +
+job_compare_stress %>% mutate(class = fct_reorder(Occupation, Stress.Level, .fun = 'median')) %>%
+  ggplot(aes(x = Stress.Level, y = reorder(Occupation, Stress.Level), fill = Occupation)) +
   geom_density_ridges(alpha = 0.8) +
   #geom_density_ridges(alpha=0.6, stat="binline", bins=6) +
   theme_ridges() +
   theme(
     legend.position = "none",
     panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8)
-  )+
+    strip.text.x = element_text(size = 8),
+  )+  
   coord_cartesian(clip = "off")+ #turn off cliping so annotation can be outside of graph
-  annotation_custom(annotation, xmin = 1, ymin = -2.2, ymax = 1) + #add annotation
-  xlab("Sleep.Duration") +
+  annotation_custom(annotation, xmin = -7,ymin = -2.5, ymax = 1) + #add annotation
+  xlab("Stress Level") +
   ylab("Occupation") + 
-  labs(title = "Sleep Duration with Differnt Cccupation")
+  labs(title = "Stress Level vs Differnt Occupation")
 
 annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", gp=gpar(fontsize=8, fontface="italic"))
 
@@ -334,31 +334,9 @@ job_compare_qs %>% mutate(class = fct_reorder(Occupation, Quality.of.Sleep, .fun
   coord_cartesian(clip = "off") + #turn off cliping so annotation can be outside of graph
   annotation_custom(annotation,xmin = -7,ymin = -2.5, ymax = 1) + #add annotation
   xlab("Quality.of.Sleep") +
-  ylab("Occupation")+ 
-  labs(title = "Quality of Sleep with Differnt Cccupation")
+  ylab("Occupation") + 
+  labs(title = "Quality of Sleep vs Differnt Occupation")
 
-annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", 
-                       gp=gpar(fontsize=8, fontface="italic"))
-
-# Comparing quailty of sleep with differnt occupation---------------------------
-job_compare_stress <- lifestyle %>% select(c("Occupation","Stress.Level"))
-# omit manager and sales Representative because theres not enough data
-job_compare_stress <- job_compare_stress %>% filter(Occupation != "Manager" & Occupation != "Sales Representative")
-# used fct_reorder to reorder the rows by median in the graph
-job_compare_stress %>% mutate(class = fct_reorder(Occupation, Stress.Level, .fun = 'median')) %>%
-  ggplot(aes(x = Stress.Level, y = reorder(Occupation, Stress.Level), fill = Occupation)) +
-  geom_density_ridges(alpha = 0.8) +
-  #geom_density_ridges(alpha=0.6, stat="binline", bins=6) +
-  theme_ridges() +
-  theme(
-    legend.position = "none",
-    panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8),
-  )+  
-  coord_cartesian(clip = "off")+ #turn off cliping so annotation can be outside of graph
-  annotation_custom(annotation, xmin = -7,ymin = -2.5, ymax = 1) + #add annotation
-  xlab("Stress Level") +
-  ylab("Occupation")
 
 # Scatter plot of physical activity compared to stress level--------------------
 physical_activity_vs_stress <- lifestyle %>% select(c("Physical.Activity.Level","Stress.Level"))
@@ -385,14 +363,29 @@ ggplot(Heart.RatevsQuality.of.Sleep, aes(x = Heart.Rate, y = Quality.of.Sleep, s
 disorder <- lifestyle %>% select(c("Sleep.Disorder"))
 disorder_count <- table(disorder)
 # disorder_count # to check values
-disorder_label<- c("None", "Insomnia", "Sleep Apnea")
+disorder_label<- c("Insomnia","None", "Sleep Apnea")
 percent <- round(disorder_count/sum(disorder_count)*100, 1)
 disorder_label <- paste(disorder_label, percent, "%")
 
 # Adjust margins
 par(mar = c(2,2,2,2))
-pie(disorder_count, labels = disorder_label, col= brewer.pal(n = 12, name="Set3"), 
-    main = "Sleep Disorder Count", radius = 1, clockwise = TRUE) 
+pie(disorder_count, labels = disorder_label, col = c("lightpink", "lightgreen", "lightblue"),
+    main = "Sleep Disorder Count", radius = 1, clockwise= TRUE) 
+
+#old color brewer.pal(n = 12, name="Set3")
+
+
+#just to check if the values were correct
+
+#dis <- lifestyle %>% select(c("Sleep.Disorder"))
+#graph <- barplot(table(dis), main = "Dis Count", xlab = "Dis", 
+#                               ylab = "Count", border = "blue", col = "lightblue1",ylim = c(0, 250), 
+#                               legend.text = "Dis", args.legend = list(cex = 1,x="topright"), space = 1)
+#abline(h = 0)
+#text(x = graph,
+#     y = table(dis),
+#     labels = as.data.frame(table(dis))[[2]],
+#     pos = 3, cex = 0.75)
 
 
 # Graph to find correlation between sleep disorder and sleep duration-----------
