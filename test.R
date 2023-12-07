@@ -312,7 +312,7 @@ job_compare_stress %>% mutate(class = fct_reorder(Occupation, Stress.Level, .fun
   annotation_custom(annotation, xmin = -10,ymin = -2.6, ymax = 1) + #add annotation
   xlab("Stress Level") +
   ylab("Occupation") + 
-  labs(title = "Stress Level vs Differnt Occupation")
+  labs(title = "Stress Level vs Different Occupation")
 
 annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", gp=gpar(fontsize=8, fontface="italic"))
 
@@ -333,9 +333,9 @@ job_compare_qs %>% mutate(class = fct_reorder(Occupation, Quality.of.Sleep, .fun
   )+  
   coord_cartesian(clip = "off") + #turn off cliping so annotation can be outside of graph
   annotation_custom(annotation,xmin = -7,ymin = -2.5, ymax = 1) + #add annotation
-  xlab("Quality.of.Sleep") +
+  xlab("Quality of Sleep") +
   ylab("Occupation") + 
-  labs(title = "Quality of Sleep vs Differnt Occupation")
+  labs(title = "Quality of Sleep vs Different Occupation")
 
 
 # Scatter plot of physical activity compared to stress level--------------------
