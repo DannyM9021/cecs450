@@ -416,10 +416,11 @@ ggplot(sleep, aes(x = Sleep.Disorder, y = Quality.of.Sleep)) +
 # Graph to find correlation between BMI and sleep quality-----------------------
 sleep <- lifestyle %>% select(c("BMI.Category","Quality.of.Sleep"))
 sleep$BMI.Category <- factor(sleep$BMI.Category, 
-                      levels=c("Normal", "Normal Weight", "Overweight", "Obese"))
+                      levels=c("Normal Weight", "Normal", "Overweight", "Obese"))
+levels(sleep$BMI.Category) <- c("UnderWeight", "Normal", "Overweight", "Obese")
 ggplot(sleep, aes(x = BMI.Category, y = Quality.of.Sleep, fill = interaction(BMI.Category))) +
   geom_boxplot() +
-  scale_fill_manual(values = c("green","yellow","orange","red"))+
+  scale_fill_manual(values = c("yellow","green","orange","red"))+
   labs(x = "BMI Category", y = "Quality of Sleep") +
   stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red4", 
                fill = "black") +
@@ -431,10 +432,11 @@ ggplot(sleep, aes(x = BMI.Category, y = Quality.of.Sleep, fill = interaction(BMI
 # Graph to find correlation between BMI and sleep duration----------------------
 sleep <- lifestyle %>% select(c("BMI.Category","Sleep.Duration"))
 sleep$BMI.Category <- factor(sleep$BMI.Category , 
-                      levels = c("Normal", "Normal Weight", "Overweight", "Obese"))
+                      levels = c("Normal Weight", "Normal", "Overweight", "Obese"))
+levels(sleep$BMI.Category) <- c("UnderWeight", "Normal", "Overweight", "Obese")
 ggplot(sleep, aes(x = BMI.Category, y = Sleep.Duration, fill = interaction(BMI.Category))) +
   geom_boxplot() +
-  scale_fill_manual(values = c("green","yellow","orange","red")) +
+  scale_fill_manual(values = c("yellow","green","orange","red")) +
   labs(x = "BMI Category", y = "Sleep Duration") +
   stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, col = "red4", 
                fill = "black") +
