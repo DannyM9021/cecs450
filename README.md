@@ -55,12 +55,8 @@ Rapid eye movement (REM) sleep is the stage where most dreams occur. Brain activ
 In the graph below, it displays a scatter plot relationship between a person's age and Light sleep measured in percentage using the `plot()` function. We are trying to test whether or not age affects the duration a person would spend in Light sleep. As we can see, the age varies from 9- 69 years old. Majority of the people would ~10- 27% in this stage, minority would ~40- 60%, and rarely no one ~30- 40% (one outlier). On average, an adult would spend ~50% in total in Light sleep. However, according the graph, the average light sleep is ~24.6%.
 
 **Code:**\
-`x <- sleep_efficiency_data_frame$Age`
-`y <- sleep_efficiency_data_frame$Light.sleep.percentage`
-
-`plot(x, y, main = "Does Age Affect Light Sleep?",`
-     `xlab = "Age", ylab = "Light Sleep (%)",`
-     `pch = 19, frame = FALSE, xlim = c(7,70), ylim = c(5, 70))`\ 
+```x <- sleep_efficiency_data_frame$Age y <- sleep_efficiency_data_frame$Light.sleep.percentage plot(x, y, main = "Does Age Affect Light Sleep?", xlab = "Age", ylab = "Light Sleep (%)", pch = 19, frame = FALSE, xlim = c(7,70), ylim = c(5, 70))``` 
+     
 (**Note:** Similar methodologies were used when comparing age to different stages of the sleep cycle. The dependent variable (y) was changed to that specific stage. The axes' range were changed as well depending on the graph.)
 
 ![age vs. light sleep](images/age_vs_light_sleep.jpg)
@@ -68,15 +64,8 @@ In the graph below, it displays a scatter plot relationship between a person's a
 The graph below uses the pearson correlation coefficient formula to measure the linear correlation between age and light sleep percentage. Based on correlation coefficient calculation standards, the null hypothesis would be defined as age doesn't affect Light sleep, while the alternative hypothesis is age does affect Light sleep. The value of R is -0.032 which indicates it a weak, negative linear relationship between age and Light sleep percentage since the value is less than 0. The threshold of significance we chose to evaluate the p-value is 0.05. The p- value is 0.5 meaning that we accept the null hypothesis because it's greater than 0.05. In other words, we accept the fact that age has no effect on Light sleep.
 
 **Code:**\
-`# read file`
-`sleep_data <- sleep_efficiency_data_frame`
-`# plot the data as points and calculate `
-`# correlation coefficient with pearson correlation formula`
-`ggscatter(sleep_data, x = "Age", y = "Light.sleep.percentage",` 
-          `add = "reg.line", conf.int = TRUE,` 
-          `cor.coef = TRUE, cor.method = "pearson",`
-          `title = "Does Age Affect Light Sleep?",`
-          `xlab = "Age", ylab = "Light Sleep (%)", xlim = c(7,70), ylim = c(5, 70))` `+ theme(plot.title = element_text(hjust = 0.5))`\
+```# read file sleep_data <- sleep_efficiency_data_frame # plot the data as points and calculate # correlation coefficient with pearson correlation formula ggscatter(sleep_data, x = "Age", y = "Light.sleep.percentage" add = "reg.line", conf.int = TRUE, cor.coef = TRUE, cor.method = "pearson", title = "Does Age Affect Light Sleep?", xlab = "Age", ylab = "Light Sleep (%)", xlim = c(7,70), ylim = c(5, 70)) + theme(plot.title = element_text(hjust = 0.5))```
+          
 (**Note:** Similar methodologies were used when comparing age to different stages of the sleep cycle. The dependent variable (y) was changed to that specific stage. The axes' range were changed as well depending on the graph.)
 
 ![age vs. light sleep 2](images/age_vs_light_sleep2.jpg)
