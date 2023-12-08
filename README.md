@@ -14,6 +14,7 @@ For our semester project, we decided to take a look into the world of sleep! We 
 Our goal is to find the factors that greatly contribute to the greatest amount and quality of sleep so everyone can enjoy a good night's rest.
 
 ## Introduction
+Sleep is essential for our physical and mental health. Although varies by age, adults generally require at least 7 hours of sleep each night for optimal health. Insufficient sleep can lead to meany negative consequences, including impaired focus, cognitive decline, delayed reactions, mood swings, and an increased risk of developing various illnesses. Therefore it is important to try and find ways to improve our sleep quality. 
 
 ## Technology Used
 - [R Language](https://cran.rstudio.com/)
@@ -25,6 +26,21 @@ We used the following datasets that can be found on Kaggle:
 
 - [Sleep Efficiency](https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency)
 - [Sleep Health and Lifestyle](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset)
+
+### Sleep Efficiency
+The sleep efficiency dataset was collected as part of a study conducted in Morocco by a group of artificial intelligence engineering students from ENSIAS (National school For Computer Science). It contains 15 columns, which can be grouped in 3 categories:
+
+- Unique Identifier: ID
+- Potential factors: Age, Gender, Caffeine consumption, Alcohol consumption, Smoking status, Exercise frequency
+- Sleep quality metrics: Bedtime, Wakeup time, Sleep duration, Sleep efficiency, REM sleep percentage, Deep sleep percentage, Light sleep percentage, Awakenings
+
+### Sleep Health and Lifestyle Dataset 
+The sleep health and lifestyle dataset was collected by a data science student at University of Moratuwa Kilinochchi in Sri Lanka - Laksika Tharmalingam. The dataset is updated by quarterly. It contains 13 columns, which can also be grouped in 3 categories:
+- Unique Identifier: Person ID
+- Potential factors: Gender, Age, Occupation, Physical Activity Level, Stress Level, BMI Category, Blood Pressure, Heart Rate, Daily Steps, Sleep Disorder
+- Sleep quality metrics: Sleep Duration, Quality of Sleep
+
+
 
 ## Definitions
 - Sleep Cycle- when the human body cycles through two phases of sleep: NREM and REM sleep. A person typically goes through 4-6 cycles per night, which starts over every 80- 100 minutes.
@@ -123,6 +139,7 @@ The pie chart below shows the distribution of occupations within the Sleep Healt
 
 We initially created a graph to visualize the distribution of sleep quality with different occupations. However, this graph contained empty lines for the occupations of "manager" and "sales representative" due to insufficient data. 
 ![quality_of_sleep_vs_occupation_v0](images/quality_of_sleep_vs_occupation_v0.png)
+
 To address this issue, We used the filter function to remove the manager and sales representative. This resulted in a more focused and informative graph. Although the updated graph provided a clearer picture, it remained difficult to determine which occupations had the highest and lowest average sleep quality. 
 ![quality_of_sleep_vs_occupation_v1](images/quality_of_sleep_vs_occupation_v1.png)
 
@@ -134,9 +151,16 @@ We also compared occupation to stress levels. In the above graph, we found that 
 
 ## Physical Activity Level vs Stress Level 
 
+The below graph shows a mixed relationship between physical activity level and stress level. There are slightly more points located along a diagonal line with high stress level and low physical activity level and vice versa. However, there is also a significant amount of variability in the graph.
+The scatter plot reveals a mixed relationship between physical activity level and stress level.
+While there is a general trend towards lower stress levels with higher physical activity levels, there is also a significant amount of variability in the data. Therefore, the relationship between physical activity level and stress level in our dataset is unclear.
 ![Physical Activity Level vs Stress Level ](images/physical_activity_vs_stress.png)
 
 ## Heart Rate vs Quality of Sleep 
+
+The below bubbule plot explores the relationships between heart rate and sleep quality. The size of the bubble corresponds to the frequency of one particular combination of heart rate and sleep quality.
+
+The graph shows that the larger bubbles generally concentrated in the top left of the graph, where they have higher sleep quality and low heart rates. As the heart rates get higher, the larger bubbles get lower, which means the sleep quality decases as heart rate increase. It shows a negative relationship between heart rates and sleep quality.
 
 ![Heart Rate vs Quality of Sleep ](images/heart_rate_vs_quality_of_sleep.png)
 
@@ -159,3 +183,5 @@ For the 'Insomnia' box and whisker plot, the minimum sleep duration value is 6.3
 [Alcohol's Effects on Health](https://www.niaaa.nih.gov/alcohols-effects-health/overview-alcohol-consumption/what-standard-drink#:~:text=In%20the%20United%20States%2C%20one,which%20is%20about%2040%25%20alcohol)
 
 [Sleep Cycle](https://www.sleepfoundation.org/stages-of-sleep)
+
+[Why Do We Need Sleep?](https://www.sleepfoundation.org/how-sleep-works/why-do-we-need-sleep)
