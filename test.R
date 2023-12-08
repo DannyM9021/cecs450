@@ -286,7 +286,7 @@ par(mar=c(2,0,2,2))
 pie(job_count, labels = job_label, col= brewer.pal(n = 12, name="Set3"), 
     main = "Occupation Count", radius = .6, clockwise = TRUE, cex = 0.8) 
 # create legend 
-legend(x= 0.85, y= 1, c("Account", "Doctor", "Engineer", "Lawyer", "Manager",
+legend(x= 0.85, y= 1, c("Accountant", "Doctor", "Engineer", "Lawyer", "Manager",
                     "Nurse", "Sales Rep.", "Salesperson", "Scientist", "Software Engr.",
                    "Teacher"), fill = brewer.pal(n = 12, name = "Set3"),xpd=TRUE)
 

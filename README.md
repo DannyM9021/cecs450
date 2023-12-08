@@ -86,6 +86,7 @@ As mentioned earlier, most of the graphs indicate that age doesn't affect stages
 
 ###  Caffeine Consumption
 **Does Caffeine Affect Sleep?**
+
 In the graph below, we can see that although the majority of respondent does not drink coffee or any caffeine at all. People at age 25 - 40 drank 25mg to 75mg 24 hours prior to bed time. Lets see if caffeine consumption affect sleep efficiency.
 ![Caffeine Consumption by Age](images/Caffeine_vs_Age.png)
 
@@ -111,6 +112,34 @@ The graph below represents 2 box and whisker plot to understand whether a person
 ![smoking box plot](images/smoking_box_plot.jpg)
 
 For the 'No' box and whisker plot, the minimum sleep efficiency value is 0.53, and the maximum sleep efficiency value is 0.99. The lower quartile is 0.73, while the upper quartile is 0.91. The median sleep efficiency is 0.84 for people who don't smoke. For the 'Yes' box and whisker plot, the minimum sleep efficiency value is 0.5, and the maximum sleep efficiency value is 0.97. The lower quartile is 0.55, while the upper quartile is 0.88. The median sleep efficiency is 0.78 for people who do smoke. Individuals who don't smoke had higher sleep efficiency in comparison to those who do smoke, which supports our claim. A limitation to this data is that we don't know how sleep efficiency is being measured.
+
+## Occupation count
+**Does Occupation Affect Sleep?**
+
+The pie chart below shows the distribution of occupations within the Sleep Health and Lifestyle dataset. Each segment represent the proportion of individuals categorized within each occupation. The largest segment represents nurses and doctor, accountant for 19.5% and 19% of the dataset respectively. Engineers and lawyers make up 16.8% and 12.6% of the dataset respectively. Teacher, accountant and salesperson represent 10.7%, 9.9%, 8.6%. Software engineer and scientist both make up 1.1% of the dataset. Sales Representatives and manager hold the smallest portion of the dataset, with 0.5% and 0.3% respectively.
+![ocuupation count](images/occupation_count.png)
+ 
+## Sleep quality and Stress level with different occupation 
+
+We initially created a graph to visualize the distribution of sleep quality with different occupations. However, this graph contained empty lines for the occupations of "manager" and "sales representative" due to insufficient data. 
+![quality_of_sleep_vs_occupation_v0](images/quality_of_sleep_vs_occupation_v0.png)
+To address this issue, We used the filter function to remove the manager and sales representative. This resulted in a more focused and informative graph. Although the updated graph provided a clearer picture, it remained difficult to determine which occupations had the highest and lowest average sleep quality. 
+![quality_of_sleep_vs_occupation_v1](images/quality_of_sleep_vs_occupation_v1.png)
+
+To enhance the data visualizations, we utilized the `fct_reorder(Occupation, Quality.of.Sleep, .fun = 'median')` function. It sorts the occupations based on the median of sleep quality, allowing for a more clear visualization. We are now able to identify that engineers, lawyers, and accountants had the best sleep quality. In contrast, scientists, salesperson, and software engineers had the worse sleep quality median.
+![Quality of sleep vs occupation](images/quality_of_sleep_vs_occupation_v2.png)
+![stress level vs occupation](images/stress_level_vs_occupation.png)
+
+We also compared occupation to stress levels. In the above graph, we found that stress level corresponds to the sleep quality. Engineer, accountant and laywer, which have the best sleep quality, have lower stress levels. Scientists, salesperson, which have the lowest sleep quality, have the highest stress level.This suggests that stress affects sleep quality as well.
+
+## Physical Activity Level vs Stress Level 
+
+![Physical Activity Level vs Stress Level ](images/physical_activity_vs_stress.png)
+
+## Heart Rate vs Quality of Sleep 
+
+![Heart Rate vs Quality of Sleep ](images/heart_rate_vs_quality_of_sleep.png)
+
 
 ## Sleep Disorder
 In the pie chart below, it displays the percentage value of the sleep disorders found in the dataset. Around 20.6% appear to have insomnia, a sleep disorder characterize by difficulty falling asleep, staying asleep, or both. Around 20.9% have sleep apnea, a condition that in which a person's breathing stops and restarts many times during sleep. There are around 58.6% who don't have any sleep disorder. 
