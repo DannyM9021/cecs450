@@ -56,6 +56,7 @@ In the graph below, it displays a scatter plot relationship between a person's a
 
 **Code:**\
 `x <- sleep_efficiency_data_frame$Age`
+
 `y <- sleep_efficiency_data_frame$Light.sleep.percentage`
 
 `plot(x, y, main = "Does Age Affect Light Sleep?", xlab = "Age", ylab = "Light Sleep (%)", pch = 19, frame = FALSE, xlim = c(7,70), ylim = c(5, 70))`
@@ -68,9 +69,13 @@ The graph below uses the pearson correlation coefficient formula to measure the 
 
 **Code:**\
 `# read file`
+
 `sleep_data <- sleep_efficiency_data_frame`
+
 `# plot the data as points and calculate `
+
 `# correlation coefficient with pearson correlation formula`
+
 `ggscatter(sleep_data, x = "Age", y = "Light.sleep.percentage", add = "reg.line", conf.int = TRUE, cor.coef = TRUE, cor.method = "pearson", title = "Does Age Affect Light Sleep?", xlab = "Age", ylab = "Light Sleep (%)", xlim = c(7,70), ylim = c(5, 70)) + theme(plot.title = element_text(hjust = 0.5))`
 
 (**Note:** Similar methodologies were used when comparing age to different stages of the sleep cycle. The dependent variable (y) was changed to that specific stage. The axes' range were changed as well depending on the graph.)
@@ -125,9 +130,13 @@ The graph below shows a bar graph indicating the number people who smoke and don
 
 **Code:**\
 `smoking_count <- sleep_efficiency_data_frame %>% select(c("Smoking.status"))`
+
 `smoking_graph <- barplot(table(smoking_count), main = "Smoking Status", xlab = "Status", ylab = "Count", border = c("green4", "red4"), col = c("lightgreen", "lightpink"), ylim = c(0,350), legend.text = c("No","Yes"), args.legend=list(cex = 1, x = "topright"), space = 0.1 )`
+
 `#add labeling/ text`
+
 `abline(h=0)`
+
 `text(x = smoking_graph, y = table(smoking_count), labels = as.data.frame(table(smoking_count))[[2]], pos = 3)`
 
 ![smoking status](images/smoking_status.jpg)
@@ -135,7 +144,7 @@ The graph below shows a bar graph indicating the number people who smoke and don
 The graph below represents 2 box and whisker plot to understand whether a person's smoking status affects their sleep efficiency. The smoking status variable indicates whether a person engages in this activity or not, while sleep efficiency is a measure of the proportion of time spent in bed that is actually spent asleep. We assume that people that don't smoke will have a higher sleep efficiency than those do smoke.
 
 **Code:**\
-`smoke_n_sleep <- sleep_efficiency_data_frame %>% select(c("Smoking.status","Sleep.efficiency"))smoke_n_sleep`
+`smoke_n_sleep <- sleep_efficiency_data_frame %>%select(c("Smoking.status","Sleep.efficiency"))smoke_n_sleep`
 
 `ggplot(smoke_n_sleep, aes(x = Smoking.status, y = Sleep.efficiency, fill = interaction(Smoking.status))) + geom_boxplot() + scale_fill_manual(values = c("lightgreen","lightpink")) + labs(x = "Smoking Status", y = "Sleep Efficiency") + stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red4", fill="black") + labs(title = "Does Smoking Accept Sleep?") + theme_minimal() + guides(fill=guide_legend(title="Smoking Status")) + theme(plot.title = element_text(hjust = 0.5))`
 
