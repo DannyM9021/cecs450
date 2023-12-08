@@ -11,10 +11,12 @@ Project Contributors: Holly Lee, Ivy Ly, Daniel Moreno
 
 ## Project Goal
 For our semester project, we decided to take a look into the world of sleep! We are trying to find correlations between how different factors contribute to the quality of sleep people experience.
-Our goal is to find the factors that greatly contribute to the greatest amount and quality of sleep so everyone can enjoy a good night's rest.
+Our goal is to find the factors that greatly contribute to the greatest amount and quality of sleep so everyone can enjoy a good night's rest. In other words, the question we want to answer is:
+**"What are the factors that contribute to the greatest sleep efficiency"**?
 
 ## Introduction
 Sleep is essential for our physical and mental health. Although varies by age, adults generally require at least 7 hours of sleep each night for optimal health. Insufficient sleep can lead to meany negative consequences, including impaired focus, cognitive decline, delayed reactions, mood swings, and an increased risk of developing various illnesses. Therefore it is important to try and find ways to improve our sleep quality. 
+
 
 ## Technology Used
 - [R Language](https://cran.rstudio.com/)
