@@ -183,24 +183,33 @@ We also compared occupation to stress levels. In the above graph, we found that 
 ## Sleep Disorder
 In the pie chart below, it displays the percentage value of the sleep disorders found in the dataset. Around 20.6% appear to have insomnia, a sleep disorder characterize by difficulty falling asleep, staying asleep, or both. Around 20.9% have sleep apnea, a condition that in which a person's breathing stops and restarts many times during sleep. There are around 58.6% who don't have any sleep disorder. 
 
-**Code:**\ 
+**Code:**
+
 `disorder <- lifestyle %>% select(c("Sleep.Disorder"))`
+
 `disorder_count <- table(disorder)`
+
 `disorder_label<- c("Insomnia","None", "Sleep Apnea")`
+
 `percent <- round(disorder_count/sum(disorder_count)*100, 1)`
+
 `disorder_label <- paste(disorder_label, percent, "%")`
 
 `# Adjust margins`
+
 `par(mar = c(2,2,2,2))`
-`pie(disorder_count, labels = disorder_label, col = c("lightpink", "lightgreen", "lightblue"), main = "Sleep Disorder Count", radius = 1, clockwise= TRUE) `
+
+`pie(disorder_count, labels = disorder_label, col = c("lightpink", "lightgreen", "lightblue"), main = "Sleep Disorder Count", radius = 1, clockwise= TRUE)`
 
 
 ![sleep disorder count](images/sleep_disorder_count3.jpg)
 
 The box and whisker plot below, represents how each sleep disorder affects a person's sleep duration measured in hours.
 
-**Code:**\
+**Code:**
+
 `sleep <- lifestyle %>% select(c("Sleep.Disorder","Sleep.Duration"))`
+
 `ggplot(sleep, aes(x = Sleep.Disorder, y = Sleep.Duration)) + geom_boxplot(aes(group = Sleep.Disorder, fill = Sleep.Disorder)) + labs(x = "Sleep Disorder", y = "Sleep Duration") + stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red", fill = "red") + theme_minimal()`
 
 ![sleep disorder and sleep duration ](images/sleep_disorder_and_sleep_duration.jpg)
