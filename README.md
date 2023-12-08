@@ -220,7 +220,7 @@ for people who don't smoke. For the 'Yes' box and whisker plot, the minimum slee
 sleep efficiency is 0.78 for people who do smoke. Individuals who don't smoke had higher sleep efficiency in comparison to those who do smoke, which supports our claim. A limitation to this data is that we don't know how 
 sleep efficiency is being measured.
 
-## Occupation count
+### Occupation count
 **Does Occupation Affect Sleep?**
 
 The pie chart below shows the distribution of occupations within the Sleep Health and Lifestyle dataset. Each segment represent the proportion of individuals categorized within each occupation. The largest segment represents 
@@ -228,7 +228,7 @@ nurses and doctor, accountant for 19.5% and 19% of the dataset respectively. Eng
 engineer and scientist both make up 1.1% of the dataset. Sales Representatives and manager hold the smallest portion of the dataset, with 0.5% and 0.3% respectively.
 ![ocuupation count](images/occupation_count.png)
  
-## Sleep quality and Stress level with different occupation 
+### Sleep quality and Stress level with different occupation 
 
 We initially created a graph to visualize the distribution of sleep quality with different occupations. However, this graph contained empty lines for the occupations of "manager" and "sales representative" due to insufficient 
 data. 
@@ -246,7 +246,7 @@ We are now able to identify that engineers, lawyers, and accountants had the bes
 We also compared occupation to stress levels. In the above graph, we found that stress level corresponds to the sleep quality. Engineer, accountant and laywer, which have the best sleep quality, have lower stress levels. 
 Scientists, salesperson, which have the lowest sleep quality, have the highest stress level.This suggests that stress affects sleep quality as well.
 
-## Physical Activity Level vs Stress Level 
+### Physical Activity Level vs Stress Level 
 
 The below graph shows a mixed relationship between physical activity level and stress level. There are slightly more points located along a diagonal line with high stress level and low physical activity level and vice versa. 
 However, there is also a significant amount of variability in the graph. The scatter plot reveals a mixed relationship between physical activity level and stress level.
@@ -254,7 +254,7 @@ While there is a general trend towards lower stress levels with higher physical 
 level in our dataset is unclear.
 ![Physical Activity Level vs Stress Level ](images/physical_activity_vs_stress.png)
 
-## Heart Rate vs Quality of Sleep 
+### Heart Rate vs Quality of Sleep 
 
 The below bubbule plot explores the relationships between heart rate and sleep quality. The size of the bubble corresponds to the frequency of one particular combination of heart rate and sleep quality.
 
@@ -264,7 +264,7 @@ negative relationship between heart rates and sleep quality.
 ![Heart Rate vs Quality of Sleep ](images/heart_rate_vs_quality_of_sleep.png)
 
 
-## Sleep Disorder
+### Sleep Disorder
 In the pie chart below, it displays the percentage value of the sleep disorders found in the dataset. Around 20.6% appear to have insomnia, a sleep disorder characterize by difficulty falling asleep, staying asleep, or both. 
 Around 20.9% have sleep apnea, a condition that in which a person's breathing stops and restarts many times during sleep. There are around 58.6% who don't have any sleep disorder. 
 
@@ -306,6 +306,29 @@ value is 6.1 hours, and the maximum sleep duration value is 8.5 hours. The lower
 which is higher compared to the others. There was an outlier present below the minimum sleep duration value. For the 'Sleep Apnea' box and whisker plot, the minimum sleep duration value is 5.3 hours, and the maximum sleep 
 duration value is 8.2 hours. The lower quartile is 6.1 hours, while the upper quartile is 8.1 hours. The median sleep duration is 6.7 hours for people who have sleep apnea, which greater than the insomnia median but less 
 than the none median. This suggest that sleep disorders can affect a person's sleep duration.
+
+Additionally, we also compared what effect sleep disorders had on sleep quality. The boxplot show below, shows how sleep disorders impact the quality of an individual's sleep.
+
+**Code:**
+```
+sleep <- lifestyle %>% select(c("Sleep.Disorder","Quality.of.Sleep"))
+ggplot(sleep, aes(x = Sleep.Disorder, y = Quality.of.Sleep)) +
+  geom_boxplot(aes(group = Sleep.Disorder,fill = Sleep.Disorder)) +
+  labs(x = "Sleep Disorder", y = "Quality of Sleep") +
+  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red", 
+               fill = "red") +
+  theme_minimal()
+```
+
+![sleep disorder and sleep quality](images/sleep_disorder_and_sleep_quality.jpg)
+
+For the 'Insomnia' boxplot, the minimum sleep quality score is 6, and the maximum sleep quality score was 7. The mean (symbolized by the red dot) is around 6.5. Just a few outliers are present in insomnia's boxplot. Having no 
+sleep disorders, the boxplot shows that the minimum sleep rating of 7. The maximum sleep rating of 8. The mean of the data is around 7.7. No outliers were present in the boxplot. Finally, we have the boxplot for sleep apnea 
+where the minimum sleep rating was 6. The maximum sleep rating was 9. The mean for this boxplot was around 7.2. No outliers were present either. Overall, the same trend appears in this data comparison. Having a sleep disorder,
+for the most part, did have an impact on the quality of sleep that an individual experienced. Not having a sleep disorder had a better sleep quality rating overall compared to the individuals who did have a sleep disorder.
+
+### Body Mass Index (BMI)
+
 
 ## Conclusion
 
