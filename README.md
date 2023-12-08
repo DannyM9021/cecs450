@@ -39,6 +39,8 @@ The sleep efficiency dataset was collected as part of a study conducted in Moroc
 - Potential factors: Age, Gender, Caffeine consumption, Alcohol consumption, Smoking status, Exercise frequency
 - Sleep quality metrics: Bedtime, Wakeup time, Sleep duration, Sleep efficiency, REM sleep percentage, Deep sleep percentage, Light sleep percentage, Awakenings
 
+The dataset is in csv format. The data is mostly clean except there are some empty cells in columns Awakenings, Caffeine consumption, Alcohol consumption and Exercise frequency. Since we want to visualize as much data as possible, we only remove the rows with empty fields when the columns are used. For example, we used `caffeine <- na.omit(caffeine)` to remove rows for caffeine consumptions graph. 
+
 ### Sleep Health and Lifestyle Dataset 
 The sleep health and lifestyle dataset was collected by a data science student at University of Moratuwa Kilinochchi in Sri Lanka - Laksika Tharmalingam. The dataset is updated by quarterly. It contains 13 columns, 
 which can also be grouped in 3 categories:
@@ -46,6 +48,7 @@ which can also be grouped in 3 categories:
 - Potential factors: Gender, Age, Occupation, Physical Activity Level, Stress Level, BMI Category, Blood Pressure, Heart Rate, Daily Steps, Sleep Disorder
 - Sleep quality metrics: Sleep Duration, Quality of Sleep
 
+The dataset is in csv format. It is very clean as it does not contain any missing information. The only mislabeled data is in the BMI Category. The descriptions in the dataset indicate that the BMI categories are "Underweight, Normal, Overweight, Obese". However, we found the BMI category column has "Normal weight, Normal, Overweight, Obese". We believe the underweight was mislabeled as "Normal weight" so we change column name to the correct category. 
 
 
 ## Definitions
