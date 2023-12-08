@@ -71,11 +71,13 @@ Rapid eye movement (REM) sleep is the stage where most dreams occur. Brain activ
 In the graph below, it displays a scatter plot relationship between a person's age and Light sleep measured in percentage using the `plot()` function. We are trying to test whether or not age affects the duration a person would spend in Light sleep. As we can see, the age varies from 9- 69 years old. Majority of the people would ~10- 27% in this stage, minority would ~40- 60%, and rarely no one ~30- 40% (one outlier). On average, an adult would spend ~50% in total in Light sleep. However, according the graph, the average light sleep is ~24.6%.
 
 **Code:**\
-`x <- sleep_efficiency_data_frame$Age`
+```
+x <- sleep_efficiency_data_frame$Age
 
-`y <- sleep_efficiency_data_frame$Light.sleep.percentage`
+y <- sleep_efficiency_data_frame$Light.sleep.percentage
 
-`plot(x, y, main = "Does Age Affect Light Sleep?", xlab = "Age", ylab = "Light Sleep (%)", pch = 19, frame = FALSE, xlim = c(7,70), ylim = c(5, 70))`
+plot(x, y, main = "Does Age Affect Light Sleep?", xlab = "Age", ylab = "Light Sleep (%)", pch = 19, frame = FALSE, xlim = c(7,70), ylim = c(5, 70))
+```
      
 (**Note:** Similar methodologies were used when comparing age to different stages of the sleep cycle. The dependent variable (y) was changed to that specific stage. The axes' range were changed as well depending on the graph.)
 
@@ -84,15 +86,17 @@ In the graph below, it displays a scatter plot relationship between a person's a
 The graph below uses the pearson correlation coefficient formula to measure the linear correlation between age and light sleep percentage. Based on correlation coefficient calculation standards, the null hypothesis would be defined as age doesn't affect Light sleep, while the alternative hypothesis is age does affect Light sleep. The value of R is -0.032 which indicates it a weak, negative linear relationship between age and Light sleep percentage since the value is less than 0. The threshold of significance we chose to evaluate the p-value is 0.05. The p- value is 0.5 meaning that we accept the null hypothesis because it's greater than 0.05. In other words, we accept the fact that age has no effect on Light sleep.
 
 **Code:**\
-`# read file`
+```
+# read file
 
-`sleep_data <- sleep_efficiency_data_frame`
+sleep_data <- sleep_efficiency_data_frame
 
-`# plot the data as points and calculate `
+# plot the data as points and calculate
 
-`# correlation coefficient with pearson correlation formula`
+# correlation coefficient with pearson correlation formula
 
-`ggscatter(sleep_data, x = "Age", y = "Light.sleep.percentage", add = "reg.line", conf.int = TRUE, cor.coef = TRUE, cor.method = "pearson", title = "Does Age Affect Light Sleep?", xlab = "Age", ylab = "Light Sleep (%)", xlim = c(7,70), ylim = c(5, 70)) + theme(plot.title = element_text(hjust = 0.5))`
+ggscatter(sleep_data, x = "Age", y = "Light.sleep.percentage", add = "reg.line", conf.int = TRUE, cor.coef = TRUE, cor.method = "pearson", title = "Does Age Affect Light Sleep?", xlab = "Age", ylab = "Light Sleep (%)", xlim = c(7,70), ylim = c(5, 70)) + theme(plot.title = element_text(hjust = 0.5))
+```
 
 (**Note:** Similar methodologies were used when comparing age to different stages of the sleep cycle. The dependent variable (y) was changed to that specific stage. The axes' range were changed as well depending on the graph.)
 
@@ -145,24 +149,28 @@ The graph below shows that the sleep efficiency decreases as alcohol increases. 
 The graph below shows a bar graph indicating the number people who smoke and don't smoke based on the data. As shown, the majority don't smoke with 298 people (66%), while around 154 people (34%) do smoke. 
 
 **Code:**\
-`smoking_count <- sleep_efficiency_data_frame %>% select(c("Smoking.status"))`
+```
+smoking_count <- sleep_efficiency_data_frame %>% select(c("Smoking.status"))
 
-`smoking_graph <- barplot(table(smoking_count), main = "Smoking Status", xlab = "Status", ylab = "Count", border = c("green4", "red4"), col = c("lightgreen", "lightpink"), ylim = c(0,350), legend.text = c("No","Yes"), args.legend=list(cex = 1, x = "topright"), space = 0.1 )`
+smoking_graph <- barplot(table(smoking_count), main = "Smoking Status", xlab = "Status", ylab = "Count", border = c("green4", "red4"), col = c("lightgreen", "lightpink"), ylim = c(0,350), legend.text = c("No","Yes"), args.legend=list(cex = 1, x = "topright"), space = 0.1 )
 
-`#add labeling/ text`
+#add labeling/ text
 
-`abline(h=0)`
+abline(h=0)
 
-`text(x = smoking_graph, y = table(smoking_count), labels = as.data.frame(table(smoking_count))[[2]], pos = 3)`
+text(x = smoking_graph, y = table(smoking_count), labels = as.data.frame(table(smoking_count))[[2]], pos = 3)
+```
 
 ![smoking status](images/smoking_status.jpg)
 
 The graph below represents 2 box and whisker plot to understand whether a person's smoking status affects their sleep efficiency. The smoking status variable indicates whether a person engages in this activity or not, while sleep efficiency is a measure of the proportion of time spent in bed that is actually spent asleep. We assume that people that don't smoke will have a higher sleep efficiency than those do smoke.
 
 **Code:**\
-`smoke_n_sleep <- sleep_efficiency_data_frame %>%select(c("Smoking.status","Sleep.efficiency"))smoke_n_sleep`
+```
+smoke_n_sleep <- sleep_efficiency_data_frame %>%select(c("Smoking.status","Sleep.efficiency"))smoke_n_sleep
 
-`ggplot(smoke_n_sleep, aes(x = Smoking.status, y = Sleep.efficiency, fill = interaction(Smoking.status))) + geom_boxplot() + scale_fill_manual(values = c("lightgreen","lightpink")) + labs(x = "Smoking Status", y = "Sleep Efficiency") + stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red4", fill="black") + labs(title = "Does Smoking Accept Sleep?") + theme_minimal() + guides(fill=guide_legend(title="Smoking Status")) + theme(plot.title = element_text(hjust = 0.5))`
+ggplot(smoke_n_sleep, aes(x = Smoking.status, y = Sleep.efficiency, fill = interaction(Smoking.status))) + geom_boxplot() + scale_fill_manual(values = c("lightgreen","lightpink")) + labs(x = "Smoking Status", y = "Sleep Efficiency") + stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red4", fill="black") + labs(title = "Does Smoking Accept Sleep?") + theme_minimal() + guides(fill=guide_legend(title="Smoking Status")) + theme(plot.title = element_text(hjust = 0.5))
+```
 
 ![smoking box plot](images/smoking_box_plot.jpg)
 
@@ -208,33 +216,34 @@ The graph shows that the larger bubbles generally concentrated in the top left o
 In the pie chart below, it displays the percentage value of the sleep disorders found in the dataset. Around 20.6% appear to have insomnia, a sleep disorder characterize by difficulty falling asleep, staying asleep, or both. Around 20.9% have sleep apnea, a condition that in which a person's breathing stops and restarts many times during sleep. There are around 58.6% who don't have any sleep disorder. 
 
 **Code:**
+```
+disorder <- lifestyle %>% select(c("Sleep.Disorder"))
 
-`disorder <- lifestyle %>% select(c("Sleep.Disorder"))`
+disorder_count <- table(disorder)
 
-`disorder_count <- table(disorder)`
+disorder_label<- c("Insomnia","None", "Sleep Apnea")
 
-`disorder_label<- c("Insomnia","None", "Sleep Apnea")`
+percent <- round(disorder_count/sum(disorder_count)*100, 1)
 
-`percent <- round(disorder_count/sum(disorder_count)*100, 1)`
+disorder_label <- paste(disorder_label, percent, "%")
 
-`disorder_label <- paste(disorder_label, percent, "%")`
+# Adjust margins
 
-`# Adjust margins`
+par(mar = c(2,2,2,2))
 
-`par(mar = c(2,2,2,2))`
-
-`pie(disorder_count, labels = disorder_label, col = c("lightpink", "lightgreen", "lightblue"), main = "Sleep Disorder Count", radius = 1, clockwise= TRUE)`
-
+pie(disorder_count, labels = disorder_label, col = c("lightpink", "lightgreen", "lightblue"), main = "Sleep Disorder Count", radius = 1, clockwise= TRUE)
+```
 
 ![sleep disorder count](images/sleep_disorder_count3.jpg)
 
 The box and whisker plot below, represents how each sleep disorder affects a person's sleep duration measured in hours.
 
 **Code:**
+```
+sleep <- lifestyle %>% select(c("Sleep.Disorder","Sleep.Duration"))
 
-`sleep <- lifestyle %>% select(c("Sleep.Disorder","Sleep.Duration"))`
-
-`ggplot(sleep, aes(x = Sleep.Disorder, y = Sleep.Duration)) + geom_boxplot(aes(group = Sleep.Disorder, fill = Sleep.Disorder)) + labs(x = "Sleep Disorder", y = "Sleep Duration") + stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red", fill = "red") + theme_minimal()`
+ggplot(sleep, aes(x = Sleep.Disorder, y = Sleep.Duration)) + geom_boxplot(aes(group = Sleep.Disorder, fill = Sleep.Disorder)) + labs(x = "Sleep Disorder", y = "Sleep Duration") + stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red", fill = "red") + theme_minimal()
+```
 
 ![sleep disorder and sleep duration ](images/sleep_disorder_and_sleep_duration.jpg)
 
