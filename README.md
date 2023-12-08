@@ -70,7 +70,7 @@ Rapid eye movement (REM) sleep is the stage where most dreams occur. Brain activ
 **Does Age Affect Light Sleep?**\
 In the graph below, it displays a scatter plot relationship between a person's age and Light sleep measured in percentage using the `plot()` function. We are trying to test whether or not age affects the duration a person would spend in Light sleep. As we can see, the age varies from 9- 69 years old. Majority of the people would ~10- 27% in this stage, minority would ~40- 60%, and rarely no one ~30- 40% (one outlier). On average, an adult would spend ~50% in total in Light sleep. However, according the graph, the average light sleep is ~24.6%.
 
-**Code:**\
+**Code:**
 ```
 x <- sleep_efficiency_data_frame$Age
 
@@ -85,7 +85,7 @@ plot(x, y, main = "Does Age Affect Light Sleep?", xlab = "Age", ylab = "Light Sl
 
 The graph below uses the pearson correlation coefficient formula to measure the linear correlation between age and light sleep percentage. Based on correlation coefficient calculation standards, the null hypothesis would be defined as age doesn't affect Light sleep, while the alternative hypothesis is age does affect Light sleep. The value of R is -0.032 which indicates it a weak, negative linear relationship between age and Light sleep percentage since the value is less than 0. The threshold of significance we chose to evaluate the p-value is 0.05. The p- value is 0.5 meaning that we accept the null hypothesis because it's greater than 0.05. In other words, we accept the fact that age has no effect on Light sleep.
 
-**Code:**\
+**Code:**
 ```
 # read file
 
@@ -148,7 +148,7 @@ The graph below shows that the sleep efficiency decreases as alcohol increases. 
 ### Smoking Status 
 The graph below shows a bar graph indicating the number people who smoke and don't smoke based on the data. As shown, the majority don't smoke with 298 people (66%), while around 154 people (34%) do smoke. 
 
-**Code:**\
+**Code:**
 ```
 smoking_count <- sleep_efficiency_data_frame %>% select(c("Smoking.status"))
 
@@ -165,7 +165,7 @@ text(x = smoking_graph, y = table(smoking_count), labels = as.data.frame(table(s
 
 The graph below represents 2 box and whisker plot to understand whether a person's smoking status affects their sleep efficiency. The smoking status variable indicates whether a person engages in this activity or not, while sleep efficiency is a measure of the proportion of time spent in bed that is actually spent asleep. We assume that people that don't smoke will have a higher sleep efficiency than those do smoke.
 
-**Code:**\
+**Code:**
 ```
 smoke_n_sleep <- sleep_efficiency_data_frame %>%select(c("Smoking.status","Sleep.efficiency"))smoke_n_sleep
 
