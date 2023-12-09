@@ -70,7 +70,49 @@ usually contain about 5% alcohol and a 5 ounces of table wine, typically contain
 - BMI - Body Mass Index, derived from height and weight of a person, used to determine if the weight is considered “healthy” based on height.
 
 ## Findings
+### Sleep Efficiency Age Count
+For the sleep efficiency data set, we started testing out R Language by simpling counting the ages that were present in the dataset, below is our result.
 
+**Code**
+```
+age_count <- sleep_efficiency_data_frame %>% select(c("Age"))
+sleep_eff_age_graph <- barplot(table(age_count), main = "Age Count", xlab = "Age", 
+        ylab = "Count", border = "blue", col = "lightblue1",ylim = c(0, 25), 
+        legend.text = "Age", args.legend = list(cex = 1,x="topright"), space = 1)
+abline(h = 0)
+text(x = sleep_eff_age_graph,
+     y = table(age_count),
+     labels = as.data.frame(table(age_count))[[2]],
+     pos = 3, cex = 0.75)
+```
+
+![sleep efficiency age count](images/sleep_efficiency_age_count.jpg)
+
+Overall we have a good spread of data by having a good range of ages present in the dataset, the majority of the ages being in the range of 20-50 years of age.
+
+### Sleep Efficiency Gender Count
+Additionally, we also counted the genders of the sleep efficiency data set to make sure there was about the same ratio.
+
+**Code**
+```
+gender_count <- sleep_efficiency_data_frame %>% select(c("Gender"))
+sleep_eff_gender_graph <- barplot(table(gender_count), main = "Gender Count", 
+        xlab = "Gender", ylab = "Count", border = c("red", "blue"), 
+        col = c("lightpink2", "lightblue"), ylim = c(0,254),
+        legend.text = c("Female","Male"), 
+        args.legend = list(cex = 1,x = 2.3, y = 300), space = 0.1 )
+
+abline(h = 0)
+text(x = sleep_eff_gender_graph,
+     y = table(gender_count),
+     labels = as.data.frame(table(gender_count))[[2]],
+     pos = 3)
+```
+
+![sleep efficiency gender count](images/sleep_efficiency_gender_count.jpg)
+
+Overall the ratio was pretty much the same, only 4 more males compared to females. Therefore this dataset was pretty fair in that regard.
+### Age and Bedtime
 ### The Affect of Age on Sleep Cycle
 Understanding the sleep cycle helps explain how certain factors can impact a person's sleep and health. In a typical night, a person goes through 4- 6 sleep cycles (not all the same length, avg. 90 minutes each). 
 The first cycle is often the shortest, ranging from 70- 100 minutes, while later cycles tend to fall between 90- 120 minutes. Sleep cycles can vary from person to person and from night to night based on a wide range 
