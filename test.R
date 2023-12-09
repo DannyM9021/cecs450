@@ -62,12 +62,6 @@ text(x = sleep_eff_gender_graph,
      labels = as.data.frame(table(gender_count))[[2]],
      pos = 3)
 
-
-# Creating a visualization for bedtime vs age-----------------------------------
-time <- sleep_efficiency_data_frame %>% select(c("Age","Bedtime"))
-time$Bedtime <- as.Date(time$Bedtime)
-time
-
 # Scatter Plot Between Age and REM Sleep Percentage-----------------------------
 x <- sleep_efficiency_data_frame$Age 
 y <- sleep_efficiency_data_frame$REM.sleep.percentage
