@@ -210,12 +210,41 @@ whether or not age affects sleep efficiency given the limitation of the data.
 
 In the graph below, we can see that although the majority of respondent does not drink coffee or any caffeine at all. People at age 25 - 40 drank 25mg to 75mg 24 hours prior to bedtime. Let's see if caffeine consumption affects 
 sleep efficiency.
+**Code**
+```
+# Bubble plot of # Caffeine.consumption by age---------------------------------------------------
+caffeine <- sleep_efficiency_data_frame %>% select(c("Caffeine.consumption","Age"))
+caffeine <- na.omit(caffeine) #omit NA rows
+caffeine <- rename(count(caffeine, Caffeine.consumption, Age), freq = n)
+ggplot(caffeine, aes(x = Age, y = Caffeine.consumption, size = freq )) + 
+  geom_point(color = "blue", alpha = 0.5) + 
+  labs(title = "Caffeine Consumption by Age") +
+  xlab("Age") +
+  ylab("Caffeine.consumption") +
+  theme_minimal() +
+  scale_size(range = c(1, 10), name = "Frequency") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
 ![Caffeine Consumption by Age](images/Caffeine_vs_Age.png)
 
 Although caffeine consumption is believed to worsen sleep quality, our dataset shows differently. The graph below shows that the median sleep efficiency decreased slightly from 0.82 to 0.80 at 0mg to 50mg caffeine consumption. 
 At 75 to 200mg caffeine consumption, the median sleep efficiency goes up to 0.8 - 0.9. However, as shown in the graph, the data for caffeine consumption above 100 mg is relatively small, so it's difficult to draw firm 
 conclusions about the relationship between caffeine consumption and sleep efficiency at these higher levels.
 Therefore, given the limitations of the data, it is not possible to say definitively whether caffeine consumption has a positive or negative impact on sleep efficiency. 
+**Code**
+```
+# box plot with caffeine consumption and sleep efficiency-----------------------
+caffeine <- sleep_efficiency_data_frame %>% select(c("Caffeine.consumption","Sleep.efficiency"))
+caffeine <- na.omit(caffeine) #omit NA rows
+ggplot(caffeine, aes(x = Caffeine.consumption, y = Sleep.efficiency)) +
+  geom_boxplot(aes(group = Caffeine.consumption), fill="darkgoldenrod") +
+  labs(x = "Caffeine Consumption", y = "Sleep Efficiency") +
+  stat_summary(fun.y = mean, geom ="point", shape =20, size = 4, color = "red", 
+               fill = "red") +
+  theme_minimal() + 
+  labs(title = "Caffeine Consumption vs Sleep Efficiency") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
 ![Caffeine Consumption vs Sleep Efficiency](images/Caffeine_vs_Sleep.png)
 
 ### Alcohol Consumption
@@ -269,6 +298,22 @@ sleep efficiency is being measured.
 The pie chart below shows the distribution of occupations within the Sleep Health and Lifestyle dataset. Each segment represents the proportion of individuals categorized within each occupation. The largest segment represents 
 nurses and doctors, accounting  for 19.5% and 19% of the dataset respectively. Engineers and lawyers make up 16.8% and 12.6% of the dataset respectively. Teachers, accountants and salespersons represent 10.7%, 9.9%, 8.6%. Software 
 engineers and scientists both make up 1.1% of the dataset. Sales Representatives and managers hold the smallest portion of the dataset, with 0.5% and 0.3% respectively.
+**Code**
+```
+job <- lifestyle %>% select(c("Occupation"))
+job_count <- table(job)
+# job_count # just to check values
+percent <- round(job_count/sum(job_count)*100, 1)
+job_label <- paste(percent, "%")
+# Adjust margins
+par(mar=c(2,0,2,2))
+pie(job_count, labels = job_label, col= brewer.pal(n = 12, name="Set3"), 
+    main = "Occupation Count", radius = .6, clockwise = TRUE, cex = 0.8) 
+# create legend 
+legend(x= 0.85, y= 1, c("Accountant", "Doctor", "Engineer", "Lawyer", "Manager",
+                    "Nurse", "Sales Rep.", "Salesperson", "Scientist", "Software Engr.",
+                   "Teacher"), fill = brewer.pal(n = 12, name = "Set3"),xpd=TRUE)
+```
 ![ocuupation count](images/occupation_count.png)
  
 ### Sleep quality and Stress level with different occupation 
@@ -283,6 +328,32 @@ difficult to determine which occupations had the highest and lowest average slee
 
 To enhance the data visualizations, we utilized the `fct_reorder(Occupation, Quality.of.Sleep, .fun = 'median')` function. It sorts the occupations based on the median of sleep quality, allowing for a more clear visualization.
 We are now able to identify that engineers, lawyers, and accountants had the best sleep quality. In contrast, scientists, salesperson, and software engineers had the worse sleep quality median.
+
+**Finalized Code**
+```
+annotation <- textGrob("*Manager and Sales Representative have been \nremoved due to lack of data", 
+                       gp = gpar(fontsize = 8, fontface = "italic"))
+# Comparing stress level with differnt occupation---------------------------
+job_compare_stress <- lifestyle %>% select(c("Occupation","Stress.Level"))
+# omit manager and sales Representative because theres not enough data
+job_compare_stress <- job_compare_stress %>% filter(Occupation != "Manager" & Occupation != "Sales Representative")
+# used fct_reorder to reorder the rows by median in the graph
+job_compare_stress %>% mutate(class = fct_reorder(Occupation, Stress.Level, .fun = 'median')) %>%
+  ggplot(aes(x = Stress.Level, y = fct_reorder(Occupation, Stress.Level,  .fun = 'median',.desc = TRUE), fill = Occupation)) +
+  geom_density_ridges(alpha = 0.8) +
+  #geom_density_ridges(alpha=0.6, stat="binline", bins=6) +
+  theme_ridges() +
+  theme(
+    legend.position = "none",
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8),
+  )+  
+  coord_cartesian(clip = "off")+ #turn off cliping so annotation can be outside of graph
+  annotation_custom(annotation, xmin = -10,ymin = -2.6, ymax = 1) + #add annotation
+  xlab("Stress Level") +
+  ylab("Occupation") + 
+  labs(title = "Stress Level vs Different Occupation")
+```
 ![Quality of sleep vs occupation](images/quality_of_sleep_vs_occupation_v2.png)
 ![stress level vs occupation](images/stress_level_vs_occupation.png)
 
@@ -295,6 +366,18 @@ The below graph shows a mixed relationship between physical activity level and s
 However, there is also a significant amount of variability in the graph. The scatter plot reveals a mixed relationship between physical activity level and stress level.
 While there is a general trend towards lower stress levels with higher physical activity levels, there is also a significant amount of variability in the data. Therefore, the relationship between physical activity level and stress 
 level in our dataset is unclear.
+
+**Code**
+```
+# Scatter plot of physical activity compared to stress level--------------------
+physical_activity_vs_stress <- lifestyle %>% select(c("Physical.Activity.Level","Stress.Level"))
+ggplot(physical_activity_vs_stress, aes(x = Physical.Activity.Level, y = Stress.Level)) + 
+  geom_point() + 
+  labs(title = "Physical Activity Level vs Stress Level") +
+  xlab("Physical Activity Level") +
+  ylab("Stress Level") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
 ![Physical Activity Level vs Stress Level ](images/physical_activity_vs_stress.png)
 
 ### Heart Rate vs Quality of Sleep 
@@ -304,6 +387,19 @@ The below bubble  plot explores the relationships between heart rate and sleep q
 The graph shows that the larger bubbles are generally concentrated in the top left of the graph, where they have higher sleep quality and low heart rates. 
 As the heart rate gets higher, the larger bubbles get lower, which means the sleep quality decreases as the heart rate increases. It shows a negative relationship between heart rates and sleep quality.
 
+**Code**
+```
+# Bubble plot of Heart.Rate compared to quality of sleep------------------------
+Heart.RatevsQuality.of.Sleep <- lifestyle %>% select(c("Quality.of.Sleep","Heart.Rate"))
+Heart.RatevsQuality.of.Sleep <- rename(count(Heart.RatevsQuality.of.Sleep, Quality.of.Sleep, Heart.Rate), freq = n)
+ggplot(Heart.RatevsQuality.of.Sleep, aes(x = Heart.Rate, y = Quality.of.Sleep, size = freq )) + 
+  geom_point(color = "brown2",alpha = 0.5) + 
+  labs(title = "Heart.Rate vs Quality of Sleep") +
+  xlab("Heart.Rate") +
+  ylab("Quality.of.Sleepl") +
+  theme_minimal() +
+  scale_size(range = c(1, 25), name = "Frequency")
+```
 ![Heart Rate vs Quality of Sleep ](images/heart_rate_vs_quality_of_sleep.png)
 
 
