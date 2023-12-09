@@ -39,7 +39,7 @@ The sleep efficiency dataset was collected as part of a study conducted in Moroc
 - Potential factors: Age, Gender, Caffeine consumption, Alcohol consumption, Smoking status, Exercise frequency
 - Sleep quality metrics: Bedtime, Wakeup time, Sleep duration, Sleep efficiency, REM sleep percentage, Deep sleep percentage, Light sleep percentage, Awakenings
 
-The dataset is in CSV format. The data is mostly clean except there are some empty cells in columns Awakenings, Caffeine consumption, Alcohol consumption and, Exercise frequency. Since we want to visualize as much data as possible, we only remove the rows with empty fields when the columns are used. For example, we used `caffeine <- na.omit(caffeine)` to remove rows for the caffeine consumption graph. 
+The dataset is in CSV format. The data is mostly clean except there are some empty cells in columns Awakenings, Caffeine consumption, Alcohol consumption, and Exercise frequency. Since we want to visualize as much data as possible, we only remove the rows with empty fields when the columns are used. For example, we used `caffeine <- na.omit(caffeine)` to remove rows for the caffeine consumption graph. 
 
 ### Sleep Health and Lifestyle Dataset 
 The sleep health and lifestyle dataset was collected by a data science student at the University of Moratuwa Kilinochchi in Sri Lanka - Laksika Tharmalingam. The dataset is updated quarterly. It contains 13 columns, 
@@ -48,7 +48,7 @@ which can also be grouped into 3 categories:
 - Potential factors: Gender, Age, Occupation, Physical Activity Level, Stress Level, BMI Category, Blood Pressure, Heart Rate, Daily Steps, Sleep Disorder
 - Sleep quality metrics: Sleep Duration, Quality of Sleep
 
-The dataset is in CSV format. It is very clean as it does not contain any missing information. The only mislabeled data is in the BMI Category. The descriptions in the dataset indicate that the BMI categories are "Underweight, Normal, Overweight, Obese". However, we found the BMI category column has "Normal weight, Normal, Overweight, Obese". We believe the underweight was mislabeled as "Normal weight" so we changed column name to the correct category. 
+The dataset is in CSV format. It is very clean as it does not contain any missing information. The only mislabeled data is in the BMI Category. The descriptions in the dataset indicate that the BMI categories are "Underweight, Normal, Overweight, Obese". However, we found the BMI category column has "Normal weight, Normal, Overweight, Obese". We believe the underweight was mislabeled as "Normal weight" so we changed the column name to the correct category. 
 
 
 ## Definitions
@@ -383,16 +383,16 @@ of 7.2 hours, a maximum of 7.7 hours, and a median of about 7.5 hours of sleep. 
 a minimum of 6 hours, a maximum of 7.3 hours, and a median of about 7.2 hours. Overall, we see the same trend as the previous graph, where an individual has a higher BMI, the worse overall sleep they get.
 
 ## Conclusion
-In conclusion, there are many factors that were in play in these two datasets, however, there were some that stood out to us more than others. So, to answer the question that we propsed at the beginning of this paper:
+In conclusion, there are many factors that were in play in these two datasets, however, there were some that stood out to us more than others. So, to answer the question that we proposed  at the beginning of this paper:
 
 **"What are the factors that contribute to the greatest sleep efficiency"?**
-- Having overall good health was a key factor in having a greater sleep efficiency. Individuals with a lower BMI overall had better sleep quality as well as sleep duraiton.
-- Moderation in drinking alcohol also had a positive impact on an individual's sleep efficiency. Those who drank less, overall had better sleep quality as well amd sleep duration
+- Having overall good health was a key factor in having a greater sleep efficiency. Individuals with a lower BMI overall had better sleep quality as well as sleep duration.
+- Moderation in drinking alcohol also had a positive impact on an individual's sleep efficiency. Those who drank less, overall had better sleep quality as well and sleep duration
 - Having a less stressful job was also linked to having better sleep efficiency. It may be too late to change occupation for some individuals, so therefore this would not be something viable to change.
 
 We also found some data points that had little to no effect on sleep efficiency which include:
 - Age did not play a huge factor to the sleep efficiency of an individual. Surprisingly it had little impact. Individuals who were older had around the same sleep efficiency as the younger individuals.
-- Drinking caffeine before sleep also didn't have much of an impact on individuals, overall even if some individuals drank caffeiene before sleeping, they had around the same sleep efficiency as those who drank little to no caffeiene.
+- Drinking caffeine before sleep also didn't have much of an impact on individuals, overall even if some individuals drank caffeine  before sleeping, they had around the same sleep efficiency as those who drank little to no caffeine .
 
 ### Thank you for reading our paper, have a restful night!
 
