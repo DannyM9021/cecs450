@@ -381,7 +381,20 @@ ggplot(sleep, aes(x = BMI.Category, y = Sleep.Duration, fill = interaction(BMI.C
 In the graph above we see something similar to the BMI and Sleep Quality graph. The Underweight boxplot had a minimum of 6.8 hours and a maximum of 7.7 hours, the median is about 7.4 hours. The Normal Weight boxplot had a minimum 
 of 7.2 hours, a maximum of 7.7 hours, and a median of about 7.5 hours of sleep. The overweight category has a minimum of 6.2 hours, a maximum of 6.8 hours, and a median of about 6.4 hours. Finally, in the obese categor, we have
 a minimum of 6 hours, a maximum of 7.3 hours, and a median of about 7.2 hours. Overall, we see the same trend as the previous graph, where an individual has a higher BMI, the worse overall sleep they get.
+
 ## Conclusion
+In conclusion, there are many factors that were in play in these two datasets, however, there were some that stood out to us more than others. So, to answer the question that we propsed at the beginning of this paper:
+
+**"What are the factors that contribute to the greatest sleep efficiency"?**
+- Having overall good health was a key factor in having a greater sleep efficiency. Individuals with a lower BMI overall had better sleep quality as well as sleep duraiton.
+- Moderation in drinking alcohol also had a positive impact on an individual's sleep efficiency. Those who drank less, overall had better sleep quality as well amd sleep duration
+- Having a less stressful job was also linked to having better sleep efficiency. It may be too late to change occupation for some individuals, so therefore this would not be something viable to change.
+
+We also found some data points that had little to no effect on sleep efficiency which include:
+- Age did not play a huge factor to the sleep efficiency of an individual. Surprisingly it had little impact. Individuals who were older had around the same sleep efficiency as the younger individuals.
+- Drinking caffeine before sleep also didn't have much of an impact on individuals, overall even if some individuals drank caffeiene before sleeping, they had around the same sleep efficiency as those who drank little to no caffeiene.
+
+### Thank you for reading our paper, have a restful night!
 
 
 ## References
