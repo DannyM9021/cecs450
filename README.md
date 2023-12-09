@@ -112,7 +112,6 @@ text(x = sleep_eff_gender_graph,
 ![sleep efficiency gender count](images/sleep_efficiency_gender_count.jpg)
 
 Overall the ratio was pretty much the same, only 4 more males compared to females. Therefore this dataset was pretty fair in that regard.
-### Age and Bedtime
 ### The Affect of Age on Sleep Cycle
 Understanding the sleep cycle helps explain how certain factors can impact a person's sleep and health. In a typical night, a person goes through 4- 6 sleep cycles (not all the same length, avg. 90 minutes each). 
 The first cycle is often the shortest, ranging from 70- 100 minutes, while later cycles tend to fall between 90- 120 minutes. Sleep cycles can vary from person to person and from night to night based on a wide range 
