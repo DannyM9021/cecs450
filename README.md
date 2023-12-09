@@ -67,6 +67,8 @@ usually contain about 5% alcohol and a 5 ounces of table wine, typically contain
 
 - Sleep Apnea - a condition that in which a person's breathing stops and restarts many times during sleep.
 
+- BMI - Body Mass Index, derived from height and weight of a person, used to determine if the weight is considered “healthy” based on height.
+
 ## Findings
 
 ### The Affect of Age on Sleep Cycle
@@ -328,8 +330,57 @@ where the minimum sleep rating was 6. The maximum sleep rating was 9. The mean f
 for the most part, did have an impact on the quality of sleep that an individual experienced. Not having a sleep disorder had a better sleep quality rating overall compared to the individuals who did have a sleep disorder.
 
 ### Body Mass Index (BMI)
+To give an overview, body mass index in our dataset is separated into 4 categories: Underweight, Normal weight, overweight, and obese. Below we have the BMI vs Sleep Quality graph .
 
+**Code**
+```
+sleep <- lifestyle %>% select(c("BMI.Category","Quality.of.Sleep"))
+sleep$BMI.Category <- factor(sleep$BMI.Category, 
+                      levels=c("Normal Weight", "Normal", "Overweight", "Obese"))
+levels(sleep$BMI.Category) <- c("UnderWeight", "Normal", "Overweight", "Obese")
+ggplot(sleep, aes(x = BMI.Category, y = Quality.of.Sleep, fill = interaction(BMI.Category))) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("yellow","green","orange","red"))+
+  labs(x = "BMI Category", y = "Quality of Sleep") +
+  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, color = "red4", 
+               fill = "black") +
+  theme_minimal() +
+  ggtitle("Quality of Sleep based on BMI Index Category") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  guides(fill = guide_legend(title="BMI Index Categories"))
+```
 
+![BMI and sleep quality](images/bmi_and_sleep_quality.jpg)
+
+In the graph we have the underweight boxplot with a minimum sleep quality rating of 7 and a maximum sleep quality rating of 8. The normal weight boxplot has the same maximum and minimum. The overweight category had a minimum 
+sleep quality rating of 6 and a maximum rating of 7. Finally the obese category had a minimum sleep quality rating of 4.5 and a maximum rating of 7. Underweight and normal weight had the same minimum and maximum values, however,
+normal weight had a higher mean as seen on the boxplot. Overall, the boxplot diagram shows us that as an individual has a higher BMI, the worse their sleep quality is overall.
+
+Additionally we also mapped the BMI and sleep duration graph with the same four BMI categories.
+
+**Code**
+```
+sleep <- lifestyle %>% select(c("BMI.Category","Sleep.Duration"))
+sleep$BMI.Category <- factor(sleep$BMI.Category , 
+                      levels = c("Normal Weight", "Normal", "Overweight", "Obese"))
+levels(sleep$BMI.Category) <- c("UnderWeight", "Normal", "Overweight", "Obese")
+ggplot(sleep, aes(x = BMI.Category, y = Sleep.Duration, fill = interaction(BMI.Category))) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("yellow","green","orange","red")) +
+  labs(x = "BMI Category", y = "Sleep Duration") +
+  stat_summary(fun.y = mean, geom = "point", shape = 20, size = 4, col = "red4", 
+               fill = "black") +
+  theme_minimal() +
+  ggtitle("Sleep Duration based on BMI Index Category") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  guides(fill = guide_legend(title="BMI Index Categories"))
+```
+
+![BMI and sleep duration](images/bmi_and_sleep_duration.jpg)
+
+In the graph above we see something similar to the BMI and Sleep Quality graph. The Underweight boxplot had a minimum of 6.8 hours and a maximum of 7.7 hours, the median is about 7.4 hours. The Normal Weight boxplot had a minimum 
+of 7.2 hours, a maximum of 7.7 hours and an median of about 7.5 hours of sleep. The overweight category has a minimum of 6.2 hours, a maximum of 6.8 hours and an median of about 6.4 hours. Finally, in the obese category we have
+a minimum of 6 hours, a maximum of 7.3 hours and a median of about 7.2 hours. Overall, we see the same trend as the previous graph, where as an individual has a higher BMI, the worse overall sleep they get.
 ## Conclusion
 
 
